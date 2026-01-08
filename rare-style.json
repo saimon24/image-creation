@@ -1,0 +1,58 @@
+{
+  "icon_style": {
+    "perspective": "soft isometric (slight tilt, friendly angle)",
+    "geometry": {
+      "proportions": "1:1 square canvas, generous breathing room around object",
+      "element_arrangement": "single centered main object, with subtle sparkle particles or tiny golden motes floating nearby"
+    },
+    "composition": {
+      "element_count": "1–2 objects only",
+      "spatial_depth": "subtle depth with gentle elevation, no dramatic perspective",
+      "scale_consistency": "strictly consistent size and visual weight across entire set",
+      "scene_density": "minimal, calm, uncluttered"
+    },
+    "lighting": {
+      "type": "soft diffuse daylight with subtle warm inner glow",
+      "light_source": "top-left or top-center, evenly spread, with faint ambient radiance from object",
+      "shadow": "very soft grounding shadow with subtle golden tint, close to object",
+      "highlighting": "gentle shimmer on edges, soft golden catchlights suggesting preciousness"
+    },
+    "textures": {
+      "material_finish": "refined and polished, premium handcrafted quality",
+      "surface_treatment": "enhanced realism with fine grain details, polished metal surfaces, superior craftsmanship visible"
+    },
+    "render_quality": {
+      "resolution": "high-resolution stylized 3D or painterly render",
+      "edge_definition": "soft edges with subtle luminous rim, no hard outlines",
+      "visual_clarity": "clear silhouette, instantly readable at small sizes"
+    },
+    "color_palette": {
+      "tone": "warm, rich, subtly luxurious",
+      "range": "deeper saturated naturals with golden/amber undertones (no neon, no harsh contrast)",
+      "usage": "limited palette per icon, slight warmth shift suggesting value and rarity"
+    },
+    "background": {
+      "color": "transparent",
+      "style": "backgroundless PNG",
+      "texture": "none"
+    },
+    "stylistic_tone": "cozy, premium, subtly magical, masterwork-quality, storybook-treasure",
+    "icon_behavior": {
+      "branding_alignment": "fits cozy farming / idle game aesthetic while signaling rarity",
+      "scalability": "clearly legible at 24–64 px",
+      "interchangeability": "cohesive with standard icons but distinctly elevated"
+    },
+    "constraints": {
+      "avoid": [
+        "photorealism",
+        "plastic shine",
+        "hard shadows",
+        "busy scenes",
+        "text or labels",
+        "background elements",
+        "over-the-top magical effects",
+        "breaking cozy aesthetic"
+      ]
+    }
+  }
+}

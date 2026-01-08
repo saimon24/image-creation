@@ -1,0 +1,65 @@
+{
+  "icon_style": {
+    "perspective": "front-facing portrait with slight 3/4 turn",
+    "geometry": {
+      "proportions": "1:1 square canvas, head and shoulders framing",
+      "element_arrangement": "character centered, face as focal point with subtle environmental hints"
+    },
+    "composition": {
+      "framing": "bust shot (head, neck, upper shoulders)",
+      "spatial_depth": "soft background blur, character in sharp focus",
+      "scale_consistency": "consistent head size and framing across all avatars",
+      "scene_density": "character-focused, minimal background elements"
+    },
+    "lighting": {
+      "type": "soft natural daylight with warm fill",
+      "light_source": "top-left key light, gentle fill from opposite side",
+      "shadow": "soft facial shadows for depth, no harsh contrasts",
+      "highlighting": "natural skin highlights, soft eye catchlights"
+    },
+    "character_rendering": {
+      "facial_features": "expressive but stylized, slightly larger eyes for warmth",
+      "skin_texture": "soft realistic skin with subtle variation",
+      "hair": "painterly with defined strands, natural movement",
+      "expression": "warm, approachable, character-appropriate emotion"
+    },
+    "textures": {
+      "material_finish": "semi-realistic with painterly softness",
+      "surface_treatment": "visible fabric weave, natural skin pores (subtle), realistic hair texture",
+      "clothing_detail": "clear material distinction (leather, cloth, metal) with soft rendering"
+    },
+    "render_quality": {
+      "resolution": "high-resolution painterly-realistic hybrid",
+      "edge_definition": "soft edges on background, defined but not harsh on character",
+      "visual_clarity": "recognizable at thumbnail size, detailed when enlarged"
+    },
+    "color_palette": {
+      "tone": "warm, natural, inviting",
+      "skin_tones": "diverse, natural, warm undertones",
+      "range": "richer than icon style, natural clothing and hair colors",
+      "usage": "harmonious palette per character, cohesive across full NPC set"
+    },
+    "background": {
+      "color": "soft gradient or subtle environment hint",
+      "style": "blurred contextual setting matching character profession",
+      "texture": "painterly, non-distracting"
+    },
+    "stylistic_tone": "warm, inviting, storybook-realistic, approachable, characterful",
+    "icon_behavior": {
+      "branding_alignment": "fits cozy farming game but with more character depth",
+      "scalability": "readable at 48px, detailed at 256px+",
+      "personality": "each NPC should feel unique and memorable"
+    },
+    "constraints": {
+      "avoid": [
+        "photorealism",
+        "uncanny valley",
+        "harsh lighting",
+        "overly detailed wrinkles or blemishes",
+        "busy or distracting backgrounds",
+        "text or labels",
+        "exaggerated cartoon proportions"
+      ]
+    }
+  }
+}

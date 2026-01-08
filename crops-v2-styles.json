@@ -1,0 +1,68 @@
+{
+  "icon_style": {
+    "perspective": "soft isometric (15–20° tilt), slightly front-facing",
+
+    "geometry": {
+      "proportions": "1:1 canvas, generous negative space",
+      "element_arrangement": "single centered object only",
+      "silhouette_priority": "crop must be identifiable by outline alone"
+    },
+
+    "composition": {
+      "element_count": "exactly 1 crop element (no duplicates, no bundles)",
+      "spatial_depth": "very shallow depth, minimal layering",
+      "scale_consistency": "uniform visual size across all crops",
+      "scene_density": "minimal, uncluttered"
+    },
+
+    "grounding": {
+      "method": "natural base contact only (leaf touch, root contact, bowl rim if applicable)",
+      "shadow": "none",
+      "floating": "never floating; always visually resting"
+    },
+
+    "lighting": {
+      "type": "soft ambient daylight",
+      "light_source": "diffuse top-down",
+      "contrast": "low to moderate",
+      "highlighting": "subtle highlights only, no rim light"
+    },
+
+    "textures": {
+      "material_finish": "soft matte organic",
+      "surface_treatment": "stylised natural realism (skin, husk, leaves)",
+      "detail_level": "enough for recognition, no micro-detail"
+    },
+
+    "render_quality": {
+      "resolution": "high-res stylised 3-D (game icon fidelity)",
+      "edge_definition": "soft edges, no hard outlines",
+      "visual_clarity": "shape-first, texture-second"
+    },
+
+    "color_palette": {
+      "tone": "natural, slightly warm",
+      "saturation": "true-to-life with gentle boost",
+      "value_range": "clear midtone separation from background",
+      "usage": "single dominant color family per crop"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless"
+    },
+
+    "stylistic_tone": "cozy, calm, organic, approachable",
+
+    "icon_behavior": {
+      "scalability": "legible at 24–64px",
+      "interchangeability": "visually quieter than crafts and processed goods"
+    },
+
+    "ui_validation": {
+      "small_size_test": "recognizable at 32px without text",
+      "consistency_test": "no crop visually heavier than another",
+      "contrast_guardrail": "must not outshine processed goods"
+    }
+  }
+}

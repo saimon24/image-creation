@@ -1,0 +1,56 @@
+{
+  "icon_style": {
+    "perspective": "soft isometric (slight tilt, friendly angle)",
+    "geometry": {
+      "proportions": "1:1 square canvas, generous breathing room around object",
+      "element_arrangement": "single centered main object, optional tiny secondary detail for context (leaf, grain, stitch)"
+    },
+    "composition": {
+      "element_count": "1–2 objects only",
+      "spatial_depth": "subtle depth with gentle elevation, no dramatic perspective",
+      "scale_consistency": "strictly consistent size and visual weight across entire set",
+      "scene_density": "minimal, calm, uncluttered"
+    },
+    "lighting": {
+      "type": "soft diffuse daylight",
+      "light_source": "top-left or top-center, evenly spread",
+      "shadow": "very soft grounding shadow, close to object",
+      "highlighting": "subtle highlights, no sharp specular shine"
+    },
+    "textures": {
+      "material_finish": "soft matte, lightly handcrafted feel",
+      "surface_treatment": "stylized, cozy realism (faint grain lines, soft fabric, gentle food texture)"
+    },
+    "render_quality": {
+      "resolution": "high-resolution stylized 3D or painterly render",
+      "edge_definition": "soft edges, no hard outlines",
+      "visual_clarity": "clear silhouette, instantly readable at small sizes"
+    },
+    "color_palette": {
+      "tone": "warm, natural, comforting",
+      "range": "earthy pastels and muted naturals (no neon, no harsh contrast)",
+      "usage": "limited palette per icon, harmonious across entire set"
+    },
+    "background": {
+      "color": "transparent",
+      "style": "backgroundless PNG",
+      "texture": "none"
+    },
+    "stylistic_tone": "cozy, wholesome, calm, handcrafted, storybook-farm",
+    "icon_behavior": {
+      "branding_alignment": "fits cozy farming / idle game aesthetic",
+      "scalability": "clearly legible at 24–64 px",
+      "interchangeability": "perfectly cohesive with crops, animals, crafts, and recipes"
+    },
+    "constraints": {
+      "avoid": [
+        "photorealism",
+        "plastic shine",
+        "hard shadows",
+        "busy scenes",
+        "text or labels",
+        "background elements"
+      ]
+    }
+  }
+}

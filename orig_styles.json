@@ -1,0 +1,46 @@
+{
+  "icon_style": {
+    "perspective": "isometric",
+    "geometry": {
+      "proportions": "1:1 ratio canvas, objects comfortably inside margins",
+      "element_arrangement": "central dominant object with optional offset 20°"
+    },
+    "composition": {
+      "element_count": "1–2 key objects",
+      "spatial_depth": "layered for gentle 3-D elevation",
+      "scale_consistency": "strictly consistent size and visual weight across entire set",
+      "scene_density": "minimal to moderate"
+    },
+    "lighting": {
+      "type": "soft ambient",
+      "light_source": "subtle top-right",
+      "shadow": "gentle drop shadow",
+      "highlighting": "mild rim light for form definition"
+    },
+    "textures": {
+      "material_finish": "semi-matte with light tactile variation",
+      "surface_treatment": "smooth stylised realism (e.g., faint fruit skin, bread crust)"
+    },
+    "render_quality": {
+      "resolution": "high-res Octane/Arnold 3-D render",
+      "edge_definition": "crisp, no outlines",
+      "visual_clarity": "clean, readable shapes"
+    },
+    "color_palette": {
+      "tone": "naturalistic with slight saturation boost",
+      "range": "harmonious muted tones, gentle contrast",
+      "usage": "distinct colors per object for quick recognition"
+    },
+    "background": {
+      "color": "transparent",
+      "style": "backgroundless, PNG",
+      "texture": "none"
+    },
+    "stylistic_tone": "premium, friendly, clean, lifestyle-oriented",
+    "icon_behavior": {
+      "branding_alignment": "neutral, works across retail app",
+      "scalability": "legible at 24–64 px",
+      "interchangeability": "cohesive within broader icon set"
+    }
+  }
+}
