@@ -1,0 +1,74 @@
+{
+  "icon_style": {
+    "perspective": "soft isometric (20–25° tilt), slightly front-facing",
+
+    "geometry": {
+      "proportions": "1:1 canvas, tighter framing than crops",
+      "element_arrangement": "single iconic object only",
+      "silhouette_priority": "instantly recognizable, bold outline"
+    },
+
+    "composition": {
+      "element_count": "exactly 1 object",
+      "spatial_depth": "moderate depth with clear foreground focus",
+      "scale_consistency": "slightly larger perceived weight than normal items",
+      "scene_density": "minimal but intentional"
+    },
+
+    "grounding": {
+      "method": "subtle visual lift via glow or halo",
+      "shadow": "none or extremely soft ambient shadow",
+      "floating": "allowed, but grounded by aura"
+    },
+
+    "lighting": {
+      "type": "soft directional with highlight emphasis",
+      "light_source": "top-right with secondary fill",
+      "contrast": "moderate to high",
+      "highlighting": "controlled specular highlights on key edges"
+    },
+
+    "textures": {
+      "material_finish": "polished or refined (stone, metal, crystal, lacquer)",
+      "surface_treatment": "stylised realism with premium cues",
+      "detail_level": "higher than crafts, never noisy"
+    },
+
+    "render_quality": {
+      "resolution": "high-res stylised 3-D (hero-icon fidelity)",
+      "edge_definition": "crisp edges with subtle bevels",
+      "visual_clarity": "icon reads as special even at small sizes"
+    },
+
+    "color_palette": {
+      "tone": "slightly richer than normal items",
+      "saturation": "controlled boost (never neon)",
+      "value_range": "clear light–dark separation",
+      "usage": "distinct color identity per rare item"
+    },
+
+    "accent_effects": {
+      "glow": "soft halo or inner glow (very subtle)",
+      "particles": "none or extremely minimal (1–2 static spark hints max)",
+      "motion": "designed to work without animation"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless"
+    },
+
+    "stylistic_tone": "cozy-premium, collectible, magical but restrained",
+
+    "icon_behavior": {
+      "scalability": "clearly rare at 24–64px",
+      "interchangeability": "visually stands above normal items, below rewards UI"
+    },
+
+    "ui_validation": {
+      "rarity_test": "must stand out next to normal craft items",
+      "restraint_test": "must not overpower UI or feel flashy",
+      "consistency_test": "all rare items feel equally valuable"
+    }
+  }
+}

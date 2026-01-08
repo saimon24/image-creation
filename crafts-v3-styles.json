@@ -1,0 +1,68 @@
+{
+  "icon_style": {
+    "perspective": "soft isometric (18–22° tilt), slightly front-facing",
+
+    "geometry": {
+      "proportions": "1:1 canvas, balanced margins",
+      "element_arrangement": "single primary object with optional accent",
+      "focal_hierarchy": "primary object dominates visual read"
+    },
+
+    "composition": {
+      "element_count": "1 primary object, 1 optional secondary (≤25% weight)",
+      "spatial_depth": "moderate depth with clear form separation",
+      "scale_consistency": "strict visual weight consistency across crafts",
+      "scene_density": "functional, never decorative"
+    },
+
+    "grounding": {
+      "method": "soft contact grounding (resting on implied surface)",
+      "shadow": "very subtle ambient contact shadow",
+      "floating": "not allowed"
+    },
+
+    "lighting": {
+      "type": "soft directional with clarity emphasis",
+      "light_source": "top-right",
+      "contrast": "moderate",
+      "highlighting": "controlled highlights to define material"
+    },
+
+    "textures": {
+      "material_finish": "strong material identity (powdery, liquid, roasted, woven, cooked)",
+      "surface_treatment": "stylised realism with exaggerated texture cues",
+      "detail_level": "enough to distinguish at a glance, no micro-noise"
+    },
+
+    "render_quality": {
+      "resolution": "high-res stylised 3-D (game icon fidelity)",
+      "edge_definition": "crisp edges with soft bevels",
+      "visual_clarity": "prioritized over realism"
+    },
+
+    "color_palette": {
+      "tone": "natural but contrast-aware",
+      "saturation": "slightly higher than crops, lower than rares",
+      "value_range": "clear light–dark separation",
+      "usage": "never rely on hue alone for differentiation"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless"
+    },
+
+    "stylistic_tone": "cozy-functional, tactile, readable",
+
+    "icon_behavior": {
+      "scalability": "clear at 24–64px",
+      "interchangeability": "visually sits between crops and rares"
+    },
+
+    "ui_validation": {
+      "small_size_test": "recognizable at 32px without text",
+      "pair_test": "distinguishable from similar crafts side-by-side",
+      "list_test": "readable in dense order lists"
+    }
+  }
+}

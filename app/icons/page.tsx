@@ -32,6 +32,12 @@ const CATEGORIES = [
   { id: "crops", label: "Crops" },
   { id: "area-items", label: "Area Items" },
   { id: "crafts", label: "Crafts" },
+  { id: "rare", label: "Rare" },
+  { id: "animal-products", label: "Animal Products" },
+  { id: "misc", label: "Misc" },
+  { id: "potions", label: "Potions" },
+  { id: "upgrades", label: "Upgrades" },
+  { id: "leaderboard", label: "Leaderboard" },
   { id: "buildings", label: "Buildings" },
   { id: "animals", label: "Animals" },
 ];

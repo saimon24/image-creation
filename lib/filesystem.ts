@@ -65,9 +65,15 @@ export function ensureOutputDirs() {
     "crops",
     "crafts",
     "area-items",
+    "rare",
+    "animal-products",
+    "misc",
+    "upgrades",
+    "leaderboard",
     "buildings",
     "animals",
     "npcs",
+    "custom",
   ];
 
   for (const dir of dirs) {

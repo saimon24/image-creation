@@ -1,0 +1,60 @@
+{
+  "icon_style": {
+    "perspective": "soft isometric (15–25° tilt), slightly front-facing for readability",
+
+    "geometry": {
+      "proportions": "1:1 canvas, generous margins",
+      "element_arrangement": "single dominant object with optional secondary accent",
+      "focal_hierarchy": "primary object must read clearly in silhouette alone"
+    },
+
+    "composition": {
+      "element_count": "1 primary object",
+      "spatial_depth": "layered with clear foreground separation",
+      "scale_consistency": "strict visual weight consistency across set",
+      "scene_density": "minimal, clarity-first"
+    },
+
+    "lighting": {
+      "type": "soft directional with clarity bias",
+      "light_source": "top-right, elevated",
+      "shadow": "no grounding shadow",
+      "highlighting": "pronounced edge highlights on primary forms"
+    },
+
+    "textures": {
+      "material_finish": "category-specific finishes (powdery, glossy, crusty, liquid)",
+      "surface_treatment": "stylised realism with exaggerated material cues"
+    },
+
+    "render_quality": {
+      "resolution": "high-res stylised 3-D (game icon fidelity)",
+      "edge_definition": "crisp with subtle bevel emphasis",
+      "visual_clarity": "prioritised over photoreal detail"
+    },
+
+    "color_palette": {
+      "tone": "naturalistic with selective saturation boosts",
+      "range": "harmonious base with strategic contrast spikes",
+      "usage": "distinct hue + value separation per icon"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless"
+    },
+
+    "stylistic_tone": "cozy, friendly, readable, game-first",
+
+    "icon_behavior": {
+      "scalability": "legible at 24–64px",
+      "interchangeability": "cohesive within full icon library"
+    },
+
+    "ui_validation": {
+      "small_size_test": "recognizable at 32px without text",
+      "grayscale_test": "distinct when desaturated",
+      "crowded_context_test": "clear among similar items"
+    }
+  }
+}

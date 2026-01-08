@@ -53,6 +53,7 @@ const MAX_CONCURRENT = 2;
 export function GenerationProvider({ children }: { children: ReactNode }) {
   const [jobs, setJobs] = useState<GenerationJob[]>([]);
   const processingRef = useRef(false);
+  const processingJobsRef = useRef<Set<string>>(new Set()); // Track jobs currently being processed
   const completionCallbacksRef = useRef<Set<(job: GenerationJob) => void>>(
     new Set()
   );
@@ -63,32 +64,40 @@ export function GenerationProvider({ children }: { children: ReactNode }) {
     if (processingRef.current) return;
     processingRef.current = true;
 
-    const processNext = async () => {
-      setJobs((currentJobs) => {
-        const activeCount = currentJobs.filter(
-          (j) => j.status === "generating"
-        ).length;
-        const pendingJobs = currentJobs.filter((j) => j.status === "pending");
+    // Get current jobs snapshot to determine what to process
+    setJobs((currentJobs) => {
+      const activeCount = currentJobs.filter(
+        (j) => j.status === "generating"
+      ).length;
+      const pendingJobs = currentJobs.filter(
+        (j) => j.status === "pending" && !processingJobsRef.current.has(j.id)
+      );
 
-        if (activeCount >= MAX_CONCURRENT || pendingJobs.length === 0) {
-          return currentJobs;
-        }
+      if (activeCount >= MAX_CONCURRENT || pendingJobs.length === 0) {
+        processingRef.current = false;
+        return currentJobs;
+      }
 
-        const jobsToStart = pendingJobs.slice(0, MAX_CONCURRENT - activeCount);
-        const jobIdsToStart = new Set(jobsToStart.map((j) => j.id));
+      const jobsToStart = pendingJobs.slice(0, MAX_CONCURRENT - activeCount);
+      const jobIdsToStart = new Set(jobsToStart.map((j) => j.id));
 
-        // Start processing these jobs
+      // Mark these jobs as being processed to prevent duplicates
+      jobsToStart.forEach((job) => {
+        processingJobsRef.current.add(job.id);
+      });
+
+      // Schedule job processing OUTSIDE of setState
+      setTimeout(() => {
         jobsToStart.forEach((job) => {
           processJob(job);
         });
+      }, 0);
 
-        return currentJobs.map((j) =>
-          jobIdsToStart.has(j.id) ? { ...j, status: "generating" as const } : j
-        );
-      });
-    };
+      return currentJobs.map((j) =>
+        jobIdsToStart.has(j.id) ? { ...j, status: "generating" as const } : j
+      );
+    });
 
-    await processNext();
     processingRef.current = false;
   }, []);
 
@@ -146,7 +155,8 @@ export function GenerationProvider({ children }: { children: ReactNode }) {
       );
     }
 
-    // Process more jobs
+    // Clean up tracking and process more jobs
+    processingJobsRef.current.delete(job.id);
     processingRef.current = false;
     processQueue();
   };

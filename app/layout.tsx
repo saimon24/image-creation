@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/nav";
 import { GenerationProvider } from "@/contexts/generation-context";
 import { GenerationPanel } from "@/components/generation-panel";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,15 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <GenerationProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <Nav />
-            <main className="flex-1 container py-6">{children}</main>
-          </div>
-          <GenerationPanel />
-        </GenerationProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <GenerationProvider>
+            <div className="relative flex min-h-screen flex-col">
+              <Nav />
+              <main className="flex-1 container py-6">{children}</main>
+            </div>
+            <GenerationPanel />
+          </GenerationProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
