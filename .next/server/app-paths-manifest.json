@@ -1,9 +1,0 @@
-{
-  "/api/assets/route": "app/api/assets/route.js",
-  "/icons/page": "app/icons/page.js",
-  "/api/styles/route": "app/api/styles/route.js",
-  "/api/generate/route": "app/api/generate/route.js",
-  "/api/image/[...path]/route": "app/api/image/[...path]/route.js",
-  "/styles/page": "app/styles/page.js",
-  "/npcs/page": "app/npcs/page.js"
-}
