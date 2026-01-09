@@ -30,7 +30,7 @@ export default function CustomPage() {
   const [directPrompt, setDirectPrompt] = useState("");
   const [outputFilename, setOutputFilename] = useState("");
 
-  const [styleMode, setStyleMode] = useState<"existing" | "custom">("existing");
+  const [styleMode, setStyleMode] = useState<"none" | "existing" | "custom">("existing");
   const [styles, setStyles] = useState<Style[]>([]);
   const [selectedStyle, setSelectedStyle] = useState("style.json");
   const [customStyleJson, setCustomStyleJson] = useState(`{
@@ -73,6 +73,7 @@ export default function CustomPage() {
     { value: "128x128", label: "128×128" },
     { value: "256x256", label: "256×256" },
     { value: "512x512", label: "512×512" },
+    { value: "1024x1024", label: "1024×1024" },
   ];
 
   useEffect(() => {
@@ -113,7 +114,7 @@ export default function CustomPage() {
 
         if (styleMode === "existing") {
           body.styleFile = selectedStyle;
-        } else {
+        } else if (styleMode === "custom") {
           try {
             body.customStyle = JSON.parse(customStyleJson);
           } catch {
@@ -122,6 +123,7 @@ export default function CustomPage() {
             return;
           }
         }
+        // styleMode === "none" - don't add any style, API will use prompt as-is
       }
 
       const res = await fetch("/api/generate-custom", {
@@ -230,11 +232,18 @@ export default function CustomPage() {
                 <CardTitle>Style</CardTitle>
               </CardHeader>
               <CardContent>
-                <Tabs value={styleMode} onValueChange={(v) => setStyleMode(v as "existing" | "custom")}>
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="existing">Existing Style</TabsTrigger>
-                    <TabsTrigger value="custom">Custom Style</TabsTrigger>
+                <Tabs value={styleMode} onValueChange={(v) => setStyleMode(v as "none" | "existing" | "custom")}>
+                  <TabsList className="grid w-full grid-cols-3">
+                    <TabsTrigger value="none">None</TabsTrigger>
+                    <TabsTrigger value="existing">Existing</TabsTrigger>
+                    <TabsTrigger value="custom">Custom</TabsTrigger>
                   </TabsList>
+
+                  <TabsContent value="none" className="mt-4">
+                    <p className="text-sm text-muted-foreground">
+                      No style will be applied. The prompt will use only the item name and description.
+                    </p>
+                  </TabsContent>
 
                   <TabsContent value="existing" className="mt-4">
                     <StyleSelector

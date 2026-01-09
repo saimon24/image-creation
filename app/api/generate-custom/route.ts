@@ -69,7 +69,7 @@ export async function POST(request: Request) {
       // Use direct prompt as-is
       finalPrompt = directPrompt;
     } else {
-      // Build prompt from name/description + style
+      // Build prompt from name/description + optional style
       let styleConfig: StyleDefinition | null = null;
 
       if (customStyle) {
@@ -78,14 +78,13 @@ export async function POST(request: Request) {
         styleConfig = loadStyleFile(styleFile);
       }
 
-      if (!styleConfig) {
-        return NextResponse.json(
-          { error: "Either styleFile or customStyle is required when not using direct prompt" },
-          { status: 400 }
-        );
+      if (styleConfig) {
+        // Apply style to the prompt
+        finalPrompt = buildPrompt(styleConfig, name, description);
+      } else {
+        // No style - use name/description directly
+        finalPrompt = description || name;
       }
-
-      finalPrompt = buildPrompt(styleConfig, name, description);
     }
 
     // Map jpg to jpeg for the API

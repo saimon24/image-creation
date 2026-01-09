@@ -1,0 +1,77 @@
+{
+  "icon_style": {
+    "CRITICAL": "ONLY ONE OBJECT. Never include secondary items, decorations, garnishes, or accessories. Single subject only.",
+
+    "perspective": "soft isometric (18–22° tilt), slightly front-facing",
+
+    "geometry": {
+      "proportions": "1:1 canvas, object fills 75-85% of frame",
+      "element_arrangement": "single centered object only, no accompaniments",
+      "focal_hierarchy": "one object, nothing else"
+    },
+
+    "composition": {
+      "element_count": "exactly 1 object, no secondary elements, no decorations, no garnishes",
+      "spatial_depth": "moderate depth with clear form definition",
+      "scale_consistency": "strict visual weight consistency across crafts",
+      "scene_density": "minimal - object only, no props or extras"
+    },
+
+    "grounding": {
+      "method": "soft contact grounding (resting on implied surface)",
+      "shadow": "subtle ambient contact shadow",
+      "floating": "not allowed"
+    },
+
+    "lighting": {
+      "type": "strong directional with high clarity",
+      "light_source": "top-right",
+      "contrast": "high - strong light/dark separation",
+      "highlighting": "bold highlights to define form and material"
+    },
+
+    "textures": {
+      "material_finish": "strong material identity (powdery, liquid, roasted, woven, cooked)",
+      "surface_treatment": "stylised realism with exaggerated texture cues",
+      "detail_level": "enough to distinguish at a glance, no micro-noise"
+    },
+
+    "render_quality": {
+      "resolution": "high-res stylised 3-D (game icon fidelity)",
+      "edge_definition": "crisp edges with defined bevels",
+      "visual_clarity": "prioritized over realism"
+    },
+
+    "color_palette": {
+      "tone": "vibrant and varied - use the full spectrum, not just warm tones",
+      "saturation": "medium-high saturation for visual pop",
+      "value_range": "high contrast light-dark separation, avoid muddy midtones",
+      "color_variety": "embrace cool blues, greens, purples alongside warm reds, oranges, yellows",
+      "usage": "each item should have a distinctive dominant color that sets it apart"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless"
+    },
+
+    "stylistic_tone": "bold, tactile, high-contrast, readable",
+
+    "icon_behavior": {
+      "scalability": "clear at 24–64px",
+      "interchangeability": "visually sits between crops and rares"
+    },
+
+    "constraints": {
+      "single_object": "STRICTLY one object per icon - no plates, no utensils, no side items, no garnishes",
+      "no_text": "no text, labels, or typography of any kind",
+      "color_distinction": "avoid similar colors to nearby items in the set"
+    },
+
+    "ui_validation": {
+      "small_size_test": "recognizable at 32px without text",
+      "pair_test": "distinguishable from similar crafts side-by-side",
+      "list_test": "readable in dense order lists"
+    }
+  }
+}

@@ -13,6 +13,16 @@ export async function GET(
     return new NextResponse("Image not found", { status: 404 });
   }
 
+  // Get file stats for ETag based on modification time
+  const stats = fs.statSync(fullPath);
+  const etag = `"${stats.mtimeMs.toString(36)}-${stats.size.toString(36)}"`;
+
+  // Check if client has a cached version
+  const ifNoneMatch = request.headers.get("if-none-match");
+  if (ifNoneMatch === etag) {
+    return new NextResponse(null, { status: 304 });
+  }
+
   const file = fs.readFileSync(fullPath);
   const ext = path.extname(fullPath).toLowerCase();
 
@@ -28,7 +38,8 @@ export async function GET(
   return new NextResponse(file, {
     headers: {
       "Content-Type": contentType,
-      "Cache-Control": "public, max-age=31536000, immutable",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "ETag": etag,
     },
   });
 }

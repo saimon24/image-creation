@@ -74,6 +74,7 @@ export function ensureOutputDirs() {
     "animals",
     "npcs",
     "custom",
+    "transform",
   ];
 
   for (const dir of dirs) {
@@ -92,7 +93,10 @@ export function imageExists(relativePath: string): boolean {
 export function getImagePath(relativePath: string): string | null {
   const fullPath = path.join(OUTPUT_DIR, relativePath);
   if (fs.existsSync(fullPath)) {
-    return `/output/${relativePath}`;
+    // Add file modification time as cache-buster to ensure fresh images
+    const stats = fs.statSync(fullPath);
+    const mtime = stats.mtimeMs.toString(36);
+    return `/output/${relativePath}?v=${mtime}`;
   }
   return null;
 }

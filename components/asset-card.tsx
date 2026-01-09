@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { RefreshCw, ImageIcon, Check, Pencil, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -207,43 +207,48 @@ export function AssetCard({
 
           {/* Description with edit capability */}
           {isEditing ? (
-            <div className="flex gap-1 mt-1">
-              <Input
+            <div className="flex flex-col gap-1 mt-1">
+              <Textarea
                 value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
-                className="h-7 text-xs"
+                className="text-xs min-h-[60px] resize-none"
                 placeholder="Enter description..."
                 onClick={(e) => e.stopPropagation()}
+                rows={3}
               />
-              <Button
-                size="sm"
-                variant="ghost"
-                className="h-7 w-7 p-0"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleSaveDescription();
-                }}
-                disabled={isSaving}
-              >
-                <Check className="h-3 w-3" />
-              </Button>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="h-7 w-7 p-0"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsEditing(false);
-                  setEditedDescription(description || "");
-                }}
-              >
-                <X className="h-3 w-3" />
-              </Button>
+              <div className="flex gap-1 justify-end">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="h-6 px-2 text-xs"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsEditing(false);
+                    setEditedDescription(description || "");
+                  }}
+                >
+                  <X className="h-3 w-3 mr-1" />
+                  Cancel
+                </Button>
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="h-6 px-2 text-xs"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSaveDescription();
+                  }}
+                  disabled={isSaving}
+                >
+                  <Check className="h-3 w-3 mr-1" />
+                  Save
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="flex items-start gap-1 group/desc">
               <p
-                className="text-xs text-muted-foreground line-clamp-2 flex-1"
+                className="text-xs text-muted-foreground line-clamp-3 flex-1"
                 title={description}
               >
                 {description || "No description"}

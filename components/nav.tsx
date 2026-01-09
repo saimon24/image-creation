@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { ImageIcon, Users, Palette, LayoutGrid, Wand2, Moon, Sun } from "lucide-react";
+import { ImageIcon, Users, Palette, LayoutGrid, Wand2, RefreshCw, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -13,6 +13,7 @@ const navItems = [
   { href: "/npcs", label: "NPCs", icon: Users },
   { href: "/styles", label: "Styles", icon: Palette },
   { href: "/custom", label: "Custom", icon: Wand2 },
+  { href: "/transform", label: "Transform", icon: RefreshCw },
 ];
 
 export function Nav() {
