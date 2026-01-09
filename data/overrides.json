@@ -12,12 +12,12 @@
     "friend_crop_boost": "crop boost item received from a friend",
     "star": "Single shiny Golden star",
     "fish": "Fresh fish on a lure",
-    "barn_upgrade": "A simple farm barn",
-    "animal_productivity": "cow with productivity upgrade arrow",
-    "field_efficiency": "Farm Fields efficiency upgrade",
-    "order_board_boost": "Speed and XP upgrade for open orders",
+    "barn_upgrade": "A simple farm barn, classic cartoon",
+    "animal_productivity": "chicken productivity symbol, classic cartoon",
+    "field_efficiency": "Farm Fields efficiency upgrade symbol, classic cartoon",
+    "order_board_boost": "Speed and XP upgrade symbol, classic cartoon",
     "sapling": "Sappling  with life in itself like a farm spirit",
-    "crafting_speed": "Crafting item speed upgrade",
+    "crafting_speed": "Crafting item speed upgrade symbol, classic cartoon",
     "materials": "Icon for rare upgrade material storage",
     "help_points": "Friend Help points icon for leaderboard with big heart",
     "boat_points": "Boat points icon for leaderboard with big ship",
@@ -59,7 +59,7 @@
     "premium_charcuterie": "premium stone board with premium pork, cheese slice and honey",
     "charcuterie_board": "Wooden board with colorful meats, bread and honey",
     "onion_soup": "Brown crock of onion soup and piece of onion on top, cartoon food",
-    "rice_flour": "White sack of fine pale rice flour, simple cartoon bag, no text, single rice corn in a white circle on the bab",
+    "rice_flour": "Pile of fine pale rice flour, simple cartoon style, no text, bigger single rice corn in the center",
     "oat_flour": "Tan cloth sack of beige oat flour, cartoon bag, no text, oat symbol in a white circle on the bag",
     "chicken_coop": "Red wooden chicken coop with cute white chickens, cheerful cartoon henhouse with fence around",
     "sheep_farm": "Green pasture with fluffy white sheep, peaceful cartoon sheep pen, fence around",
@@ -75,7 +75,10 @@
     "sunflower_seed_butter": "Jar of golden-brown sunflower butter, cartoon spread, sunflower on a white label, no text",
     "fish_pie": "Golden-topped fish pie with fork marks, cartoon comfort food, fish head on top of the pie",
     "merchant_crate": "fance wooden crate with merchant emblem, cartoon trading box",
-    "premium_slot_voucher": "Golden ticket with star emblem, fancy cartoon voucher, text only \"Voucher\" in clear letters"
+    "premium_slot_voucher": "Golden ticket with star emblem, fancy cartoon voucher, text only \"Voucher\" in clear letters",
+    "sparkles": "Cluster of yellowish magic sparkles and stars",
+    "friends": "Two cheerful cartoon farmer shaking hands, friendship symbol",
+    "inbox": "Mail envelope, cartoon message icon"
   },
   "npcs": {}
 }

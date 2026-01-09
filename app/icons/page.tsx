@@ -40,6 +40,7 @@ const CATEGORIES = [
   { id: "leaderboard", label: "Leaderboard" },
   { id: "buildings", label: "Buildings" },
   { id: "animals", label: "Animals" },
+  { id: "mastery", label: "Mastery" },
 ];
 
 function IconsPageContent() {

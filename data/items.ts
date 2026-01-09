@@ -19,6 +19,7 @@ export const CATEGORIES = {
   leaderboard: 'Leaderboard',
   buildings: 'Buildings',
   animals: 'Animals',
+  mastery: 'Mastery',
 } as const;
 
 export const CRAFT_SUBCATEGORIES = {
@@ -1947,6 +1948,13 @@ export const items: ItemDefinition[] = [
     expectedPath: 'misc/farmer_portrait.webp',
     description: 'Friendly cartoon farmer face with straw hat, cheerful portrait',
   },
+  {
+    id: 'daily_quests',
+    name: 'Daily Quests',
+    category: 'misc',
+    expectedPath: 'misc/daily_quests.webp',
+    description: 'Glowing scroll with checkmark list and star badge, cartoon daily tasks icon',
+  },
 
   // === POTIONS ===
   {
@@ -2222,6 +2230,43 @@ export const items: ItemDefinition[] = [
     category: 'animals',
     expectedPath: 'animals/silkworm_house.webp',
     description: 'Wooden house with mulberry leaves and silk cocoons, unique cartoon building',
+  },
+
+  // === MASTERY ===
+  {
+    id: 'stamp_bronze',
+    name: 'Stamp Bronze',
+    category: 'mastery',
+    expectedPath: 'mastery/stamp_bronze.webp',
+    description: 'Shiny bronze circular stamp seal with embossed star emblem, cartoon achievement badge',
+  },
+  {
+    id: 'stamp_silver',
+    name: 'Stamp Silver',
+    category: 'mastery',
+    expectedPath: 'mastery/stamp_silver.webp',
+    description: 'Polished silver circular stamp seal with embossed star emblem, cartoon achievement badge',
+  },
+  {
+    id: 'stamp_gold',
+    name: 'Stamp Gold',
+    category: 'mastery',
+    expectedPath: 'mastery/stamp_gold.webp',
+    description: 'Gleaming gold circular stamp seal with embossed star emblem, cartoon achievement badge',
+  },
+  {
+    id: 'stamp_locked',
+    name: 'Stamp Locked',
+    category: 'mastery',
+    expectedPath: 'mastery/stamp_locked.webp',
+    description: 'Grey locked stamp seal with padlock overlay, cartoon locked achievement badge',
+  },
+  {
+    id: 'book',
+    name: 'Book',
+    category: 'mastery',
+    expectedPath: 'mastery/book.webp',
+    description: 'Thick leather-bound book with golden trim and bookmark ribbon, cartoon mastery tome',
   },
 ];
 

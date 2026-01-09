@@ -1,0 +1,70 @@
+{
+  "icon_style": {
+    "CRITICAL": "PORTRAIT ONLY. Head and shoulders view. No full body. No background scenes. No props or items in frame. Clean, friendly character portrait.",
+
+    "perspective": "front-facing portrait, slight 3/4 angle (15-20 degrees)",
+
+    "framing": {
+      "view": "head and shoulders only, cropped at chest level",
+      "face_position": "centered, eyes in upper third of frame",
+      "headroom": "small amount above head",
+      "crop": "tight portrait crop, no full body"
+    },
+
+    "expression": {
+      "mood": "warm and approachable",
+      "eyes": "friendly, engaged, looking at viewer",
+      "smile": "gentle, welcoming smile or pleasant neutral expression",
+      "energy": "positive and inviting"
+    },
+
+    "character_design": {
+      "style": "stylized, slightly cartoonish, game character aesthetic",
+      "realism": "low - simplified features, not photorealistic",
+      "proportions": "slightly exaggerated for readability (larger eyes, expressive features)",
+      "detail_level": "clean and readable at small sizes"
+    },
+
+    "lighting": {
+      "type": "soft, even lighting",
+      "direction": "front-lit with subtle rim light",
+      "mood": "bright and cheerful",
+      "shadows": "minimal, soft shadows only"
+    },
+
+    "colors": {
+      "skin_tones": "warm and healthy",
+      "palette": "vibrant but not garish",
+      "saturation": "medium-high for visual appeal",
+      "contrast": "moderate - avoid harsh contrasts"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless",
+      "elements": "NONE - no scenery, no props, no items"
+    },
+
+    "render_quality": {
+      "resolution": "high-res stylized (game avatar quality)",
+      "edges": "clean, slightly soft edges",
+      "style": "digital illustration, not 3D render"
+    },
+
+    "stylistic_tone": "friendly, approachable, warm, game-like",
+
+    "constraints": {
+      "no_background": "absolutely no background elements or scenery",
+      "no_props": "no items, tools, or objects in frame",
+      "no_full_body": "head and shoulders only",
+      "no_text": "no text, labels, or typography",
+      "no_grim": "avoid serious, dark, or intimidating expressions"
+    },
+
+    "ui_validation": {
+      "small_size_test": "recognizable and friendly at 48px",
+      "expression_test": "character looks approachable and warm",
+      "simplicity_test": "no visual clutter or distracting elements"
+    }
+  }
+}
