@@ -1,0 +1,53 @@
+{
+  "icon_style": {
+    "CRITICAL": "NEVER include any text, words, letters, numbers, labels, tags, signs, banners, ribbons, or written content of any kind. The icon must be purely visual with zero typography.",
+    "perspective": "three-quarter front view, slightly elevated",
+    "geometry": {
+      "proportions": "1:1 ratio canvas, object fills 80% of frame",
+      "element_arrangement": "single centered object, slight playful tilt allowed"
+    },
+    "composition": {
+      "element_count": "1 object only, no accessories, no decorations, no labels, no text",
+      "spatial_depth": "minimal depth, flat-ish with subtle volume",
+      "scale_consistency": "chunky proportions, exaggerated roundness",
+      "scene_density": "extremely minimal, object only, absolutely no text or signage"
+    },
+    "lighting": {
+      "type": "flat diffuse with cel-shading influence",
+      "light_source": "frontal soft light",
+      "shadow": "none or minimal soft blob shadow beneath",
+      "highlighting": "simple specular dot or soft highlight on curved surfaces"
+    },
+    "textures": {
+      "material_finish": "smooth plastic/clay-like, no grain",
+      "surface_treatment": "clean solid colors, no realistic textures"
+    },
+    "render_quality": {
+      "resolution": "clean vector-like 3D render",
+      "edge_definition": "soft rounded edges, no hard corners",
+      "visual_clarity": "bold readable silhouette, no fine details"
+    },
+    "color_palette": {
+      "tone": "vibrant saturated cartoon colors",
+      "range": "bold primaries and warm accents, high chroma",
+      "usage": "2-4 distinct flat colors per object, strong color blocking"
+    },
+    "background": {
+      "color": "transparent",
+      "style": "backgroundless, PNG",
+      "texture": "none"
+    },
+    "stylistic_tone": "cheerful, toy-like, casual mobile game aesthetic",
+    "icon_behavior": {
+      "branding_alignment": "Hay Day / casual farming game style",
+      "scalability": "instantly readable at small sizes",
+      "interchangeability": "cohesive cartoon icon set"
+    },
+    "constraints": {
+      "no_text_strict": "FORBIDDEN: text, words, letters, numbers, labels, tags, signs, banners, ribbons, stamps, stickers, name plates, price tags, or any written content. Zero typography allowed.",
+      "no_realism": "avoid photorealistic details, grain, or complex textures",
+      "simplification": "reduce to essential symbolic form, communicate through shape and color only",
+      "style_reference": "Hay Day, FarmVille, Clash of Clans icon aesthetic"
+    }
+  }
+}

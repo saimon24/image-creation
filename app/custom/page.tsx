@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { StyleSelector } from "@/components/style-selector";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, Sparkles, Copy, Check } from "lucide-react";
 
 interface Style {
@@ -55,9 +56,24 @@ export default function CustomPage() {
 }`);
 
   const [promptMode, setPromptMode] = useState<"build" | "direct">("build");
+  const [imageFormat, setImageFormat] = useState<"webp" | "png" | "jpg">("webp");
+  const [outputSize, setOutputSize] = useState("256x256");
   const [generating, setGenerating] = useState(false);
   const [result, setResult] = useState<GenerationResult | null>(null);
   const [copied, setCopied] = useState(false);
+
+  const formatOptions = [
+    { value: "webp", label: "WebP", description: "Smaller file size, good quality" },
+    { value: "png", label: "PNG", description: "Lossless, supports transparency" },
+    { value: "jpg", label: "JPG", description: "Widely compatible, no transparency" },
+  ] as const;
+
+  const sizeOptions = [
+    { value: "64x64", label: "64×64" },
+    { value: "128x128", label: "128×128" },
+    { value: "256x256", label: "256×256" },
+    { value: "512x512", label: "512×512" },
+  ];
 
   useEffect(() => {
     async function fetchStyles() {
@@ -83,12 +99,16 @@ export default function CustomPage() {
         body = {
           prompt: directPrompt,
           outputFilename: outputFilename || undefined,
+          format: imageFormat,
+          resize: outputSize,
         };
       } else {
         body = {
           name,
           description: description || undefined,
           outputFilename: outputFilename || undefined,
+          format: imageFormat,
+          resize: outputSize,
         };
 
         if (styleMode === "existing") {
@@ -246,7 +266,7 @@ export default function CustomPage() {
             <CardHeader>
               <CardTitle>Output Settings</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="outputFilename">Filename (optional)</Label>
                 <Input
@@ -258,6 +278,59 @@ export default function CustomPage() {
                 <p className="text-xs text-muted-foreground">
                   Saved to output/custom/. If empty, a timestamp will be used.
                 </p>
+              </div>
+
+              <div className="space-y-3">
+                <Label>Image Format</Label>
+                <div className="grid grid-cols-3 gap-4">
+                  {formatOptions.map((option) => (
+                    <div
+                      key={option.value}
+                      className="flex items-start space-x-2"
+                    >
+                      <Checkbox
+                        id={`format-${option.value}`}
+                        checked={imageFormat === option.value}
+                        onCheckedChange={() => setImageFormat(option.value)}
+                      />
+                      <div className="grid gap-0.5 leading-none">
+                        <Label
+                          htmlFor={`format-${option.value}`}
+                          className="text-sm font-medium cursor-pointer"
+                        >
+                          {option.label}
+                        </Label>
+                        <p className="text-xs text-muted-foreground">
+                          {option.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <Label>Output Size</Label>
+                <div className="grid grid-cols-4 gap-4">
+                  {sizeOptions.map((option) => (
+                    <div
+                      key={option.value}
+                      className="flex items-center space-x-2"
+                    >
+                      <Checkbox
+                        id={`size-${option.value}`}
+                        checked={outputSize === option.value}
+                        onCheckedChange={() => setOutputSize(option.value)}
+                      />
+                      <Label
+                        htmlFor={`size-${option.value}`}
+                        className="text-sm font-medium cursor-pointer"
+                      >
+                        {option.label}
+                      </Label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </CardContent>
           </Card>

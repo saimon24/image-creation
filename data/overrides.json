@@ -29,7 +29,13 @@
     "mystery_crate": "A mysterious closed crate",
     "stamina_potion": "Blue stamina potions that Restores stamina energy",
     "boards": "Wooden boards from a carpenter",
-    "plank": "Wooden plank from luxury wood"
+    "plank": "Wooden plank from luxury wood",
+    "cheese": "fresh cheese wheel",
+    "woolly_hat": "Knitted blue wool hat",
+    "gloves": "Warm knitted green gloves",
+    "root_stew": "Hearty root vegetable stew in old ceg",
+    "fish_stew": "Rich fish stew with visible fish parts",
+    "corn_syrup": "Sweet orange corn syrup bottle"
   },
   "npcs": {}
 }

@@ -13,6 +13,8 @@ interface CustomGenerateRequest {
   styleFile?: string; // Existing style file
   customStyle?: StyleDefinition; // Custom style JSON
   outputFilename?: string; // Optional custom output filename
+  format?: "webp" | "png" | "jpg"; // Output image format
+  resize?: string; // Output size (e.g., "256x256")
 }
 
 async function resizeImage(
@@ -41,7 +43,16 @@ async function resizeImage(
 export async function POST(request: Request) {
   try {
     const body: CustomGenerateRequest = await request.json();
-    const { name, description, prompt: directPrompt, styleFile, customStyle, outputFilename } = body;
+    const {
+      name,
+      description,
+      prompt: directPrompt,
+      styleFile,
+      customStyle,
+      outputFilename,
+      format = "webp",
+      resize = "256x256"
+    } = body;
 
     if (!name && !directPrompt) {
       return NextResponse.json(
@@ -77,13 +88,16 @@ export async function POST(request: Request) {
       finalPrompt = buildPrompt(styleConfig, name, description);
     }
 
+    // Map jpg to jpeg for the API
+    const apiFormat = format === "jpg" ? "jpeg" : format;
+
     const response = await openai.images.generate({
       model: "gpt-image-1",
       prompt: finalPrompt,
       n: 1,
       size: "1024x1024",
-      output_format: "webp",
-      background: "transparent",
+      output_format: apiFormat as "webp" | "png" | "jpeg",
+      background: format === "jpg" ? "opaque" : "transparent", // JPG doesn't support transparency
     });
 
     const imageData = response.data?.[0];
@@ -109,13 +123,13 @@ export async function POST(request: Request) {
       );
     }
 
-    // Resize to 256x256
-    buffer = await resizeImage(buffer, "256x256", "webp");
+    // Resize to the requested size
+    buffer = await resizeImage(buffer, resize, format);
 
-    // Save the image
+    // Save the image with the correct extension
     const filename = outputFilename || `custom-${Date.now()}`;
     const sanitizedFilename = filename.replace(/[^a-zA-Z0-9-_]/g, "_");
-    const outputPath = `custom/${sanitizedFilename}.webp`;
+    const outputPath = `custom/${sanitizedFilename}.${format}`;
 
     const savedPath = saveImage(outputPath, buffer);
 

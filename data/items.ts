@@ -1926,6 +1926,27 @@ export const items: ItemDefinition[] = [
     expectedPath: 'misc/mystery_crate.webp',
     description: 'Mystery crate box',
   },
+  {
+    id: 'inbox',
+    name: 'Inbox',
+    category: 'misc',
+    expectedPath: 'misc/inbox.webp',
+    description: 'Message inbox icon',
+  },
+  {
+    id: 'market',
+    name: 'Market',
+    category: 'misc',
+    expectedPath: 'misc/market.webp',
+    description: 'Market stall icon',
+  },
+  {
+    id: 'farmer_portrait',
+    name: 'Farmer Portrait',
+    category: 'misc',
+    expectedPath: 'misc/farmer_portrait.webp',
+    description: 'Farmer character portrait',
+  },
 
   // === POTIONS ===
   {
