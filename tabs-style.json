@@ -1,0 +1,80 @@
+{
+  "icon_style": {
+    "CRITICAL": "ONLY ONE SYMBOLIC ICON. Simple, bold, instantly readable. No realistic detail or secondary elements.",
+
+    "perspective": "front-facing or minimal tilt (0-5°), centered",
+
+    "geometry": {
+      "proportions": "1:1 canvas, icon fills 60-70% of frame with breathing room",
+      "element_arrangement": "single centered symbol, perfectly balanced",
+      "focal_hierarchy": "one clear symbolic shape"
+    },
+
+    "composition": {
+      "element_count": "exactly 1 symbolic icon - simplified representation, not realistic object",
+      "spatial_depth": "minimal depth - flat to slightly dimensional",
+      "scale_consistency": "all tab icons must have identical visual weight",
+      "scene_density": "minimal - clean symbol only"
+    },
+
+    "grounding": {
+      "method": "none - icon floats cleanly",
+      "shadow": "no shadow",
+      "floating": "required - no ground plane"
+    },
+
+    "lighting": {
+      "type": "soft even lighting with subtle form definition",
+      "light_source": "top-center, diffuse",
+      "contrast": "medium - enough to define form without harsh shadows",
+      "highlighting": "subtle highlights for dimensionality"
+    },
+
+    "textures": {
+      "material_finish": "smooth, clean surfaces - minimal texture noise",
+      "surface_treatment": "stylized and simplified, not realistic",
+      "detail_level": "bold shapes only - no fine detail that disappears at small sizes"
+    },
+
+    "render_quality": {
+      "resolution": "crisp vector-like quality",
+      "edge_definition": "clean, bold edges - no fuzzy boundaries",
+      "visual_clarity": "maximum clarity, readable at 24px"
+    },
+
+    "color_palette": {
+      "tone": "vibrant but cohesive across the tab set",
+      "saturation": "medium-high for active state visibility",
+      "value_range": "good contrast but not extreme",
+      "color_variety": "each tab should have a distinct but harmonious color",
+      "usage": "bold primary color with minimal accents"
+    },
+
+    "background": {
+      "color": "transparent",
+      "style": "PNG, backgroundless"
+    },
+
+    "stylistic_tone": "clean, symbolic, friendly, consistent",
+
+    "icon_behavior": {
+      "scalability": "must be crystal clear at 24-32px",
+      "silhouette_test": "recognizable as solid silhouette",
+      "consistency": "all tabs must feel like they belong together"
+    },
+
+    "constraints": {
+      "single_symbol": "one symbolic representation only",
+      "no_text": "no text, labels, or typography",
+      "no_realism": "simplified symbolic style, not photorealistic",
+      "no_fine_detail": "no details that vanish at small sizes",
+      "uniform_weight": "all tab icons must have similar visual density"
+    },
+
+    "ui_validation": {
+      "tab_bar_test": "looks balanced next to other tab icons",
+      "small_size_test": "fully readable at 24px",
+      "active_inactive": "works in both colored and grey states"
+    }
+  }
+}

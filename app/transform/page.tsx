@@ -7,7 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StyleSelector } from "@/components/style-selector";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Loader2, Upload, X, Download, Copy, Check, Sparkles } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Loader2, Upload, X, Download, Copy, Check, Sparkles, Wand2, Palette } from "lucide-react";
 
 interface Style {
   filename: string;
@@ -35,9 +36,16 @@ export default function TransformPage() {
   } | null>(null);
   const [dragActive, setDragActive] = useState(false);
 
+  // Mode state
+  type TransformMode = "style" | "edit";
+  const [mode, setMode] = useState<TransformMode>("style");
+
   // Style state
   const [styles, setStyles] = useState<Style[]>([]);
   const [selectedStyle, setSelectedStyle] = useState("style.json");
+
+  // Edit mode state
+  const [editPrompt, setEditPrompt] = useState("");
 
   // Output settings
   const [outputFormat, setOutputFormat] = useState<"original" | "webp" | "png" | "jpg">("original");
@@ -121,6 +129,7 @@ export default function TransformPage() {
 
   const handleGenerate = async () => {
     if (!uploadedFile) return;
+    if (mode === "edit" && !editPrompt.trim()) return;
 
     setGenerating(true);
     setResult(null);
@@ -128,10 +137,15 @@ export default function TransformPage() {
     try {
       const formData = new FormData();
       formData.append("image", uploadedFile);
-      formData.append("styleFile", selectedStyle);
       formData.append("matchOriginalSize", matchOriginalSize.toString());
       if (outputFormat !== "original") {
         formData.append("format", outputFormat);
+      }
+
+      if (mode === "style") {
+        formData.append("styleFile", selectedStyle);
+      } else {
+        formData.append("editPrompt", editPrompt.trim());
       }
 
       const res = await fetch("/api/transform", {
@@ -183,7 +197,7 @@ export default function TransformPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Transform Image</h1>
         <p className="text-muted-foreground">
-          Upload an image and regenerate it with a different style
+          Upload an image and apply a style or make direct edits
         </p>
       </div>
 
@@ -263,20 +277,55 @@ export default function TransformPage() {
             </CardContent>
           </Card>
 
-          {/* Style Selection */}
+          {/* Mode Toggle */}
           <Card>
             <CardHeader>
-              <CardTitle>Style</CardTitle>
+              <CardTitle>Transform Mode</CardTitle>
             </CardHeader>
-            <CardContent>
-              <StyleSelector
-                styles={styles}
-                value={selectedStyle}
-                onChange={setSelectedStyle}
-              />
-              <p className="text-xs text-muted-foreground mt-2">
-                The selected style will be applied to transform your image
-              </p>
+            <CardContent className="space-y-4">
+              <div className="flex gap-2">
+                <Button
+                  variant={mode === "style" ? "default" : "outline"}
+                  className="flex-1"
+                  onClick={() => setMode("style")}
+                >
+                  <Palette className="mr-2 h-4 w-4" />
+                  Style
+                </Button>
+                <Button
+                  variant={mode === "edit" ? "default" : "outline"}
+                  className="flex-1"
+                  onClick={() => setMode("edit")}
+                >
+                  <Wand2 className="mr-2 h-4 w-4" />
+                  Edit
+                </Button>
+              </div>
+
+              {mode === "style" ? (
+                <div className="space-y-2">
+                  <StyleSelector
+                    styles={styles}
+                    value={selectedStyle}
+                    onChange={setSelectedStyle}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Analyze image and recreate with selected style
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <Textarea
+                    placeholder="Enter your edit instruction, e.g. 'change to dark mode' or 'make it look more vibrant'"
+                    value={editPrompt}
+                    onChange={(e) => setEditPrompt(e.target.value)}
+                    className="min-h-[100px] resize-none"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Direct prompt applied to modify your image
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
 
@@ -330,19 +379,23 @@ export default function TransformPage() {
           {/* Generate Button */}
           <Button
             onClick={handleGenerate}
-            disabled={!uploadedFile || generating}
+            disabled={!uploadedFile || generating || (mode === "edit" && !editPrompt.trim())}
             className="w-full"
             size="lg"
           >
             {generating ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Transforming...
+                {mode === "style" ? "Transforming..." : "Editing..."}
               </>
             ) : (
               <>
-                <Sparkles className="mr-2 h-4 w-4" />
-                Transform Image
+                {mode === "style" ? (
+                  <Palette className="mr-2 h-4 w-4" />
+                ) : (
+                  <Wand2 className="mr-2 h-4 w-4" />
+                )}
+                {mode === "style" ? "Transform Image" : "Apply Edit"}
               </>
             )}
           </Button>
@@ -359,9 +412,13 @@ export default function TransformPage() {
                 <div className="flex flex-col items-center justify-center h-64 gap-4">
                   <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
                   <div className="text-center">
-                    <p className="text-muted-foreground">Transforming your image...</p>
+                    <p className="text-muted-foreground">
+                      {mode === "style" ? "Transforming your image..." : "Applying your edit..."}
+                    </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      Analyzing content and applying style
+                      {mode === "style"
+                        ? "Analyzing content and applying style"
+                        : "Analyzing content and applying modification"}
                     </p>
                   </div>
                 </div>

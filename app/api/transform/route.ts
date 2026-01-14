@@ -153,7 +153,8 @@ export async function POST(request: Request) {
   try {
     const formData = await request.formData();
     const imageFile = formData.get("image") as File | null;
-    const styleFile = formData.get("styleFile") as string;
+    const styleFile = formData.get("styleFile") as string | null;
+    const editPrompt = formData.get("editPrompt") as string | null;
     const outputFormat = formData.get("format") as string | null;
     const matchOriginalSize = formData.get("matchOriginalSize") !== "false";
 
@@ -164,9 +165,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!styleFile) {
+    if (!styleFile && !editPrompt) {
       return NextResponse.json(
-        { error: "No style file specified" },
+        { error: "Either styleFile or editPrompt must be provided" },
         { status: 400 }
       );
     }
@@ -221,16 +222,28 @@ Be specific but concise. Focus on visual elements that should be preserved in a 
       analysisResponse.choices[0]?.message?.content ||
       "An image to be recreated";
 
-    // Step 2: Load style and build prompt
-    const styleConfig = loadStyleFile(styleFile);
-    if (!styleConfig) {
+    // Step 2: Build prompt (either from style or direct edit prompt)
+    let finalPrompt: string;
+
+    if (editPrompt) {
+      // Edit mode: combine analysis with user's edit instruction
+      finalPrompt = `${analysis}. Apply this modification: ${editPrompt}`;
+    } else if (styleFile) {
+      // Style mode: load style and build styled prompt
+      const styleConfig = loadStyleFile(styleFile);
+      if (!styleConfig) {
+        return NextResponse.json(
+          { error: `Failed to load style file: ${styleFile}` },
+          { status: 400 }
+        );
+      }
+      finalPrompt = buildTransformPrompt(analysis, styleConfig);
+    } else {
       return NextResponse.json(
-        { error: `Failed to load style file: ${styleFile}` },
+        { error: "No transform mode specified" },
         { status: 400 }
       );
     }
-
-    const finalPrompt = buildTransformPrompt(analysis, styleConfig);
 
     // Step 3: Generate new image with gpt-image-1
     const apiFormat = finalFormat === "jpg" ? "jpeg" : finalFormat;

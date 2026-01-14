@@ -41,6 +41,9 @@ const CATEGORIES = [
   { id: "buildings", label: "Buildings" },
   { id: "animals", label: "Animals" },
   { id: "mastery", label: "Mastery" },
+  { id: "tabs", label: "Tabs" },
+  { id: "events-boosts", label: "Events & Boosts" },
+  { id: "tutorial", label: "Tutorial" },
 ];
 
 function IconsPageContent() {
