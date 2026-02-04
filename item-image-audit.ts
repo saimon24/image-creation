@@ -44,7 +44,6 @@ export const ITEMS_WITH_IMAGES = {
   sunflower_seed: 'crops/sunflower_seed.webp',
   tea_leaf: 'crops/tea_leaf.webp',
   vanilla_orchid: 'crops/vanilla_orchid.webp',
-  saffron_blossom: 'crops/saffron_blossom.webp',
   cacao_pod: 'crops/cacao_pod.webp',
 
   // === AREA ITEMS (assets/images/area-items/) ===
@@ -61,6 +60,7 @@ export const ITEMS_WITH_IMAGES = {
   stone: 'area-items/stone.webp',
   water_plants: 'area-items/water_plants.webp',
   wild_lavender: 'area-items/wild_lavender.webp',
+  saffron_blossom: 'area-items/saffron_blossom.webp',
 
   // === CRAFTS (assets/images/crafts/) ===
   // Feed Mill
@@ -166,7 +166,7 @@ export const ITEMS_WITH_IMAGES = {
   goat_yogurt: 'crafts/goat_yogurt.webp',
   yogurt_parfait: 'crafts/yogurt_parfait.webp',
   cream_trifle: 'crafts/cream_trifle.webp',
-  lavender_soap: 'crafts/lavender_oil.webp',
+  lavender_soap: 'crafts/lavender_soap.webp',
   feta_salad: 'crafts/feta_salad.webp',
 
   // Jam House
@@ -183,7 +183,7 @@ export const ITEMS_WITH_IMAGES = {
   coal_briquette: 'crafts/coal_briquette.webp',
   resin_sealant: 'crafts/resin_sealant.webp',
   glass_panel: 'crafts/glass_panel.webp',
-  scented_candle: 'crafts/lavender_oil.webp',
+  scented_candle: 'crafts/scented_candle.webp',
   reed_basket: 'crafts/reed_basket.webp',
   nails: 'crafts/nails.webp',
   gears: 'crafts/gears.webp',
@@ -316,7 +316,11 @@ console.log('=== ITEM IMAGE AUDIT ===\n');
 console.log(`Items WITH images: ${Object.keys(ITEMS_WITH_IMAGES).length}`);
 console.log(`Items MISSING images: ${ITEMS_MISSING_IMAGES.length}`);
 console.log(
-  `Coverage: ${((Object.keys(ITEMS_WITH_IMAGES).length / (Object.keys(ITEMS_WITH_IMAGES).length + ITEMS_MISSING_IMAGES.length)) * 100).toFixed(1)}%`
+  `Coverage: ${(
+    (Object.keys(ITEMS_WITH_IMAGES).length /
+      (Object.keys(ITEMS_WITH_IMAGES).length + ITEMS_MISSING_IMAGES.length)) *
+    100
+  ).toFixed(1)}%`
 );
 console.log('\n=== MISSING IMAGES (intentionally emoji-only) ===');
 ITEMS_MISSING_IMAGES.forEach((item) => console.log(`  - ${item}`));

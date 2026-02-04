@@ -75,6 +75,9 @@ export function ensureOutputDirs() {
     "npcs",
     "custom",
     "transform",
+    "cosmetics/decorations",
+    "cosmetics/borders",
+    "cosmetics/backgrounds",
   ];
 
   for (const dir of dirs) {

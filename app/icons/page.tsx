@@ -8,7 +8,14 @@ import { SelectionToolbar } from "@/components/selection-toolbar";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Search } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Search, Filter } from "lucide-react";
 import { useGeneration } from "@/contexts/generation-context";
 
 interface Asset {
@@ -29,21 +36,33 @@ interface Style {
 
 const CATEGORIES = [
   { id: "all", label: "All" },
-  { id: "crops", label: "Crops" },
-  { id: "area-items", label: "Area Items" },
-  { id: "crafts", label: "Crafts" },
-  { id: "rare", label: "Rare" },
   { id: "animal-products", label: "Animal Products" },
+  { id: "animals", label: "Animals" },
+  { id: "area-items", label: "Area Items" },
+  { id: "avatar-border", label: "Avatar Border" },
+  { id: "backgrounds", label: "Backgrounds" },
+  { id: "buildings", label: "Buildings" },
+  { id: "category", label: "Category" },
+  { id: "coop", label: "Coop" },
+  { id: "cosmetics", label: "Cosmetics" },
+  { id: "crafts", label: "Crafts" },
+  { id: "crops", label: "Crops" },
+  { id: "events-boosts", label: "Events & Boosts" },
+  { id: "leaderboard", label: "Leaderboard" },
+  { id: "mastery", label: "Mastery" },
   { id: "misc", label: "Misc" },
   { id: "potions", label: "Potions" },
-  { id: "upgrades", label: "Upgrades" },
-  { id: "leaderboard", label: "Leaderboard" },
-  { id: "buildings", label: "Buildings" },
-  { id: "animals", label: "Animals" },
-  { id: "mastery", label: "Mastery" },
+  { id: "rare", label: "Rare" },
+  { id: "sanctuary", label: "Sanctuary" },
+  { id: "season-pass", label: "Season Pass" },
   { id: "tabs", label: "Tabs" },
-  { id: "events-boosts", label: "Events & Boosts" },
   { id: "tutorial", label: "Tutorial" },
+  { id: "upgrades", label: "Upgrades" },
+];
+
+const SEASON_PASS_SUBCATEGORIES = [
+  { id: "all", label: "All Seasons" },
+  { id: "2025-02-frosty-fields", label: "Feb 2025 - Frosty Fields" },
 ];
 
 function IconsPageContent() {
@@ -54,7 +73,9 @@ function IconsPageContent() {
   const [styles, setStyles] = useState<Style[]>([]);
   const [selectedStyle, setSelectedStyle] = useState("style.json");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [selectedSubcategory, setSelectedSubcategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [imageFilter, setImageFilter] = useState<"all" | "generated" | "not-generated">("all");
   const [loading, setLoading] = useState(true);
 
   // Selection state
@@ -72,6 +93,9 @@ function IconsPageContent() {
       if (selectedCategory !== "all") {
         params.set("category", selectedCategory);
       }
+      if (selectedCategory === "season-pass" && selectedSubcategory !== "all") {
+        params.set("subcategory", selectedSubcategory);
+      }
       const res = await fetch(`/api/assets?${params}`);
       const data = await res.json();
       setAssets(data.assets);
@@ -80,11 +104,16 @@ function IconsPageContent() {
     } finally {
       setLoading(false);
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, selectedSubcategory]);
 
   useEffect(() => {
     fetchAssets();
   }, [fetchAssets]);
+
+  // Reset subcategory when category changes
+  useEffect(() => {
+    setSelectedSubcategory("all");
+  }, [selectedCategory]);
 
   useEffect(() => {
     async function fetchStyles() {
@@ -205,6 +234,11 @@ function IconsPageContent() {
   };
 
   const filteredAssets = assets.filter((asset) => {
+    // Filter by image status
+    if (imageFilter === "generated" && !asset.hasImage) return false;
+    if (imageFilter === "not-generated" && asset.hasImage) return false;
+
+    // Filter by search query
     if (!searchQuery) return true;
     const query = searchQuery.toLowerCase();
     return (
@@ -260,27 +294,55 @@ function IconsPageContent() {
           />
         </div>
 
-        <SelectionToolbar
-          selectMode={selectMode}
-          onToggleSelectMode={handleToggleSelectMode}
-          selectedCount={selectedIds.size}
-          totalCount={filteredAssets.length}
-          onSelectAll={handleSelectAll}
-          onClearSelection={handleClearSelection}
-          onGenerateSelected={handleGenerateSelected}
-        />
+        <div className="flex items-center gap-2">
+          <Select value={imageFilter} onValueChange={(value: "all" | "generated" | "not-generated") => setImageFilter(value)}>
+            <SelectTrigger className="w-[160px]">
+              <Filter className="h-4 w-4 mr-2" />
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Icons</SelectItem>
+              <SelectItem value="generated">Generated</SelectItem>
+              <SelectItem value="not-generated">Not Generated</SelectItem>
+            </SelectContent>
+          </Select>
+          <SelectionToolbar
+            selectMode={selectMode}
+            onToggleSelectMode={handleToggleSelectMode}
+            selectedCount={selectedIds.size}
+            totalCount={filteredAssets.length}
+            onSelectAll={handleSelectAll}
+            onClearSelection={handleClearSelection}
+            onGenerateSelected={handleGenerateSelected}
+          />
+        </div>
       </div>
 
       {/* Category Tabs */}
       <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
-        <TabsList>
-          {CATEGORIES.map((cat) => (
-            <TabsTrigger key={cat.id} value={cat.id}>
-              {cat.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <div className="overflow-x-auto -mx-4 px-4">
+          <TabsList className="inline-flex w-max min-w-full">
+            {CATEGORIES.map((cat) => (
+              <TabsTrigger key={cat.id} value={cat.id} className="flex-shrink-0 whitespace-nowrap">
+                {cat.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
       </Tabs>
+
+      {/* Season Pass Subcategory Tabs */}
+      {selectedCategory === "season-pass" && (
+        <Tabs value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
+          <TabsList>
+            {SEASON_PASS_SUBCATEGORIES.map((sub) => (
+              <TabsTrigger key={sub.id} value={sub.id}>
+                {sub.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+      )}
 
       {/* Asset Grid */}
       <AssetGrid

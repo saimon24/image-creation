@@ -1,6 +1,6 @@
 {
   "icon_style": {
-    "CRITICAL": "ONLY ONE OBJECT. Never include secondary items, decorations, garnishes, or accessories. Single subject only.",
+    "CRITICAL": "ONLY ONE OBJECT. Never include secondary items, decorations, garnishes, shadows from light sources, or accessories. Single subject only.",
 
     "perspective": "soft isometric (18–22° tilt), slightly front-facing",
 
@@ -11,15 +11,15 @@
     },
 
     "composition": {
-      "element_count": "exactly 1 object, no secondary elements, no decorations, no garnishes",
+      "element_count": "exactly 1 object, no secondary elements, no decorations, no garnishes, no shadows",
       "spatial_depth": "moderate depth with clear form definition",
       "scale_consistency": "strict visual weight consistency across crafts",
       "scene_density": "minimal - object only, no props or extras"
     },
 
     "grounding": {
-      "method": "soft contact grounding (resting on implied surface)",
-      "shadow": "subtle ambient contact shadow",
+      "method": "soft contact grounding",
+      "shadow": "no contact shadow, no shadow at all",
       "floating": "not allowed"
     },
 

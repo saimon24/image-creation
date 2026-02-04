@@ -23,6 +23,13 @@ export const CATEGORIES = {
   tabs: 'Tabs',
   'events-boosts': 'Events & Boosts',
   tutorial: 'Tutorial',
+  category: 'Category',
+  'season-pass': 'Season Pass',
+  'avatar-border': 'Avatar Border',
+  backgrounds: 'Backgrounds',
+  coop: 'Coop',
+  sanctuary: 'Sanctuary',
+  cosmetics: 'Cosmetics',
 } as const;
 
 export const CRAFT_SUBCATEGORIES = {
@@ -48,6 +55,16 @@ export const CRAFT_SUBCATEGORIES = {
   seasonal: 'Seasonal',
   animal_products: 'Animal Products',
   premium: 'Premium',
+  pickling_station: 'Pickling Station',
+  apothecary: 'Apothecary',
+  distillery: 'Distillery',
+  clockmaker: 'Clockmaker',
+  artisan_hall: 'Artisan Hall',
+  plant_kitchen: 'Plant Kitchen',
+} as const;
+
+export const SEASON_PASS_SUBCATEGORIES = {
+  '2025-02-frosty-fields': 'February 2025 - Frosty Fields',
 } as const;
 
 export const items: ItemDefinition[] = [
@@ -148,7 +165,8 @@ export const items: ItemDefinition[] = [
     name: 'Strawberry',
     category: 'crops',
     expectedPath: 'crops/strawberry.webp',
-    description: 'Plump bright red strawberry with yellow seeds and green leaf crown, cartoon fruit',
+    description:
+      'Plump bright red strawberry with yellow seeds and green leaf crown, cartoon fruit',
   },
   {
     id: 'cotton',
@@ -190,14 +208,16 @@ export const items: ItemDefinition[] = [
     name: 'Sunflower',
     category: 'crops',
     expectedPath: 'crops/sunflower.webp',
-    description: 'Large bright yellow sunflower head with brown center and green stem, cheerful cartoon',
+    description:
+      'Large bright yellow sunflower head with brown center and green stem, cheerful cartoon',
   },
   {
     id: 'lavender',
     name: 'Lavender',
     category: 'crops',
     expectedPath: 'crops/lavender.webp',
-    description: 'Small bundle of purple lavender flower spikes tied together, simple cartoon herbs',
+    description:
+      'Small bundle of purple lavender flower spikes tied together, simple cartoon herbs',
   },
   {
     id: 'tea',
@@ -353,7 +373,8 @@ export const items: ItemDefinition[] = [
     name: 'Resin',
     category: 'area-items',
     expectedPath: 'area-items/resin.webp',
-    description: 'Amber-orange blob of tree resin, glossy cartoon drop',
+    description:
+      'Raw sticky tree resin, dark amber-brown opaque blob with natural texture, fresh sap from tree bark, matte finish, cartoon drop',
   },
   {
     id: 'silica',
@@ -389,6 +410,72 @@ export const items: ItemDefinition[] = [
     category: 'area-items',
     expectedPath: 'area-items/wild_lavender.webp',
     description: 'Small purple lavender sprig with green stem, cartoon wildflower',
+  },
+  // Glowing Caverns drops
+  {
+    id: 'glowing_ore',
+    name: 'Glowing Ore',
+    category: 'area-items',
+    expectedPath: 'area-items/glowing_ore.webp',
+    description:
+      'Warm amber-colored ore that pulses with inner light, rough crystalline chunks with soft golden glow emanating from within',
+  },
+  {
+    id: 'cave_moss',
+    name: 'Cave Moss',
+    category: 'area-items',
+    expectedPath: 'area-items/cave_moss.webp',
+    description:
+      'Soft bioluminescent moss that grows on cavern walls, pale green with tiny glowing spores, slightly damp and velvety',
+  },
+  {
+    id: 'mineral_water',
+    name: 'Mineral Water',
+    category: 'area-items',
+    expectedPath: 'area-items/mineral_water.webp',
+    description:
+      'Crystal-clear spring water from deep cavern pools, sparkles with dissolved minerals, stored in glass flask',
+  },
+  {
+    id: 'luminescent_stone',
+    name: 'Luminescent Stone',
+    category: 'area-items',
+    expectedPath: 'area-items/luminescent_stone.webp',
+    description:
+      'Rare polished stone that glows steadily in darkness, smooth and rounded with swirling patterns of light inside',
+  },
+  // Starlit Grove drops
+  {
+    id: 'moonwood',
+    name: 'Moonwood',
+    category: 'area-items',
+    expectedPath: 'area-items/moonwood.webp',
+    description:
+      'Silvery-white wood from ancient trees that absorbs moonlight, pale bark with subtle shimmer, grain patterns resemble crescent moons',
+  },
+  {
+    id: 'starlight_sap',
+    name: 'Starlight Sap',
+    category: 'area-items',
+    expectedPath: 'area-items/starlight_sap.webp',
+    description:
+      'Glittering golden sap that sparkles like captured starlight, thick and viscous, collected in small crystal vial',
+  },
+  {
+    id: 'night_blossom',
+    name: 'Night Blossom',
+    category: 'area-items',
+    expectedPath: 'area-items/night_blossom.webp',
+    description:
+      'Delicate purple-blue flowers that only bloom under starlight, petals have subtle iridescent sheen',
+  },
+  {
+    id: 'ancient_bark',
+    name: 'Ancient Bark',
+    category: 'area-items',
+    expectedPath: 'area-items/ancient_bark.webp',
+    description:
+      'Gnarled weathered bark from thousand-year-old grove trees, dark with silver veins, rough texture with mystical runes naturally formed',
   },
 
   // === CRAFTS - Feed Mill ===
@@ -588,6 +675,49 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/pasta.webp',
     description: 'Pile of pale yellow wavy pasta noodles, simple cartoon food',
   },
+  {
+    id: 'glazed_cornbread',
+    name: 'Glazed Cornbread',
+    category: 'crafts',
+    subcategory: 'bakery',
+    expectedPath: 'crafts/glazed_cornbread.webp',
+    description: 'Golden cornbread slice with a shiny sweet glaze on top',
+  },
+  {
+    id: 'sticky_buns',
+    name: 'Sticky Buns',
+    category: 'crafts',
+    subcategory: 'bakery',
+    expectedPath: 'crafts/sticky_buns.webp',
+    description: 'Swirled cinnamon pastry rolls dripping with gooey caramelized syrup',
+  },
+  {
+    id: 'savory_pie',
+    name: 'Savory Pie',
+    category: 'crafts',
+    subcategory: 'bakery',
+    expectedPath: 'crafts/savory_pie.webp',
+    description:
+      'Golden-crusted savory pie with flaky pastry, filled with egg, cheese, and caramelized onions visible through a lattice top',
+  },
+  {
+    id: 'sunflower_crackers',
+    name: 'Sunflower Crackers',
+    category: 'crafts',
+    subcategory: 'bakery',
+    expectedPath: 'crafts/sunflower_crackers.webp',
+    description:
+      'Crispy golden crackers studded with sunflower seeds, stacked or arranged on a rustic surface',
+  },
+  {
+    id: 'honeycomb_toast',
+    name: 'Honeycomb Toast',
+    category: 'crafts',
+    subcategory: 'bakery',
+    expectedPath: 'crafts/honeycomb_toast.webp',
+    description:
+      'Thick slice of toasted bread topped with a chunk of natural honeycomb dripping with golden honey and melted butter',
+  },
 
   // === CRAFTS - Kitchen ===
   {
@@ -662,6 +792,103 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/tomato_sauce.webp',
     description: 'Glass jar of bright red tomato sauce, cartoon condiment',
   },
+  {
+    id: 'scrambled_eggs',
+    name: 'Scrambled Eggs',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/scrambled_eggs.webp',
+    description: 'Fluffy yellow scrambled eggs cooked with butter, classic quick breakfast staple',
+  },
+  {
+    id: 'egg_drop_soup',
+    name: 'Egg Drop Soup',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/egg_drop_soup.webp',
+    description:
+      'Light Chinese-style soup with silky ribbons of egg floating in a clear broth with carrot pieces',
+  },
+  {
+    id: 'candied_carrots',
+    name: 'Candied Carrots',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/candied_carrots.webp',
+    description: 'Glazed orange carrot slices glistening with sweet corn syrup coating',
+  },
+  {
+    id: 'caramelized_onions',
+    name: 'Caramelized Onions',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/caramelized_onions.webp',
+    description:
+      'Deep golden-brown caramelized onions glistening with butter, slowly cooked to sweet perfection',
+  },
+  {
+    id: 'rice_bowl',
+    name: 'Rice Bowl',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/rice_bowl.webp',
+    description:
+      'Comforting bowl of fluffy white rice topped with a fried egg and colorful carrot slices',
+  },
+  {
+    id: 'fried_rice',
+    name: 'Fried Rice',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/fried_rice.webp',
+    description:
+      'Wok-fried golden rice with scrambled egg pieces, diced pork, and chopped onions. Classic Asian comfort food',
+  },
+  {
+    id: 'tomato_soup',
+    name: 'Tomato Soup',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/tomato_soup.webp',
+    description:
+      'Creamy orange-red tomato soup with a swirl of butter on top, served in a rustic bowl',
+  },
+  {
+    id: 'trail_mix',
+    name: 'Trail Mix',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/trail_mix.webp',
+    description:
+      'Colorful mix of sunflower seeds and forest berries with a golden honey drizzle, in a small bowl or scattered arrangement',
+  },
+  {
+    id: 'miso_soup',
+    name: 'Miso Soup',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/miso_soup.webp',
+    description:
+      'Traditional Japanese soup with silky tofu cubes floating in a creamy soy broth with green onion garnish',
+  },
+  {
+    id: 'tofu_stir_fry',
+    name: 'Tofu Stir Fry',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/tofu_stir_fry.webp',
+    description:
+      'Golden crispy tofu cubes wok-fried with colorful peppers and onions in a savory sauce',
+  },
+  {
+    id: 'tzatziki',
+    name: 'Tzatziki',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/tzatziki.webp',
+    description:
+      'Creamy Greek yogurt dip with cucumber and herbs, served in a small bowl with a drizzle of olive oil',
+  },
 
   // === CRAFTS - Breakfast Cart ===
   {
@@ -719,6 +946,23 @@ export const items: ItemDefinition[] = [
     subcategory: 'breakfast_cart',
     expectedPath: 'crafts/premium_charcuterie.webp',
     description: 'Fancy wooden board with premium meats cheese and grapes, cartoon luxury platter',
+  },
+  {
+    id: 'honey_corn_cakes',
+    name: 'Honey Corn Cakes',
+    category: 'crafts',
+    subcategory: 'breakfast_cart',
+    expectedPath: 'crafts/honey_corn_cakes.webp',
+    description: 'Small golden corn cakes drizzled with honey, stacked on a plate',
+  },
+  {
+    id: 'tofu_scramble',
+    name: 'Tofu Scramble',
+    category: 'crafts',
+    subcategory: 'breakfast_cart',
+    expectedPath: 'crafts/tofu_scramble.webp',
+    description:
+      'Crumbled seasoned tofu with diced peppers and tomatoes, resembling scrambled eggs. A plant-based breakfast',
   },
 
   // === CRAFTS - Dairy ===
@@ -787,6 +1031,41 @@ export const items: ItemDefinition[] = [
     description: 'Round white goat cheese wheel, soft cartoon dairy',
   },
   {
+    id: 'quiche',
+    name: 'Quiche',
+    category: 'crafts',
+    subcategory: 'dairy',
+    expectedPath: 'crafts/quiche.webp',
+    description: 'Savory egg pie with a golden flaky crust, filled with egg and cheese custard',
+  },
+  {
+    id: 'tofu',
+    name: 'Tofu',
+    category: 'crafts',
+    subcategory: 'dairy',
+    expectedPath: 'crafts/tofu.webp',
+    description:
+      'Smooth white blocks of fresh tofu with silky texture, shown on a simple plate or bamboo mat',
+  },
+  {
+    id: 'soy_milk',
+    name: 'Soy Milk',
+    category: 'crafts',
+    subcategory: 'dairy',
+    expectedPath: 'crafts/soy_milk.webp',
+    description:
+      'Creamy white soy milk in a glass or ceramic cup, fresh and plant-based dairy alternative',
+  },
+  {
+    id: 'honey_butter',
+    name: 'Honey Butter',
+    category: 'crafts',
+    subcategory: 'dairy',
+    expectedPath: 'crafts/honey_butter.webp',
+    description:
+      'Smooth whipped butter swirled with golden honey, served in a small crock or ramekin with honeycomb pieces visible',
+  },
+  {
     id: 'milk',
     name: 'Milk',
     category: 'animal-products',
@@ -833,6 +1112,25 @@ export const items: ItemDefinition[] = [
     subcategory: 'smoker',
     expectedPath: 'crafts/smoked_ham.webp',
     description: 'Large pink glazed ham with bone, shiny cartoon meat',
+  },
+  {
+    id: 'smoked_cheese',
+    name: 'Smoked Cheese',
+    category: 'crafts',
+    subcategory: 'smoker',
+    expectedPath: 'crafts/smoked_cheese.webp',
+    description:
+      'Rich golden cheese with dark smoked rind, wheel of cheese with distinctive smoky color gradient',
+  },
+
+  {
+    id: 'smoked_yogurt_pork',
+    name: 'Smoked Yogurt Pork',
+    category: 'crafts',
+    subcategory: 'smoker',
+    expectedPath: 'crafts/smoked_yogurt_pork.webp',
+    description:
+      'Tender pork slices marinated in goat yogurt before slow-smoking. Deep mahogany color with visible smoke marks, served on a wooden cutting board.',
   },
 
   // === CRAFTS - Spinning Wheel ===
@@ -900,6 +1198,41 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/gloves.webp',
     description: 'Pair of cozy knitted mittens, colorful cartoon winter gear',
   },
+  {
+    id: 'bamboo_mat',
+    name: 'Bamboo Mat',
+    category: 'crafts',
+    subcategory: 'spinning_wheel',
+    expectedPath: 'crafts/bamboo_mat.webp',
+    description:
+      'Traditional woven bamboo mat with natural green-tan coloring, showing intricate weave pattern',
+  },
+  {
+    id: 'knit_scarf',
+    name: 'Knit Scarf',
+    category: 'crafts',
+    subcategory: 'spinning_wheel',
+    expectedPath: 'crafts/knit_scarf.webp',
+    description:
+      'Long hand-knitted wool scarf in a warm color, coiled neatly. Visible knit pattern texture',
+  },
+  {
+    id: 'wool_mittens',
+    name: 'Wool Mittens',
+    category: 'crafts',
+    subcategory: 'spinning_wheel',
+    expectedPath: 'crafts/wool_mittens.webp',
+    description: 'Pair of cozy knitted mittens with a ribbed cuff. Warm earthy wool color',
+  },
+  {
+    id: 'felted_bowl',
+    name: 'Felted Bowl',
+    category: 'crafts',
+    subcategory: 'spinning_wheel',
+    expectedPath: 'crafts/felted_bowl.webp',
+    description:
+      'Decorative handmade bowl crafted from felted wool. Soft rounded shape with natural wool texture',
+  },
 
   // === CRAFTS - Cookhouse ===
   {
@@ -908,7 +1241,8 @@ export const items: ItemDefinition[] = [
     category: 'crafts',
     subcategory: 'cookhouse',
     expectedPath: 'crafts/root_stew.webp',
-    description: 'Steaming pot of chunky vegetable stew with carrots and potatoes, cartoon comfort food',
+    description:
+      'Steaming pot of chunky vegetable stew with carrots and potatoes, cartoon comfort food',
   },
   {
     id: 'fish_stew',
@@ -973,6 +1307,69 @@ export const items: ItemDefinition[] = [
     subcategory: 'cookhouse',
     expectedPath: 'crafts/saffron_rice.webp',
     description: 'Plate of bright golden-yellow saffron rice, cartoon grain dish',
+  },
+  {
+    id: 'iron_pot_roast',
+    name: 'Iron Pot Roast',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/iron_pot_roast.webp',
+    description: 'Hearty slow-cooked pork roast in a rustic cast iron pot with potatoes',
+  },
+  {
+    id: 'ore_stew',
+    name: 'Ore Stew',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/ore_stew.webp',
+    description:
+      'Rich mineral-infused stew with root vegetables, served in a stone bowl with iron ore chunks visible as decoration',
+  },
+  {
+    id: 'stuffed_tomatoes',
+    name: 'Stuffed Tomatoes',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/stuffed_tomatoes.webp',
+    description:
+      'Plump red tomatoes hollowed and stuffed with rice and melted cheese, baked golden on top',
+  },
+  {
+    id: 'mountain_broth',
+    name: 'Mountain Broth',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/mountain_broth.webp',
+    description:
+      'Clear, steaming broth in a rustic pot with visible potato and carrot chunks, mountain spring water creating a pure, clean appearance',
+  },
+  {
+    id: 'mapo_tofu',
+    name: 'Mapo Tofu',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/mapo_tofu.webp',
+    description:
+      'Spicy Sichuan dish with soft tofu cubes in a fiery red chili sauce with ground pork. Served in a clay pot',
+  },
+
+  {
+    id: 'creamy_goat_soup',
+    name: 'Creamy Goat Soup',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/creamy_goat_soup.webp',
+    description:
+      'Rich and creamy soup made with goat milk, diced potatoes, and caramelized onions. Served steaming in a rustic bowl with a swirl of cream on top.',
+  },
+  {
+    id: 'buttered_rice',
+    name: 'Buttered Rice',
+    category: 'crafts',
+    subcategory: 'cookhouse',
+    expectedPath: 'crafts/buttered_rice.webp',
+    description:
+      'Fluffy aromatic rice glistening with melted goat butter and scattered with caramelized onion pieces. Served in a ceramic bowl.',
   },
 
   // === CRAFTS - Sugar House ===
@@ -1040,6 +1437,25 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/amber_caramel.webp',
     description: 'Glossy golden caramel square or drip, shiny cartoon candy',
   },
+  {
+    id: 'cacao_butter',
+    name: 'Cacao Butter',
+    category: 'crafts',
+    subcategory: 'sugar_house',
+    expectedPath: 'crafts/cacao_butter.webp',
+    description:
+      'Creamy pale tan cacao butter in a small dish or molded form, smooth and luxurious chocolate-based fat',
+  },
+
+  {
+    id: 'goat_butter_biscuits',
+    name: 'Goat Butter Biscuits',
+    category: 'crafts',
+    subcategory: 'sugar_house',
+    expectedPath: 'crafts/goat_butter_biscuits.webp',
+    description:
+      'Golden-brown flaky biscuits made with premium goat butter and dusted with sugar crystals. Stacked in a small pile with visible buttery layers.',
+  },
 
   // === CRAFTS - Creamery ===
   {
@@ -1066,12 +1482,22 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/cream_trifle.webp',
     description: 'Glass dish with layered cream cake and fruit, colorful cartoon dessert',
   },
+
+  {
+    id: 'goat_yogurt_bowl',
+    name: 'Goat Yogurt Bowl',
+    category: 'crafts',
+    subcategory: 'creamery',
+    expectedPath: 'crafts/goat_yogurt_bowl.webp',
+    description:
+      'Thick creamy goat yogurt in a decorative bowl, topped with fresh mixed berries and a golden drizzle of honey. Vibrant purple and red berries contrast with the white yogurt.',
+  },
   {
     id: 'lavender_soap',
     name: 'Lavender Soap',
     category: 'crafts',
     subcategory: 'creamery',
-    expectedPath: 'crafts/lavender_oil.webp',
+    expectedPath: 'crafts/lavender_soap.webp',
     description: 'Purple bar of lavender soap with flower sprig, cartoon bath item',
   },
   {
@@ -1081,6 +1507,33 @@ export const items: ItemDefinition[] = [
     subcategory: 'creamery',
     expectedPath: 'crafts/feta_salad.webp',
     description: 'Bowl of green salad with white feta cubes and tomato, cartoon healthy dish',
+  },
+  {
+    id: 'sunflower_honey',
+    name: 'Sunflower Honey',
+    category: 'crafts',
+    subcategory: 'creamery',
+    expectedPath: 'crafts/sunflower_honey.webp',
+    description:
+      'Golden honey infused with sunflower petals, creating a rich floral spread with a buttery finish.',
+  },
+  {
+    id: 'soy_pudding',
+    name: 'Soy Pudding',
+    category: 'crafts',
+    subcategory: 'creamery',
+    expectedPath: 'crafts/soy_pudding.webp',
+    description:
+      'Silky smooth white pudding made from soy milk, served in a small dish with a delicate wobble',
+  },
+  {
+    id: 'frozen_yogurt',
+    name: 'Frozen Yogurt',
+    category: 'crafts',
+    subcategory: 'creamery',
+    expectedPath: 'crafts/frozen_yogurt.webp',
+    description:
+      'Swirled frozen yogurt in a cup, topped with fresh strawberries. Light pink color with creamy texture',
   },
 
   // === CRAFTS - Jam House ===
@@ -1178,7 +1631,7 @@ export const items: ItemDefinition[] = [
     name: 'Scented Candle',
     category: 'crafts',
     subcategory: 'workshop',
-    expectedPath: 'crafts/lavender_oil.webp',
+    expectedPath: 'crafts/scented_candle.webp',
     description: 'Purple candle in jar with small flame, cozy cartoon item',
   },
   {
@@ -1259,6 +1712,24 @@ export const items: ItemDefinition[] = [
     description: 'Brown leather bag or pouch, cartoon adventure gear',
   },
   {
+    id: 'bamboo_basket',
+    name: 'Bamboo Basket',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/bamboo_basket.webp',
+    description:
+      'Handwoven basket combining bamboo strips and reeds, sturdy and decorative with visible weave texture',
+  },
+  {
+    id: 'moonwood_panel',
+    name: 'Moonwood Panel',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/moonwood_panel.webp',
+    description:
+      'Premium construction material crafted from rare moonwood. Pale silvery wood panel with a subtle lunar glow',
+  },
+  {
     id: 'plank',
     name: 'Plank',
     category: 'rare',
@@ -1271,6 +1742,24 @@ export const items: ItemDefinition[] = [
     category: 'rare',
     expectedPath: 'rare/screw.webp',
     description: 'Silver metal screw with spiral threads, cartoon hardware',
+  },
+  {
+    id: 'stone_mortar',
+    name: 'Stone Mortar',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/stone_mortar.webp',
+    description:
+      'Heavy carved stone mortar and pestle used for grinding herbs and spices. A sturdy gray stone bowl with a matching grinding tool.',
+  },
+  {
+    id: 'sunflower_arrangement',
+    name: 'Sunflower Arrangement',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/sunflower_arrangement.webp',
+    description:
+      'A decorative bouquet of bright yellow sunflowers arranged with lavender sprigs in a woven reed vase.',
   },
 
   // === CRAFTS - Silk Atelier ===
@@ -1297,6 +1786,15 @@ export const items: ItemDefinition[] = [
     subcategory: 'silk_atelier',
     expectedPath: 'crafts/couture_gown.webp',
     description: 'Elegant flowing ball gown dress, fancy cartoon fashion',
+  },
+  {
+    id: 'silk_ribbon',
+    name: 'Silk Ribbon',
+    category: 'crafts',
+    subcategory: 'silk_atelier',
+    expectedPath: 'crafts/silk_ribbon.webp',
+    description:
+      'Delicate silk ribbon with lustrous sheen, rolled on small spool, catches light beautifully',
   },
 
   // === CRAFTS - Loom ===
@@ -1332,6 +1830,33 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/bamboo_silk.webp',
     description: 'Shimmering pale green bamboo silk fabric, elegant cartoon textile',
   },
+  {
+    id: 'wool_blanket',
+    name: 'Wool Blanket',
+    category: 'crafts',
+    subcategory: 'loom',
+    expectedPath: 'crafts/wool_blanket.webp',
+    description:
+      'Cozy handwoven wool blanket with cotton trim, soft texture in warm earth tones, folded neatly',
+  },
+  {
+    id: 'stone_slab',
+    name: 'Stone Slab',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/stone_slab.webp',
+    description:
+      'Flat rectangular slab of hewn grey stone with visible chisel marks. A sturdy construction foundation piece.',
+  },
+  {
+    id: 'stone_chisel',
+    name: 'Stone Chisel',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/stone_chisel.webp',
+    description:
+      'Sharp iron-tipped chisel with a wooden handle, used for precision stone carving. Metal tool with stone dust particles.',
+  },
 
   // === CRAFTS - Furnace ===
   {
@@ -1364,6 +1889,68 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/stone_bricks.webp',
     description: 'Stack of grey cut stone bricks, sturdy cartoon blocks',
   },
+  {
+    id: 'decorative_tile',
+    name: 'Decorative Tile',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/decorative_tile.webp',
+    description:
+      'Beautiful glazed ceramic tile with intricate patterns, hand-painted floral or geometric design, glossy finish',
+  },
+  {
+    id: 'luminescent_bar',
+    name: 'Luminescent Bar',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/luminescent_bar.webp',
+    description: 'Rare glowing metal bar smelted from glowing ore. Emits a soft ethereal light',
+  },
+  {
+    id: 'iron_fittings',
+    name: 'Iron Fittings',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/iron_fittings.webp',
+    description:
+      'Small forged metal pieces used for construction and repairs. Assorted iron nails, brackets, and hinges with a dark metallic finish.',
+  },
+  {
+    id: 'tempered_pottery',
+    name: 'Tempered Pottery',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/tempered_pottery.webp',
+    description:
+      'High-fired ceramic strengthened with iron particles. A sturdy reddish-brown pot or vessel with dark metallic flecks visible in the glaze.',
+  },
+  {
+    id: 'glazed_ceramics',
+    name: 'Glazed Ceramics',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/glazed_ceramics.webp',
+    description:
+      'Decorative pottery with a shiny honey-based glaze. An elegant vase or bowl with a warm amber finish and smooth lustrous surface.',
+  },
+  {
+    id: 'iron_chain',
+    name: 'Iron Chain',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/iron_chain.webp',
+    description:
+      'Dark iron chain links forged together in a furnace. Heavy-duty industrial chain with a dark metallic sheen.',
+  },
+  {
+    id: 'ore_bricks',
+    name: 'Ore Bricks',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/ore_bricks.webp',
+    description:
+      'Dense bricks made from compressed iron ore, stone, and coal. Dark reddish-brown with metallic specks throughout.',
+  },
 
   // === CRAFTS - Oil Press ===
   {
@@ -1389,6 +1976,24 @@ export const items: ItemDefinition[] = [
     subcategory: 'oil_press',
     expectedPath: 'crafts/perfume.webp',
     description: 'Fancy glass perfume bottle with spray pump, elegant cartoon cosmetic',
+  },
+  {
+    id: 'chili_oil',
+    name: 'Chili Oil',
+    category: 'crafts',
+    subcategory: 'oil_press',
+    expectedPath: 'crafts/chili_oil.webp',
+    description:
+      'Spicy infused oil with visible chili flakes, red-orange oil in glass bottle, chili peppers floating inside',
+  },
+  {
+    id: 'night_blossom_perfume',
+    name: 'Night Blossom Perfume',
+    category: 'crafts',
+    subcategory: 'oil_press',
+    expectedPath: 'crafts/night_blossom_perfume.webp',
+    description:
+      'Rare floral essence extracted from night blossoms. Elegant dark perfume bottle with purple/blue tones',
   },
 
   // === CRAFTS - Tea House ===
@@ -1439,6 +2044,42 @@ export const items: ItemDefinition[] = [
     subcategory: 'tea_house',
     expectedPath: 'crafts/pineapple_juice.webp',
     description: 'Tall glass of bright yellow pineapple juice, tropical cartoon drink',
+  },
+  {
+    id: 'refreshing_tonic',
+    name: 'Refreshing Tonic',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/refreshing_tonic.webp',
+    description:
+      'Sparkling light pink beverage in a tall glass with berries floating inside, garnished with a honey swirl. Refreshing and elegant',
+  },
+  {
+    id: 'mineral_tea',
+    name: 'Mineral Tea',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/mineral_tea.webp',
+    description:
+      'Sparkling mineral-infused tea served in a delicate cup. Clear tea with tiny bubbles and a crystalline shimmer',
+  },
+  {
+    id: 'soy_latte',
+    name: 'Soy Latte',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/soy_latte.webp',
+    description:
+      'Creamy dairy-free coffee drink with steamed soy milk. Served in a tall glass with latte art',
+  },
+  {
+    id: 'yogurt_smoothie',
+    name: 'Yogurt Smoothie',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/yogurt_smoothie.webp',
+    description:
+      'Thick purple berry smoothie in a tall glass, blended with yogurt and honey. Fresh berries on top',
   },
 
   // === CRAFTS - Confectioner ===
@@ -1521,6 +2162,24 @@ export const items: ItemDefinition[] = [
     subcategory: 'confectioner',
     expectedPath: 'crafts/royal_saffron_cake.webp',
     description: 'Elegant golden saffron layer cake with fancy decoration, luxury cartoon dessert',
+  },
+  {
+    id: 'amber_glaze',
+    name: 'Amber Glaze',
+    category: 'crafts',
+    subcategory: 'confectioner',
+    expectedPath: 'crafts/amber_glaze.webp',
+    description:
+      'Glistening golden-amber glaze in a small pot or drizzled, with rich caramel-like color and translucent shine',
+  },
+  {
+    id: 'glowing_candy',
+    name: 'Glowing Candy',
+    category: 'crafts',
+    subcategory: 'confectioner',
+    expectedPath: 'crafts/glowing_candy.webp',
+    description:
+      'Luminescent novelty sweet that glows softly. Translucent candy with a green/blue glow',
   },
 
   // === CRAFTS - Seasonal ===
@@ -1617,7 +2276,8 @@ export const items: ItemDefinition[] = [
     category: 'crafts',
     subcategory: 'premium',
     expectedPath: 'crafts/amber_sap.webp',
-    description: 'Glowing golden amber sap droplet, precious cartoon material',
+    description:
+      'Refined clear golden amber sap, translucent gem-like droplet with bright golden-yellow color, polished and precious, sparkling shine, cartoon material',
   },
   {
     id: 'starlight_resin',
@@ -1626,6 +2286,241 @@ export const items: ItemDefinition[] = [
     subcategory: 'premium',
     expectedPath: 'crafts/starlight_resin.webp',
     description: 'Glowing blue-white magical resin crystal, sparkling cartoon gem',
+  },
+
+  // === CRAFTS - Pickling Station ===
+  {
+    id: 'pickled_peppers',
+    name: 'Pickled Peppers',
+    category: 'crafts',
+    subcategory: 'pickling_station',
+    expectedPath: 'crafts/pickled_peppers.webp',
+    description:
+      'Colorful bell peppers preserved in tangy brine, glass jar filled with red yellow and green pepper slices in clear liquid',
+  },
+  {
+    id: 'pickled_carrots',
+    name: 'Pickled Carrots',
+    category: 'crafts',
+    subcategory: 'pickling_station',
+    expectedPath: 'crafts/pickled_carrots.webp',
+    description:
+      'Crisp carrot sticks pickled with onion and spices, bright orange carrots in jar with visible spice flecks',
+  },
+  {
+    id: 'sauerkraut',
+    name: 'Sauerkraut',
+    category: 'crafts',
+    subcategory: 'pickling_station',
+    expectedPath: 'crafts/sauerkraut.webp',
+    description:
+      'Fermented shredded cabbage with tangy flavor, pale green-white strands in ceramic crock, slightly translucent',
+  },
+  {
+    id: 'kimchi',
+    name: 'Kimchi',
+    category: 'crafts',
+    subcategory: 'pickling_station',
+    expectedPath: 'crafts/kimchi.webp',
+    description:
+      'Spicy Korean fermented vegetables with vibrant red color, chunky mixture of cabbage and radish coated in chili paste',
+  },
+
+  // === CRAFTS - Apothecary ===
+  {
+    id: 'herbal_salve',
+    name: 'Herbal Salve',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/herbal_salve.webp',
+    description:
+      'Soothing green healing balm in small tin container, thick creamy texture with visible herb flecks',
+  },
+  {
+    id: 'calming_balm',
+    name: 'Calming Balm',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/calming_balm.webp',
+    description:
+      'Lavender-infused purple balm that promotes relaxation, smooth texture in glass jar with cork lid',
+  },
+  {
+    id: 'energy_tonic',
+    name: 'Energy Tonic',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/energy_tonic.webp',
+    description:
+      'Vibrant amber liquid that sparkles with energy, small bottle with lightning-like glow, coffee and honey notes',
+  },
+  {
+    id: 'amber_elixir',
+    name: 'Amber Elixir',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/amber_elixir.webp',
+    description:
+      'Golden-orange potion made from amber sap, thick syrupy consistency in ornate glass flask with warm glow',
+  },
+  {
+    id: 'master_tonic',
+    name: 'Master Tonic',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/master_tonic.webp',
+    description:
+      'Legendary healing potion with swirling rainbow colors, rare ingredients create shimmering otherworldly appearance',
+  },
+  {
+    id: 'cave_moss_poultice',
+    name: 'Cave Moss Poultice',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/cave_moss_poultice.webp',
+    description:
+      'Healing herbal wrap made from cave moss and mineral water. Green mossy bandage with crystalline specks',
+  },
+  {
+    id: 'tea_remedy',
+    name: 'Tea Remedy',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/tea_remedy.webp',
+    description:
+      'A medicinal tea brew steeped with healing water plants and sweetened with honey. Served in a small apothecary bottle.',
+  },
+  {
+    id: 'soothing_tea_balm',
+    name: 'Soothing Tea Balm',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/soothing_tea_balm.webp',
+    description:
+      'A creamy herbal balm made from tea leaves infused into goat butter with lavender. A small tin of pale green salve.',
+  },
+
+  // === CRAFTS - Distillery ===
+  {
+    id: 'grape_wine',
+    name: 'Grape Wine',
+    category: 'crafts',
+    subcategory: 'distillery',
+    expectedPath: 'crafts/grape_wine.webp',
+    description:
+      'Rich red wine in elegant glass bottle, deep burgundy color aged to perfection with cork stopper',
+  },
+  {
+    id: 'vanilla_extract',
+    name: 'Vanilla Extract',
+    category: 'crafts',
+    subcategory: 'distillery',
+    expectedPath: 'crafts/vanilla_extract.webp',
+    description:
+      'Pure vanilla essence in dark amber bottle, rich brown liquid with dropper cap, intensely aromatic',
+  },
+  {
+    id: 'amber_spirits',
+    name: 'Amber Spirits',
+    category: 'crafts',
+    subcategory: 'distillery',
+    expectedPath: 'crafts/amber_spirits.webp',
+    description:
+      'Premium distilled spirit with golden-amber hue, crystal decanter with faceted stopper, warm honey tones',
+  },
+  {
+    id: 'celestial_nectar',
+    name: 'Celestial Nectar',
+    category: 'crafts',
+    subcategory: 'distillery',
+    expectedPath: 'crafts/celestial_nectar.webp',
+    description:
+      'Legendary spirit with swirling galaxy-like patterns, deep purple-blue with golden starlight sparkles inside',
+  },
+  {
+    id: 'starlight_spirits',
+    name: 'Starlight Spirits',
+    category: 'crafts',
+    subcategory: 'distillery',
+    expectedPath: 'crafts/starlight_spirits.webp',
+    description:
+      'Ethereal distilled beverage made from starlight sap. A bottle with shimmering, starry liquid inside',
+  },
+
+  // === CRAFTS - Clockmaker ===
+  {
+    id: 'pocket_watch',
+    name: 'Pocket Watch',
+    category: 'crafts',
+    subcategory: 'clockmaker',
+    expectedPath: 'crafts/pocket_watch.webp',
+    description:
+      'Classic silver pocket watch on chain, polished case with visible Roman numeral face, precise tick marks',
+  },
+  {
+    id: 'ornate_clock',
+    name: 'Ornate Clock',
+    category: 'crafts',
+    subcategory: 'clockmaker',
+    expectedPath: 'crafts/ornate_clock.webp',
+    description:
+      'Decorative wooden mantel clock with intricate carvings, brass accents, pendulum visible through glass panel',
+  },
+  {
+    id: 'music_box',
+    name: 'Music Box',
+    category: 'crafts',
+    subcategory: 'clockmaker',
+    expectedPath: 'crafts/music_box.webp',
+    description:
+      'Delicate mechanical music box with silk lining, open lid reveals tiny brass cylinder and comb mechanism',
+  },
+  {
+    id: 'grand_timepiece',
+    name: 'Grand Timepiece',
+    category: 'crafts',
+    subcategory: 'clockmaker',
+    expectedPath: 'crafts/grand_timepiece.webp',
+    description:
+      'Masterwork astronomical clock with celestial displays, golden gears visible, moon phase indicator, starlight crystal accents',
+  },
+  {
+    id: 'starlit_mechanism',
+    name: 'Starlit Mechanism',
+    category: 'crafts',
+    subcategory: 'clockmaker',
+    expectedPath: 'crafts/starlit_mechanism.webp',
+    description:
+      'Enchanted clockwork component made from moonwood and starlight sap. Intricate gears with a celestial glow',
+  },
+
+  // === CRAFTS - Artisan Hall ===
+  {
+    id: 'artisan_tapestry',
+    name: 'Artisan Tapestry',
+    category: 'crafts',
+    subcategory: 'artisan_hall',
+    expectedPath: 'crafts/artisan_tapestry.webp',
+    description:
+      'Magnificent woven wall hanging depicting pastoral scene, rich silk and bamboo threads in vibrant colors',
+  },
+  {
+    id: 'master_perfume',
+    name: 'Master Perfume',
+    category: 'crafts',
+    subcategory: 'artisan_hall',
+    expectedPath: 'crafts/master_perfume.webp',
+    description:
+      'Exquisite perfume in crystal bottle with gold filigree, complex blend of vanilla lavender and rare essences',
+  },
+  {
+    id: 'legendary_treasure',
+    name: 'Legendary Treasure',
+    category: 'crafts',
+    subcategory: 'artisan_hall',
+    expectedPath: 'crafts/legendary_treasure.webp',
+    description:
+      'Ultimate masterwork combining all artisan skills, golden treasure chest containing timepiece gown and celestial nectar',
   },
 
   // === MISC ===
@@ -1651,6 +2546,37 @@ export const items: ItemDefinition[] = [
     description: 'Two cheerful cartoon people silhouettes together, friendship symbol',
   },
   {
+    id: 'first_steps',
+    name: 'First Steps',
+    category: 'misc',
+    expectedPath: 'misc/first_steps.webp',
+    description:
+      'Bright green checklist board with a few big, simple tasks ticked off, soft green glow and small sprouting leaves around the edges to suggest early-game progress for new players.',
+  },
+  {
+    id: 'proud_farmer',
+    name: 'Proud Farmer',
+    category: 'misc',
+    expectedPath: 'misc/proud_farmer.webp',
+    description:
+      'Earned title or badge that players can display, like a small ribbon, medal, or nameplate saying "Proud Farmer" with a cheerful farm vibe, celebratory and readable at small size, cartoon style',
+  },
+  {
+    id: 'yellow_heart',
+    name: 'Yellow Heart',
+    category: 'misc',
+    expectedPath: 'misc/yellow_heart.webp',
+    description:
+      'Bright yellow heart shape resembling the yellow heart emoji, soft rounded cartoon style, friendly and recognizable at small size',
+  },
+  {
+    id: 'checkmark',
+    name: 'Checkmark',
+    category: 'misc',
+    expectedPath: 'misc/checkmark.webp',
+    description: 'Simple checkmark or tick mark, clean and readable at small size, cartoon style',
+  },
+  {
     id: 'sapling',
     name: 'Sapling',
     category: 'misc',
@@ -1662,7 +2588,8 @@ export const items: ItemDefinition[] = [
     name: 'Grow',
     category: 'misc',
     expectedPath: 'misc/grow.webp',
-    description: 'Young sprouting sapling with fresh green leaves growing from soil, cartoon plant growth',
+    description:
+      'Young sprouting sapling with fresh green leaves growing from soil, cartoon plant growth',
   },
   {
     id: 'hourglass',
@@ -1977,14 +2904,16 @@ export const items: ItemDefinition[] = [
     name: 'Alert Success',
     category: 'misc',
     expectedPath: 'misc/alert_success.webp',
-    description: 'Green circle with white checkmark, friendly cartoon success symbol for modal alerts',
+    description:
+      'Green circle with white checkmark, friendly cartoon success symbol for modal alerts',
   },
   {
     id: 'alert_warning',
     name: 'Alert Warning',
     category: 'misc',
     expectedPath: 'misc/alert_warning.webp',
-    description: 'Yellow triangle with exclamation mark, friendly cartoon warning symbol for modal alerts',
+    description:
+      'Yellow triangle with exclamation mark, friendly cartoon warning symbol for modal alerts',
   },
   {
     id: 'alert_danger',
@@ -1998,7 +2927,8 @@ export const items: ItemDefinition[] = [
     name: 'Celebrate',
     category: 'misc',
     expectedPath: 'misc/celebrate.webp',
-    description: 'Colorful party popper with confetti streamers bursting out, cheerful cartoon celebration emoji',
+    description:
+      'Colorful party popper with confetti streamers bursting out, cheerful cartoon celebration emoji',
   },
   {
     id: 'sickle',
@@ -2012,7 +2942,240 @@ export const items: ItemDefinition[] = [
     name: 'Toolbox',
     category: 'misc',
     expectedPath: 'misc/toolbox.webp',
-    description: 'Colorful toolbox with tools peeking out, friendly cartoon hub icon for feature menu',
+    description:
+      'Colorful toolbox with tools peeking out, friendly cartoon hub icon for feature menu',
+  },
+  {
+    id: 'emoji_fire',
+    name: 'Fire Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_fire.webp',
+    description: 'Bright orange and yellow flame icon, stylized cartoon fire with flickering tips',
+  },
+  {
+    id: 'emoji_tools',
+    name: 'Tools Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_tools.webp',
+    description: 'Crossed hammer and wrench icon, shiny metal tools in cartoon style',
+  },
+  {
+    id: 'emoji_wheat',
+    name: 'Wheat Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_wheat.webp',
+    description: 'Golden wheat sheaf icon, bundle of ripe grain stalks tied together',
+  },
+  {
+    id: 'emoji_construction',
+    name: 'Construction Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_construction.webp',
+    description: 'Construction crane icon with building blocks, cartoon building site symbol',
+  },
+  {
+    id: 'emoji_package',
+    name: 'Package Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_package.webp',
+    description: 'Brown cardboard box icon with tape, sealed delivery package cartoon style',
+  },
+  {
+    id: 'emoji_strength',
+    name: 'Strength Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_strength.webp',
+    description: 'Flexed bicep arm icon, muscular cartoon arm showing power and strength',
+  },
+  {
+    id: 'emoji_energy',
+    name: 'Energy Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_energy.webp',
+    description: 'Yellow lightning bolt icon, electric zap symbol with bright glow',
+  },
+  {
+    id: 'emoji_science',
+    name: 'Science Emoji',
+    category: 'misc',
+    expectedPath: 'misc/emoji_science.webp',
+    description: 'Glass test tube icon with colorful bubbling liquid, cartoon laboratory flask',
+  },
+  {
+    id: 'mission_permits',
+    name: 'Mission Permits',
+    category: 'misc',
+    expectedPath: 'misc/mission_permits.webp',
+    description:
+      'Official expedition permit scroll with wax seal and compass icon, unlocks long 12-hour missions for overnight adventures',
+  },
+  {
+    id: 'fab_background',
+    name: 'FAB Background',
+    category: 'misc',
+    expectedPath: 'misc/fab_background.webp',
+    description:
+      'Circular floating action button background with warm brown wooden texture center, thick golden bronze metallic frame with glowing orange ring effect, fantasy game UI style',
+  },
+  {
+    id: 'fab_circle',
+    name: 'FAB Circle',
+    category: 'misc',
+    expectedPath: 'misc/fab_circle.webp',
+    description:
+      'Empty circular frame for floating action button, thick golden bronze metallic ring with bright orange glow effect around edges, no center fill just the glowing border ring, fantasy game UI style',
+  },
+  {
+    id: 'fab_urgent',
+    name: 'FAB Urgent',
+    category: 'misc',
+    expectedPath: 'misc/fab_urgent.webp',
+    description:
+      'Circular floating action button with urgent red pulsing glow effect, warm brown wooden texture center, thick metallic frame with bright red-orange urgent ring effect, fantasy game UI style for attention-grabbing actions',
+  },
+  {
+    id: 'fab_inventory',
+    name: 'FAB Inventory',
+    category: 'misc',
+    expectedPath: 'misc/fab_inventory.webp',
+    description:
+      'Circular floating action button background with warm brown wooden texture center showing subtle crate/chest pattern, thick golden bronze metallic frame with glowing orange ring effect, fantasy game UI style for inventory actions',
+  },
+  {
+    id: 'inventory_warn',
+    name: 'Inventory Warn',
+    category: 'misc',
+    expectedPath: 'misc/inventory_warn.webp',
+    description:
+      'Brown wooden crate with lid slightly ajar, a few colorful items peeking out from the gap, cartoon storage box nearly full warning indicator',
+  },
+  {
+    id: 'inventory_full',
+    name: 'Inventory Full',
+    category: 'misc',
+    expectedPath: 'misc/inventory_full.webp',
+    description:
+      'Brown wooden crate with lid visibly popping open, one item leaning out over the edge, cartoon storage box completely full indicator',
+  },
+  {
+    id: 'expand_farm',
+    name: 'Expand Farm',
+    category: 'misc',
+    expectedPath: 'misc/expand_farm.webp',
+    description:
+      'Wooden stake driven into ground with small rolled parchment map attached, red ribbon tag hanging from stake, cartoon land expansion marker for buying new field',
+  },
+  {
+    id: 'pinned_items',
+    name: 'Pinned Items',
+    category: 'misc',
+    expectedPath: 'misc/pinned_items.webp',
+    description:
+      'Small wooden peg with colorful flag planted at slight angle into ground, soft shadow beneath as if placed in soil, cartoon farm marker for pinned or favorited items',
+  },
+  {
+    id: 'truck_loaded',
+    name: 'Truck Loaded',
+    category: 'misc',
+    expectedPath: 'misc/truck_loaded.webp',
+    description:
+      'Cheerful cartoon pickup truck with wooden bed overflowing with colorful crates, sacks, and produce, green checkmark floating above, ready for delivery, farm game style',
+  },
+  {
+    id: 'truck_empty',
+    name: 'Truck Empty',
+    category: 'misc',
+    expectedPath: 'misc/truck_empty.webp',
+    description:
+      'Cartoon pickup truck with empty wooden bed, slight red X or question mark floating above, waiting to be loaded, farm game style',
+  },
+  {
+    id: 'crown',
+    name: 'Crown',
+    category: 'misc',
+    expectedPath: 'misc/crown.webp',
+    description:
+      'Golden royal crown with sparkling gems, glowing aura and shimmer effects, cartoon premium season pass icon, luxurious and prestigious farm game style',
+  },
+  {
+    id: 'mystery_reward',
+    name: 'Mystery Reward',
+    category: 'misc',
+    expectedPath: 'misc/mystery_reward.webp',
+    description:
+      'Glowing gift box or chest with large question mark floating above, surrounded by swirling stars and sparkles, mysterious golden aura, cartoon random reward icon for daily quest completion',
+  },
+  {
+    id: 'nameplate_plank',
+    name: 'Nameplate Plank',
+    category: 'misc',
+    expectedPath: 'misc/nameplate_plank.webp',
+    description:
+      'Simple horizontal wooden plank sign with rustic wood grain texture, slightly weathered edges, cartoon farm nameplate background, warm brown tones',
+  },
+  {
+    id: 'delivery_crate',
+    name: 'Delivery Crate',
+    category: 'misc',
+    expectedPath: 'misc/delivery_crate.webp',
+    description:
+      'Rustic wooden shipping crate with red wax stamp seal on front, small delivery truck or arrow symbol on the seal, cartoon farm game delivery icon',
+  },
+  {
+    id: 'premium_orders',
+    name: 'Premium Orders',
+    category: 'misc',
+    expectedPath: 'misc/premium_orders.webp',
+    description:
+      'Elegant golden clipboard or order sheet with sparkles and crown emblem, luxurious purple ribbon, cartoon premium delivery orders icon for farm game',
+  },
+  {
+    id: 'quick_orders',
+    name: 'Quick Orders',
+    category: 'misc',
+    expectedPath: 'misc/quick_orders.webp',
+    description:
+      'Simple wooden clipboard with green checkmark and small clock or lightning bolt, fast easy order icon, cartoon farm game style',
+  },
+  {
+    id: 'main_orders',
+    name: 'Main Orders',
+    category: 'misc',
+    expectedPath: 'misc/main_orders.webp',
+    description:
+      'Sturdy wooden clipboard with blue ribbon and star emblem, standard order sheet, cartoon farm game delivery icon',
+  },
+  {
+    id: 'special_orders',
+    name: 'Special Orders',
+    category: 'misc',
+    expectedPath: 'misc/special_orders.webp',
+    description:
+      'Decorated clipboard with orange ribbon, sparkles and exclamation mark or gem emblem, rare special order icon, cartoon farm game style',
+  },
+  {
+    id: 'diamond_merchant',
+    name: 'Diamond Merchant',
+    category: 'misc',
+    expectedPath: 'misc/diamond_merchant.webp',
+    description:
+      'Small shop stand or kiosk with sparkling blue diamonds displayed, merchant stall where players can buy items for diamonds, cartoon farm game style',
+  },
+  {
+    id: 'request_help',
+    name: 'Request Help',
+    category: 'misc',
+    expectedPath: 'misc/request_help.webp',
+    description:
+      'Raised hand with speech bubble or megaphone, friendly call for assistance icon, coop community help request, cartoon farm game style',
+  },
+  {
+    id: 'coop_star',
+    name: 'Coop Star',
+    category: 'misc',
+    expectedPath: 'misc/coop_star.webp',
+    description:
+      'Glowing greenish-teal star with sparkles, coop experience points icon, slightly different shade from regular star, cartoon farm game style',
   },
   // === POTIONS ===
   {
@@ -2027,7 +3190,8 @@ export const items: ItemDefinition[] = [
     name: 'Mission Potion',
     category: 'potions',
     expectedPath: 'potions/mission_potion.webp',
-    description: 'Glowing purple potion bottle with checkmark symbol, cartoon instant completion power-up',
+    description:
+      'Glowing purple potion bottle with checkmark symbol, cartoon instant completion power-up',
   },
 
   // === UPGRADES ===
@@ -2095,6 +3259,14 @@ export const items: ItemDefinition[] = [
     category: 'leaderboard',
     expectedPath: 'leaderboard/help_points.webp',
     description: 'Helping hand with star badge, cartoon assistance achievement symbol',
+  },
+  {
+    id: 'wanted_points',
+    name: 'Wanted Points',
+    category: 'leaderboard',
+    expectedPath: 'leaderboard/wanted_points.webp',
+    description:
+      'Wanted board with star badge, points collected through helping other farmers on the wanted board, cartoon achievement symbol',
   },
   {
     id: 'farm',
@@ -2245,6 +3417,54 @@ export const items: ItemDefinition[] = [
     expectedPath: 'buildings/workshop.webp',
     description: 'Wooden workshop with tools and workbench visible, craft cartoon building',
   },
+  {
+    id: 'pickling_station',
+    name: 'Pickling Station',
+    category: 'buildings',
+    expectedPath: 'buildings/pickling_station.webp',
+    description:
+      'Rustic fermenting station with large ceramic crocks, wooden barrels, and shelves of jarred vegetables, steam and brine vapors rising',
+  },
+  {
+    id: 'apothecary',
+    name: 'Apothecary',
+    category: 'buildings',
+    expectedPath: 'buildings/apothecary.webp',
+    description:
+      'Mystical herb shop with hanging dried plants, bubbling cauldrons, mortar and pestle sets, shelves lined with colorful potion bottles',
+  },
+  {
+    id: 'distillery',
+    name: 'Distillery',
+    category: 'buildings',
+    expectedPath: 'buildings/distillery.webp',
+    description:
+      'Elegant copper still operation with large distillation columns, oak aging barrels, wine casks, amber liquids flowing through glass tubes',
+  },
+  {
+    id: 'clockmaker',
+    name: 'Clockmaker',
+    category: 'buildings',
+    expectedPath: 'buildings/clockmaker.webp',
+    description:
+      'Precision workshop with magnifying glasses, tiny gears on workbenches, intricate clock mechanisms, ornate timepieces on display',
+  },
+  {
+    id: 'artisan_hall',
+    name: 'Artisan Hall',
+    category: 'buildings',
+    expectedPath: 'buildings/artisan_hall.webp',
+    description:
+      'Grand crafting hall with marble columns, display cases of masterwork items, golden accents, master craftsmen workstations',
+  },
+  {
+    id: 'plant_kitchen',
+    name: 'Plant Kitchen',
+    category: 'buildings',
+    expectedPath: 'buildings/plant_kitchen.webp',
+    description:
+      'Cozy green-roofed kitchen building with leafy vines, tofu blocks and soybeans visible through window, steaming wok, plant-based cooking station for tofu and soy-based dish recipes',
+  },
 
   // === ANIMALS ===
   {
@@ -2303,21 +3523,24 @@ export const items: ItemDefinition[] = [
     name: 'Stamp Bronze',
     category: 'mastery',
     expectedPath: 'mastery/stamp_bronze.webp',
-    description: 'Shiny bronze circular stamp seal with embossed star emblem, cartoon achievement badge',
+    description:
+      'Shiny bronze circular stamp seal with embossed star emblem, cartoon achievement badge',
   },
   {
     id: 'stamp_silver',
     name: 'Stamp Silver',
     category: 'mastery',
     expectedPath: 'mastery/stamp_silver.webp',
-    description: 'Polished silver circular stamp seal with embossed star emblem, cartoon achievement badge',
+    description:
+      'Polished silver circular stamp seal with embossed star emblem, cartoon achievement badge',
   },
   {
     id: 'stamp_gold',
     name: 'Stamp Gold',
     category: 'mastery',
     expectedPath: 'mastery/stamp_gold.webp',
-    description: 'Gleaming gold circular stamp seal with embossed star emblem, cartoon achievement badge',
+    description:
+      'Gleaming gold circular stamp seal with embossed star emblem, cartoon achievement badge',
   },
   {
     id: 'stamp_locked',
@@ -2331,7 +3554,8 @@ export const items: ItemDefinition[] = [
     name: 'Book',
     category: 'mastery',
     expectedPath: 'mastery/book.webp',
-    description: 'Thick leather-bound book with golden trim and bookmark ribbon, cartoon mastery tome',
+    description:
+      'Thick leather-bound book with golden trim and bookmark ribbon, cartoon mastery tome',
   },
 
   // === TABS ===
@@ -2340,14 +3564,16 @@ export const items: ItemDefinition[] = [
     name: 'Order Board',
     category: 'tabs',
     expectedPath: 'tabs/order_board.webp',
-    description: 'Wooden bulletin board with pinned order slips and tasks, cartoon game UI tab icon',
+    description:
+      'Wooden bulletin board with pinned order slips and tasks, cartoon game UI tab icon',
   },
   {
     id: 'tab_events',
     name: 'Events',
     category: 'tabs',
     expectedPath: 'tabs/events.webp',
-    description: 'Festive calendar with star decorations and celebration banner, cartoon game UI tab icon',
+    description:
+      'Festive calendar with star decorations and celebration banner, cartoon game UI tab icon',
   },
   {
     id: 'tab_farm_home',
@@ -2375,7 +3601,8 @@ export const items: ItemDefinition[] = [
     name: 'Coop',
     category: 'tabs',
     expectedPath: 'tabs/coop.webp',
-    description: 'Two friendly figures together with connection symbol, cartoon game UI tab icon for multiplayer',
+    description:
+      'Two friendly figures together with connection symbol, cartoon game UI tab icon for multiplayer',
   },
 
   // === EVENTS & BOOSTS ===
@@ -2385,7 +3612,8 @@ export const items: ItemDefinition[] = [
     name: 'Order Rush Day',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_order_rush.webp',
-    description: 'Blue glowing package box with double XP sparkles, cartoon event icon for order bonus day',
+    description:
+      'Blue glowing package box with double XP sparkles, cartoon event icon for order bonus day',
   },
   {
     id: 'event_busy_harbor',
@@ -2406,49 +3634,56 @@ export const items: ItemDefinition[] = [
     name: 'Grand Market Day',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_grand_market.webp',
-    description: 'Purple festive lantern with XP and coin symbols, cartoon event icon for market day',
+    description:
+      'Purple festive lantern with XP and coin symbols, cartoon event icon for market day',
   },
   {
     id: 'event_golden_guest',
     name: 'Golden Guest Day',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_golden_guest.webp',
-    description: 'Orange celebration confetti with VIP guest star, cartoon event icon for guest bonus',
+    description:
+      'Orange celebration confetti with VIP guest star, cartoon event icon for guest bonus',
   },
   {
     id: 'event_harvest_festival',
     name: 'Harvest Festival Weekend',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_harvest_festival.webp',
-    description: 'Golden wheat sheaf with festive ribbons and sparkles, cartoon harvest celebration icon',
+    description:
+      'Golden wheat sheaf with festive ribbons and sparkles, cartoon harvest celebration icon',
   },
   {
     id: 'event_green_thumb',
     name: 'Green Thumb Monday',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_green_thumb.webp',
-    description: 'Green sprouting seedling with speed lines, cartoon event icon for faster crop growth',
+    description:
+      'Green sprouting seedling with speed lines, cartoon event icon for faster crop growth',
   },
   {
     id: 'event_craftsman',
     name: 'Craftsman Friday',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_craftsman.webp',
-    description: 'Orange hammer with crafting sparks and speed lines, cartoon event icon for faster crafting',
+    description:
+      'Orange hammer with crafting sparks and speed lines, cartoon event icon for faster crafting',
   },
   {
     id: 'event_explorers_luck',
     name: "Explorer's Luck",
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_explorers_luck.webp',
-    description: 'Purple adventure backpack with lucky clover and star, cartoon event icon for better loot',
+    description:
+      'Purple adventure backpack with lucky clover and star, cartoon event icon for better loot',
   },
   {
     id: 'event_relaxed_weekend',
     name: 'Relaxed Weekend',
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_relaxed_weekend.webp',
-    description: 'Blue sun with peaceful rays and gentle sparkles, cartoon event icon for weekend bonus',
+    description:
+      'Blue sun with peaceful rays and gentle sparkles, cartoon event icon for weekend bonus',
   },
   {
     id: 'event_weekend_market',
@@ -2464,21 +3699,24 @@ export const items: ItemDefinition[] = [
     name: 'XP Boost',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_xp.webp',
-    description: 'Blue glowing potion bottle with star emblem and XP sparkles, cartoon experience boost',
+    description:
+      'Blue glowing potion bottle with star emblem and XP sparkles, cartoon experience boost',
   },
   {
     id: 'boost_craft_speed',
     name: 'Craft Speed Boost',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_craft_speed.webp',
-    description: 'Orange glowing potion bottle with lightning bolt and gear, cartoon crafting speed boost',
+    description:
+      'Orange glowing potion bottle with lightning bolt and gear, cartoon crafting speed boost',
   },
   {
     id: 'boost_yield',
     name: 'Yield Boost',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_yield.webp',
-    description: 'Green glowing potion bottle with leaf and plus symbol, cartoon harvest yield boost',
+    description:
+      'Green glowing potion bottle with leaf and plus symbol, cartoon harvest yield boost',
   },
   {
     id: 'boost_coin',
@@ -2492,49 +3730,56 @@ export const items: ItemDefinition[] = [
     name: 'XP Boost (2h)',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_xp_2h.webp',
-    description: 'Large blue glowing potion bottle with double stars and intense XP sparkles, cartoon premium experience boost',
+    description:
+      'Large blue glowing potion bottle with double stars and intense XP sparkles, cartoon premium experience boost',
   },
   {
     id: 'boost_yield_2h',
     name: 'Yield Boost (2h)',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_yield_2h.webp',
-    description: 'Large green glowing potion bottle with double leaves and intense sparkles, cartoon premium harvest yield boost',
+    description:
+      'Large green glowing potion bottle with double leaves and intense sparkles, cartoon premium harvest yield boost',
   },
   {
     id: 'boost_craft_speed_2h',
     name: 'Craft Speed Boost (2h)',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_craft_speed_2h.webp',
-    description: 'Large orange glowing potion bottle with double lightning bolts and gears, cartoon premium crafting speed boost',
+    description:
+      'Large orange glowing potion bottle with double lightning bolts and gears, cartoon premium crafting speed boost',
   },
   {
     id: 'boost_coin_2h',
     name: 'Coin Boost (2h)',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_coin_2h.webp',
-    description: 'Large golden glowing potion bottle with double coins and intense sparkles, cartoon premium money boost',
+    description:
+      'Large golden glowing potion bottle with double coins and intense sparkles, cartoon premium money boost',
   },
   {
     id: 'boost_friend',
     name: 'Friend Boost Token',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_friend.webp',
-    description: 'Pink potion bottle with two friend silhouettes and heart, cartoon friendship boost',
+    description:
+      'Pink potion bottle with two friend silhouettes and heart, cartoon friendship boost',
   },
   {
     id: 'boost_friend_crop',
     name: 'Friend Crop Boost',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_friend_crop.webp',
-    description: 'Green potion bottle with wheat symbol and friend heart, cartoon crop assistance boost',
+    description:
+      'Green potion bottle with wheat symbol and friend heart, cartoon crop assistance boost',
   },
   {
     id: 'boost_friend_craft',
     name: 'Friend Craft Boost',
     category: 'events-boosts',
     expectedPath: 'events-boosts/boost_friend_craft.webp',
-    description: 'Orange potion bottle with gear symbol and friend heart, cartoon crafting assistance boost',
+    description:
+      'Orange potion bottle with gear symbol and friend heart, cartoon crafting assistance boost',
   },
 
   // === TUTORIAL ===
@@ -2543,56 +3788,619 @@ export const items: ItemDefinition[] = [
     name: 'Farmboy (Neutral)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_neutral.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, cheerful freckled face, wearing simple linen shirt and overalls, standing relaxed with hands at sides',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, cheerful freckled face, wearing simple linen shirt and overalls, standing relaxed with hands at sides',
   },
   {
     id: 'farmboy_pointing',
     name: 'Farmboy (Pointing)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_pointing.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, cheerful freckled face, wearing simple linen shirt and overalls, pointing forward with one hand extended to show something',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, cheerful freckled face, wearing simple linen shirt and overalls, pointing forward with one hand extended to show something',
   },
   {
     id: 'farmboy_thinking',
     name: 'Farmboy (Thinking)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_thinking.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, thoughtful expression, wearing simple linen shirt and overalls, hand on chin in thinking pose looking upward',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, thoughtful expression, wearing simple linen shirt and overalls, hand on chin in thinking pose looking upward',
   },
   {
     id: 'farmboy_waving',
     name: 'Farmboy (Waving)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_waving.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, welcoming smile, wearing simple linen shirt and overalls, waving hello with one hand raised',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, welcoming smile, wearing simple linen shirt and overalls, waving hello with one hand raised',
   },
   {
     id: 'farmboy_explaining',
     name: 'Farmboy (Explaining)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_explaining.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, engaged expression, wearing simple linen shirt and overalls, both hands gesturing outward while teaching',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, engaged expression, wearing simple linen shirt and overalls, both hands gesturing outward while teaching',
   },
   {
     id: 'farmboy_celebrating',
     name: 'Farmboy (Celebrating)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_celebrating.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, joyful excited expression, wearing simple linen shirt and overalls, arms raised in celebration',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, joyful excited expression, wearing simple linen shirt and overalls, arms raised in celebration',
   },
   {
     id: 'farmboy_thumbsup',
     name: 'Farmboy (Thumbs Up)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_thumbsup.webp',
-    description: 'Young friendly farmboy with tousled brown hair, warm brown eyes, encouraging smile, wearing simple linen shirt and overalls, giving thumbs up approval gesture',
+    description:
+      'Young friendly farmboy with tousled brown hair, warm brown eyes, encouraging smile, wearing simple linen shirt and overalls, giving thumbs up approval gesture',
   },
   {
     id: 'farmboy_surprised',
     name: 'Farmboy (Surprised)',
     category: 'tutorial',
     expectedPath: 'tutorial/farmboy_surprised.webp',
-    description: 'Young friendly farmboy with tousled brown hair, wide surprised eyes, open mouth expression, wearing simple linen shirt and overalls, hands raised in amazement',
+    description:
+      'Young friendly farmboy with tousled brown hair, wide surprised eyes, open mouth expression, wearing simple linen shirt and overalls, hands raised in amazement',
+  },
+  // === CATEGORY ===
+  {
+    id: 'category_crop',
+    name: 'Crop',
+    category: 'category',
+    expectedPath: 'category/crop.webp',
+    description:
+      'A bundle of freshly harvested crops representing farm produce. Golden wheat stalks, ripe vegetables, and farm-fresh goods.',
+  },
+  {
+    id: 'category_animal_product',
+    name: 'Animal Product',
+    category: 'category',
+    expectedPath: 'category/animal_product.webp',
+    description:
+      'Collection of animal-derived goods. Eggs, milk bottle, wool bundle, and feathers arranged together.',
+  },
+  {
+    id: 'category_crafted_good',
+    name: 'Crafted Good',
+    category: 'category',
+    expectedPath: 'category/crafted_good.webp',
+    description:
+      'Artisan workshop products representing handmade items. A wooden crate with finished goods, tools, and crafted materials.',
+  },
+  {
+    id: 'category_area_drop',
+    name: 'Area Drop',
+    category: 'category',
+    expectedPath: 'category/area_drop.webp',
+    description:
+      'Rare treasures and loot found while exploring. A collection of gems, rare materials, and mysterious objects with a slight glow.',
+  },
+  {
+    id: 'category_rare_item',
+    name: 'Rare Item',
+    category: 'category',
+    expectedPath: 'category/rare_item.webp',
+    description:
+      'A precious rare item with a golden shimmer. Ornate treasure chest overflowing with glowing gems, golden coins, and legendary artifacts.',
+  },
+
+  // === SEASON PASS - FEBRUARY 2025 (FROSTY FIELDS) ===
+  {
+    id: 'sp_2025_02_header',
+    name: 'Frosty Fields Header',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/header.webp',
+    description:
+      'Modal header banner for Frosty Fields season. Winter farm scene with "Frosty Fields" text, snow falling gently, cozy farmhouse in background.',
+  },
+  {
+    id: 'sp_2025_02_farm_bg',
+    name: 'Frosty Fields Farm Background',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/farm-bg.webp',
+    description:
+      'Premium farm background with snowy ground, winter trees with frosted branches, subtle snowflakes drifting down. Seasonal ambiance without being distracting.',
+  },
+  {
+    id: 'sp_2025_02_trophy',
+    name: 'Frosty Fields Trophy',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/trophy.webp',
+    description:
+      'Season trophy decoration made of ice and crystal with a snowflake emblem in the center. Elegant frost patterns, sparkling finish.',
+  },
+  {
+    id: 'sp_2025_02_border',
+    name: 'Frosty Fields Avatar Border',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/border.webp',
+    description:
+      'Avatar border frame shaped like an ice crown with dangling icicles. Transparent center for profile picture, frosted blue edges.',
+  },
+  {
+    id: 'sp_2025_02_badge',
+    name: 'Frosty Fields Badge',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/badge.webp',
+    description:
+      'Small participant badge shaped like a snowflake medal. Simple elegant design with ice blue coloring and subtle shimmer.',
+  },
+  {
+    id: 'sp_2025_02_winter_wreath',
+    name: 'Winter Wreath',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/winter-wreath.webp',
+    description:
+      'Festive winter wreath decoration with holly leaves, red berries, pinecones, and a red ribbon bow. Frosted evergreen branches.',
+  },
+  {
+    id: 'sp_2025_02_frozen_pond',
+    name: 'Frozen Pond',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/frozen-pond.webp',
+    description:
+      'Small frozen pond decoration with visible ice skating marks on the surface. Snow-covered edges, reflective ice surface.',
+  },
+  {
+    id: 'sp_2025_02_aurora_lantern',
+    name: 'Aurora Lantern',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/aurora-lantern.webp',
+    description:
+      'Glowing lantern decoration with magical aurora borealis effect emanating from within. Northern lights colors of green, purple, and blue swirling inside.',
+  },
+  {
+    id: 'sp_2025_02_snowman_family',
+    name: 'Snowman Family',
+    category: 'season-pass',
+    subcategory: '2025-02-frosty-fields',
+    expectedPath: 'season-pass/2025-02-frosty-fields/snowman-family.webp',
+    description:
+      'Family of three snowmen decoration - parent snowmen and child. Each wearing colorful scarves, carrot noses, coal buttons, stick arms.',
+  },
+
+  // === AVATAR BORDERS ===
+  {
+    id: 'golden_harvest_border',
+    name: 'Golden Harvest',
+    category: 'avatar-border',
+    expectedPath: 'avatar-border/golden_harvest.webp',
+    description:
+      'Shimmering golden circular frame with wheat stalks and harvest motifs, glowing golden aura, luxurious champion border for user avatar, cartoon farm game style',
+  },
+  {
+    id: 'emerald_vine_border',
+    name: 'Emerald Vine',
+    category: 'avatar-border',
+    expectedPath: 'avatar-border/emerald_vine.webp',
+    description:
+      'Lush green circular frame with intertwining vines, leaves, and small flowers wrapping around, natural forest feel, cartoon avatar border for farm game',
+  },
+  {
+    id: 'rustic_barn_border',
+    name: 'Rustic Barn Border',
+    category: 'avatar-border',
+    expectedPath: 'avatar-border/rustic_barn.webp',
+    description:
+      'Weathered wood planks circular frame from the old barn, rustic brown tones with nail details and aged texture, cartoon avatar border for farm game',
+  },
+
+  // === COOP ===
+  {
+    id: 'coop_community',
+    name: 'Coop Community',
+    category: 'coop',
+    expectedPath: 'coop/coop_community.webp',
+    description:
+      'Cozy community home or gathering place for coop members, friendly shared space with welcoming atmosphere, cartoon farm game style',
+  },
+  {
+    id: 'coop_sunrise',
+    name: 'Coop Sunrise',
+    category: 'coop',
+    expectedPath: 'coop/coop_sunrise.webp',
+    description:
+      'Beautiful sunrise over the farm with warm orange and pink sky, representing the daily coop check-in task, peaceful morning scene, cartoon farm game style',
+  },
+  {
+    id: 'coop_barn',
+    name: 'Coop Barn',
+    category: 'coop',
+    expectedPath: 'coop/barn.webp',
+    description:
+      'Classic red wooden barn, home base for the farm, instantly recognizable farming icon, cozy and welcoming, cartoon farm game style',
+  },
+  {
+    id: 'coop_wheat',
+    name: 'Coop Wheat Bundle',
+    category: 'coop',
+    expectedPath: 'coop/wheat.webp',
+    description:
+      'Golden bundle of wheat stalks tied together, symbolizing harvest, teamwork, and abundance, represents collective effort, cartoon farm game style',
+  },
+  {
+    id: 'coop_chicken',
+    name: 'Coop Chicken',
+    category: 'coop',
+    expectedPath: 'coop/chicken.webp',
+    description:
+      'Cute cheerful chicken, lively and playful, adds charm and personality to the coop, friendly cartoon farm animal',
+  },
+  {
+    id: 'coop_cow',
+    name: 'Coop Cow',
+    category: 'coop',
+    expectedPath: 'coop/cow.webp',
+    description:
+      'Friendly spotted cow, represents steady production and reliability, reads well even at small sizes, classic cartoon farm animal',
+  },
+  {
+    id: 'coop_windmill',
+    name: 'Coop Windmill',
+    category: 'coop',
+    expectedPath: 'coop/windmill.webp',
+    description:
+      'Traditional windmill with rotating blades, symbolizes progress and working together, feels slightly advanced without being intimidating, cartoon farm game style',
+  },
+  {
+    id: 'coop_watering_can',
+    name: 'Coop Watering Can',
+    category: 'coop',
+    expectedPath: 'coop/watering_can.webp',
+    description:
+      'Classic metal watering can with spout, perfect metaphor for care, growth, and helping others in the coop, cartoon farm tool',
+  },
+  {
+    id: 'coop_basket',
+    name: 'Coop Harvest Basket',
+    category: 'coop',
+    expectedPath: 'coop/basket.webp',
+    description:
+      'Woven harvest basket or crate filled with produce, represents sharing, donating, and helping hands, strong tie to donation mechanics, cartoon farm game style',
+  },
+  {
+    id: 'coop_sun_fields',
+    name: 'Coop Sun over Fields',
+    category: 'coop',
+    expectedPath: 'coop/sun_fields.webp',
+    description:
+      'Bright sun shining over rolling farm fields, represents optimism, warmth, and daily rhythm, cozy emotional anchor, cartoon farm game style',
+  },
+  {
+    id: 'coop_sprout',
+    name: 'Coop Sprout',
+    category: 'coop',
+    expectedPath: 'coop/sprout.webp',
+    description:
+      'Fresh green leaf or young sprout emerging from soil, symbolizes new beginnings and young coops, great for early-game identity, cartoon farm game style',
+  },
+  {
+    id: 'coop_tractor',
+    name: 'Coop Tractor',
+    category: 'coop',
+    expectedPath: 'coop/tractor.webp',
+    description:
+      'Classic red farm tractor, represents productivity and efficiency, slightly harder vibe for players who want that, cartoon farm game style',
+  },
+  {
+    id: 'coop_weekly_chest_bronze',
+    name: 'Coop Weekly Chest (Bronze)',
+    category: 'coop',
+    expectedPath: 'coop/weekly_chest_bronze.webp',
+    description:
+      'Bronze reward chest for weekly coop rewards, sturdy wooden chest with bronze metal bands and small sparkle, cartoon farm game UI icon',
+  },
+  {
+    id: 'coop_weekly_chest_silver',
+    name: 'Coop Weekly Chest (Silver)',
+    category: 'coop',
+    expectedPath: 'coop/weekly_chest_silver.webp',
+    description:
+      'Silver reward chest for weekly coop rewards, sturdy wooden chest with bright silver metal bands and subtle sparkle, cartoon farm game UI icon',
+  },
+  {
+    id: 'coop_weekly_chest_gold',
+    name: 'Coop Weekly Chest (Gold)',
+    category: 'coop',
+    expectedPath: 'coop/weekly_chest_gold.webp',
+    description:
+      'Gold reward chest for weekly coop rewards, premium wooden chest with shiny gold metal bands, glow and sparkles, cartoon farm game UI icon',
+  },
+  {
+    id: 'coop_rest_day',
+    name: 'Coop Rest Day',
+    category: 'coop',
+    expectedPath: 'coop/rest_day.webp',
+    description:
+      'Peaceful rest day icon representing the free Monday without weekly goals, relaxed atmosphere with calm elements like a hammock, moon, or peaceful scene, cartoon farm game style',
+  },
+  {
+    id: 'coop_chat',
+    name: 'Coop Chat',
+    category: 'coop',
+    expectedPath: 'coop/chat.webp',
+    description:
+      'Chat or message icon for coop communication, speech bubbles or envelope with friendly farm vibe, inviting and readable at small size, cartoon farm game style',
+  },
+
+  // === BACKGROUNDS ===
+  {
+    id: 'golden_meadow_bg',
+    name: 'Golden Meadow',
+    category: 'backgrounds',
+    expectedPath: 'backgrounds/golden_meadow.webp',
+    description:
+      'Warm sunset hues over rolling golden fields, orange and pink sky, peaceful countryside landscape, cartoon farm game background',
+  },
+  {
+    id: 'misty_morning_bg',
+    name: 'Misty Morning',
+    category: 'backgrounds',
+    expectedPath: 'backgrounds/misty_morning.webp',
+    description:
+      'Peaceful fog drifting across farmland at dawn, soft blue and white mist, gentle morning light, serene cartoon farm game background',
+  },
+
+  // === SANCTUARY ===
+  // Tokens
+  {
+    id: 'sanctuary_token_green',
+    name: 'Sanctuary Token (Green)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_token_green.webp',
+    description:
+      'Green sanctuary token, circular coin with nature symbol, vibrant emerald color, cartoon farm game style',
+  },
+  {
+    id: 'sanctuary_token_blue',
+    name: 'Sanctuary Token (Blue)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_token_blue.webp',
+    description:
+      'Blue sanctuary token, circular coin with nature symbol, vibrant sapphire color, cartoon farm game style',
+  },
+  {
+    id: 'sanctuary_token_purple',
+    name: 'Sanctuary Token (Purple)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_token_purple.webp',
+    description:
+      'Purple sanctuary token, circular coin with nature symbol, vibrant amethyst color, cartoon farm game style',
+  },
+  {
+    id: 'sanctuary_token_gold',
+    name: 'Sanctuary Token (Gold)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_token_gold.webp',
+    description:
+      'Gold sanctuary token, circular coin with nature symbol, shiny golden color, premium rarity, cartoon farm game style',
+  },
+  {
+    id: 'sanctuary_token_random',
+    name: 'Sanctuary Token (Random)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_token_random.webp',
+    description:
+      'Mystery token with swirling colors or question mark, represents a random token drop that could be green, blue, purple, or gold, exciting surprise element, cartoon farm game style',
+  },
+  // Animals
+  {
+    id: 'peacock',
+    name: 'Peacock',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/peacock.webp',
+    description:
+      'Majestic peacock with vibrant blue and green iridescent feathers, elegant tail display, regal posture, cartoon farm game style',
+  },
+  {
+    id: 'peacock_locked',
+    name: 'Peacock (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/peacock_locked.webp',
+    description:
+      'Silhouette of peacock with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  {
+    id: 'flamingo',
+    name: 'Flamingo',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/flamingo.webp',
+    description:
+      'Graceful pink flamingo standing on one leg, long curved neck, tropical bird, cartoon farm game style',
+  },
+  {
+    id: 'flamingo_locked',
+    name: 'Flamingo (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/flamingo_locked.webp',
+    description:
+      'Silhouette of flamingo with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  {
+    id: 'alpaca',
+    name: 'Alpaca',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/alpaca.webp',
+    description:
+      'Friendly fluffy alpaca with long neck, soft woolly coat, cute expression, cartoon farm game style',
+  },
+  {
+    id: 'alpaca_locked',
+    name: 'Alpaca (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/alpaca_locked.webp',
+    description:
+      'Silhouette of alpaca with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  {
+    id: 'reindeer',
+    name: 'Reindeer',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/reindeer.webp',
+    description:
+      'Noble reindeer with impressive antlers, brown fur, friendly expression, winter animal, cartoon farm game style',
+  },
+  {
+    id: 'reindeer_locked',
+    name: 'Reindeer (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/reindeer_locked.webp',
+    description:
+      'Silhouette of reindeer with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  {
+    id: 'panda',
+    name: 'Panda',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/panda.webp',
+    description:
+      'Adorable black and white panda, round fluffy body, cute expression, bamboo eater, cartoon farm game style',
+  },
+  {
+    id: 'panda_locked',
+    name: 'Panda (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/panda_locked.webp',
+    description:
+      'Silhouette of panda with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  {
+    id: 'unicorn',
+    name: 'Unicorn',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/unicorn.webp',
+    description:
+      'Magical unicorn with spiral horn, flowing mane, elegant white or pastel colors, sparkles and magic aura, cartoon farm game style',
+  },
+  {
+    id: 'unicorn_locked',
+    name: 'Unicorn (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/unicorn_locked.webp',
+    description:
+      'Silhouette of unicorn with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  {
+    id: 'phoenix',
+    name: 'Phoenix',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/phoenix.webp',
+    description:
+      'Mythical phoenix with fiery red and orange feathers, golden accents, majestic wings spread, flames and sparkles, cartoon farm game style',
+  },
+  {
+    id: 'phoenix_locked',
+    name: 'Phoenix (Locked)',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/phoenix_locked.webp',
+    description:
+      'Silhouette of phoenix with lock overlay, grayed out appearance, indicates locked/unavailable animal, cartoon farm game style',
+  },
+  // Feed Item
+  {
+    id: 'sanctuary_feed',
+    name: 'Sanctuary Feed',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_feed.webp',
+    description:
+      'Special feed for sanctuary animals, colorful bag or container with nature symbols, premium animal feed, cartoon farm game style',
+  },
+  // UI Elements
+  {
+    id: 'sanctuary_icon',
+    name: 'Sanctuary Icon',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/sanctuary_icon.webp',
+    description:
+      'Tab or menu icon for sanctuary feature, nature-themed symbol, compact design for UI navigation, cartoon farm game style',
+  },
+  {
+    id: 'feed_ready',
+    name: 'Feed Ready Indicator',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/feed_ready.webp',
+    description:
+      'Visual indicator showing animal can be fed, notification badge or icon with feed symbol, bright and attention-grabbing, cartoon farm game style',
+  },
+  {
+    id: 'habitat_background',
+    name: 'Habitat Background',
+    category: 'sanctuary',
+    expectedPath: 'icons/sanctuary/habitat_background.webp',
+    description:
+      'Background tile or texture for animal pen/habitat, natural environment with grass or terrain, decorative base for animal display, cartoon farm game style',
+  },
+
+  // === COSMETICS ===
+  // Decorations
+  {
+    id: 'coop_heart_statue',
+    name: 'Coop Heart Statue',
+    category: 'cosmetics',
+    subcategory: 'decoration',
+    expectedPath: 'cosmetics/decorations/coop_heart_statue.webp',
+    description:
+      'A small stone pedestal with a glowing pink heart on top. Entry-level prestige decoration showing coop membership. Cute stone/marble pedestal base, pink/magenta glowing heart floating or resting on top. Simple but charming. Soft glow effect around the heart.',
+  },
+  {
+    id: 'coop_golden_banner',
+    name: 'Golden Coop Banner',
+    category: 'cosmetics',
+    subcategory: 'decoration',
+    expectedPath: 'cosmetics/decorations/coop_golden_banner.webp',
+    description:
+      'A fancy vertical banner with a heart emblem and gold trim. Shows dedication to the coop. Tall vertical flag/banner on a pole. Rich purple or deep red fabric with gold edges/trim. Heart emblem in the center. Slight flutter/wave to show movement.',
+  },
+  {
+    id: 'coop_crystal_fountain',
+    name: 'Crystal Heart Fountain',
+    category: 'cosmetics',
+    subcategory: 'decoration',
+    expectedPath: 'cosmetics/decorations/coop_crystal_fountain.webp',
+    description:
+      'An elegant fountain with water flowing around a central crystal heart. Premium prestige decoration. Ornate fountain base (stone or marble), crystal/gem heart in the center with water cascading around it. Sparkle effects. Luxurious and eye-catching.',
+  },
+  // Avatar Borders
+  {
+    id: 'border_heart_wreath',
+    name: 'Heart Wreath Border',
+    category: 'cosmetics',
+    subcategory: 'border',
+    expectedPath: 'cosmetics/borders/border_heart_wreath.webp',
+    description:
+      "A circular frame of small pink and red hearts forming a wreath around the player's avatar. Ring/wreath shape made of small hearts in varying shades of pink and red. Warm, friendly aesthetic. Should work as a frame around a circular avatar.",
+  },
+  {
+    id: 'border_starlight_crown',
+    name: 'Starlight Crown Border',
+    category: 'cosmetics',
+    subcategory: 'border',
+    expectedPath: 'cosmetics/borders/border_starlight_crown.webp',
+    description:
+      'Golden stars and sparkles forming a crown-like frame around the avatar. Premium border with subtle glow. Crown/tiara shape at top made of golden stars, with smaller stars and sparkles scattered around the circular frame. Soft golden glow effect. Prestigious feel.',
+  },
+  // Farm Backgrounds
+  {
+    id: 'bg_aurora_skies',
+    name: 'Aurora Skies',
+    category: 'cosmetics',
+    subcategory: 'background',
+    expectedPath: 'cosmetics/backgrounds/bg_aurora_skies.webp',
+    description:
+      'A stunning night sky with colorful northern lights. The ultimate coop prestige item. Dark night sky with vibrant aurora borealis in purple, green, and pink gradients. Stars twinkling. Ethereal and beautiful. Should tile/work as a farm background.',
   },
 ];
 
