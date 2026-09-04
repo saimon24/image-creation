@@ -36,11 +36,14 @@ interface Style {
 
 const CATEGORIES = [
   { id: "all", label: "All" },
+  { id: "airport", label: "Airport" },
   { id: "animal-products", label: "Animal Products" },
   { id: "animals", label: "Animals" },
   { id: "area-items", label: "Area Items" },
+  { id: "avatar", label: "Avatar" },
   { id: "avatar-border", label: "Avatar Border" },
   { id: "backgrounds", label: "Backgrounds" },
+  { id: "blacksmith", label: "Blacksmith" },
   { id: "buildings", label: "Buildings" },
   { id: "category", label: "Category" },
   { id: "coop", label: "Coop" },
@@ -49,7 +52,9 @@ const CATEGORIES = [
   { id: "crops", label: "Crops" },
   { id: "events-boosts", label: "Events & Boosts" },
   { id: "leaderboard", label: "Leaderboard" },
+  { id: "lake", label: "Lake" },
   { id: "mastery", label: "Mastery" },
+  { id: "ambient-season", label: "Ambient Season" },
   { id: "misc", label: "Misc" },
   { id: "potions", label: "Potions" },
   { id: "rare", label: "Rare" },
@@ -58,11 +63,45 @@ const CATEGORIES = [
   { id: "tabs", label: "Tabs" },
   { id: "tutorial", label: "Tutorial" },
   { id: "upgrades", label: "Upgrades" },
+  { id: "valley", label: "Valley" },
+  { id: "explorer", label: "Explorer" },
+  { id: "shop", label: "Shop" },
+  { id: "special-events", label: "Special Events" },
+];
+
+const SPECIAL_EVENTS_SUBCATEGORIES = [
+  { id: "all", label: "All Events" },
+  { id: "easter", label: "Easter" },
+  { id: "firefly-festival", label: "Firefly Festival" },
+];
+
+const BLACKSMITH_SUBCATEGORIES = [
+  { id: "all", label: "All Gear" },
+  { id: "tool_gear", label: "Tool Gear" },
+  { id: "armor_gear", label: "Armor Gear" },
+  { id: "accessory_gear", label: "Accessory Gear" },
+  { id: "consumable", label: "Consumable" },
+];
+
+const AMBIENT_SEASON_SUBCATEGORIES = [
+  { id: "all", label: "All Seasons" },
+  { id: "winter", label: "Winter (Dec–Feb)" },
+  { id: "spring", label: "Spring (Mar–May)" },
+  { id: "summer", label: "Summer (Jun–Aug)" },
+  { id: "autumn", label: "Autumn (Sep–Nov)" },
+  { id: "holiday-week", label: "Holiday Week" },
 ];
 
 const SEASON_PASS_SUBCATEGORIES = [
   { id: "all", label: "All Seasons" },
   { id: "2025-02-frosty-fields", label: "Feb 2025 - Frosty Fields" },
+  { id: "2025-03-spring-bloom", label: "Mar 2025 - Spring Bloom" },
+  { id: "2025-04-blossom-festival", label: "Apr 2025 - Blossom Festival" },
+  { id: "2026-05-verdant-valley", label: "May 2026 - Verdant Valley" },
+  { id: "2026-06-honey-hollow", label: "June 2026 - Honey Hollow" },
+  { id: "2026-07-sunny-shores", label: "July 2026 - Sunny Shores" },
+  { id: "2026-08-harvest-fair", label: "Aug 2026 - Harvest Fair" },
+  { id: "2026-09-golden-grove", label: "Sep 2026 - Golden Grove" },
 ];
 
 function IconsPageContent() {
@@ -71,7 +110,7 @@ function IconsPageContent() {
 
   const [assets, setAssets] = useState<Asset[]>([]);
   const [styles, setStyles] = useState<Style[]>([]);
-  const [selectedStyle, setSelectedStyle] = useState("style.json");
+  const [selectedStyle, setSelectedStyle] = useState("crafts-v4-styles.json");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedSubcategory, setSelectedSubcategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -93,7 +132,13 @@ function IconsPageContent() {
       if (selectedCategory !== "all") {
         params.set("category", selectedCategory);
       }
-      if (selectedCategory === "season-pass" && selectedSubcategory !== "all") {
+      if (
+        (selectedCategory === "season-pass" ||
+          selectedCategory === "ambient-season" ||
+          selectedCategory === "special-events" ||
+          selectedCategory === "blacksmith") &&
+        selectedSubcategory !== "all"
+      ) {
         params.set("subcategory", selectedSubcategory);
       }
       const res = await fetch(`/api/assets?${params}`);
@@ -122,7 +167,7 @@ function IconsPageContent() {
         const data = await res.json();
         setStyles(data);
         const iconStyle = data.find(
-          (s: Style) => s.filename === "style.json"
+          (s: Style) => s.filename === "crafts-v4-styles.json"
         );
         if (iconStyle) {
           setSelectedStyle(iconStyle.filename);
@@ -331,11 +376,50 @@ function IconsPageContent() {
         </div>
       </Tabs>
 
+      {/* Ambient Season Subcategory Tabs */}
+      {selectedCategory === "ambient-season" && (
+        <Tabs value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
+          <TabsList>
+            {AMBIENT_SEASON_SUBCATEGORIES.map((sub) => (
+              <TabsTrigger key={sub.id} value={sub.id}>
+                {sub.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+      )}
+
       {/* Season Pass Subcategory Tabs */}
       {selectedCategory === "season-pass" && (
         <Tabs value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
           <TabsList>
             {SEASON_PASS_SUBCATEGORIES.map((sub) => (
+              <TabsTrigger key={sub.id} value={sub.id}>
+                {sub.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+      )}
+
+      {/* Special Events Subcategory Tabs */}
+      {selectedCategory === "special-events" && (
+        <Tabs value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
+          <TabsList>
+            {SPECIAL_EVENTS_SUBCATEGORIES.map((sub) => (
+              <TabsTrigger key={sub.id} value={sub.id}>
+                {sub.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+      )}
+
+      {/* Blacksmith Subcategory Tabs */}
+      {selectedCategory === "blacksmith" && (
+        <Tabs value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
+          <TabsList>
+            {BLACKSMITH_SUBCATEGORIES.map((sub) => (
               <TabsTrigger key={sub.id} value={sub.id}>
                 {sub.label}
               </TabsTrigger>

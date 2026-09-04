@@ -18,8 +18,8 @@
     },
 
     "grounding": {
-      "method": "soft contact grounding",
-      "shadow": "no contact shadow, no shadow at all",
+      "method": "no contact grounding",
+      "shadow": "no contact shadow, no drop shadow, no ground darkening, no shadow at all",
       "floating": "not allowed"
     },
 

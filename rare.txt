@@ -1,1 +1,0 @@
-boards, nails, plank, rope, bricks, leather_strap, iron_bar, screw

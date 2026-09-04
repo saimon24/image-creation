@@ -78,6 +78,8 @@ export function ensureOutputDirs() {
     "cosmetics/decorations",
     "cosmetics/borders",
     "cosmetics/backgrounds",
+    "valley",
+    "avatar",
   ];
 
   for (const dir of dirs) {
@@ -88,20 +90,24 @@ export function ensureOutputDirs() {
   }
 }
 
-export function imageExists(relativePath: string): boolean {
+/** Resolved disk path (inside `output/`) for an item `expectedPath`, or null if missing. */
+export function resolveImageFullPath(relativePath: string): string | null {
   const fullPath = path.join(OUTPUT_DIR, relativePath);
-  return fs.existsSync(fullPath);
+  return fs.existsSync(fullPath) ? fullPath : null;
+}
+
+export function imageExists(relativePath: string): boolean {
+  return resolveImageFullPath(relativePath) !== null;
 }
 
 export function getImagePath(relativePath: string): string | null {
-  const fullPath = path.join(OUTPUT_DIR, relativePath);
-  if (fs.existsSync(fullPath)) {
-    // Add file modification time as cache-buster to ensure fresh images
-    const stats = fs.statSync(fullPath);
-    const mtime = stats.mtimeMs.toString(36);
-    return `/output/${relativePath}?v=${mtime}`;
+  const fullPath = resolveImageFullPath(relativePath);
+  if (!fullPath) {
+    return null;
   }
-  return null;
+  const stats = fs.statSync(fullPath);
+  const mtime = stats.mtimeMs.toString(36);
+  return `/output/${relativePath}?v=${mtime}`;
 }
 
 export function listImagesInCategory(category: string): string[] {
@@ -128,8 +134,8 @@ export function saveImage(relativePath: string, buffer: Buffer): string {
 }
 
 export function deleteImage(relativePath: string): boolean {
-  const fullPath = path.join(OUTPUT_DIR, relativePath);
-  if (fs.existsSync(fullPath)) {
+  const fullPath = resolveImageFullPath(relativePath);
+  if (fullPath && fs.existsSync(fullPath)) {
     fs.unlinkSync(fullPath);
     return true;
   }

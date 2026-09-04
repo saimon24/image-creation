@@ -42,7 +42,7 @@ export default function TransformPage() {
 
   // Style state
   const [styles, setStyles] = useState<Style[]>([]);
-  const [selectedStyle, setSelectedStyle] = useState("style.json");
+  const [selectedStyle, setSelectedStyle] = useState("crafts-v4-styles.json");
 
   // Edit mode state
   const [editPrompt, setEditPrompt] = useState("");

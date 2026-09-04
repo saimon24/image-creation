@@ -32,7 +32,7 @@ export default function CustomPage() {
 
   const [styleMode, setStyleMode] = useState<"none" | "existing" | "custom">("existing");
   const [styles, setStyles] = useState<Style[]>([]);
-  const [selectedStyle, setSelectedStyle] = useState("style.json");
+  const [selectedStyle, setSelectedStyle] = useState("crafts-v4-styles.json");
   const [customStyleJson, setCustomStyleJson] = useState(`{
   "icon_style": {
     "perspective": "3/4 top-down view",

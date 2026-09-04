@@ -19,17 +19,26 @@ export const CATEGORIES = {
   leaderboard: 'Leaderboard',
   buildings: 'Buildings',
   animals: 'Animals',
+  airport: 'Airport',
   mastery: 'Mastery',
   tabs: 'Tabs',
   'events-boosts': 'Events & Boosts',
   tutorial: 'Tutorial',
   category: 'Category',
   'season-pass': 'Season Pass',
+  avatar: 'Avatar',
   'avatar-border': 'Avatar Border',
   backgrounds: 'Backgrounds',
   coop: 'Coop',
   sanctuary: 'Sanctuary',
   cosmetics: 'Cosmetics',
+  lake: 'Lake',
+  valley: 'Valley',
+  explorer: 'Explorer',
+  shop: 'Shop',
+  'special-events': 'Special Events',
+  blacksmith: 'Blacksmith',
+  'ambient-season': 'Ambient Season',
 } as const;
 
 export const CRAFT_SUBCATEGORIES = {
@@ -58,16 +67,45 @@ export const CRAFT_SUBCATEGORIES = {
   pickling_station: 'Pickling Station',
   apothecary: 'Apothecary',
   distillery: 'Distillery',
+  glassworks: 'Glassworks',
+  jewelry_atelier: 'Jewelry Atelier',
   clockmaker: 'Clockmaker',
   artisan_hall: 'Artisan Hall',
   plant_kitchen: 'Plant Kitchen',
 } as const;
 
-export const SEASON_PASS_SUBCATEGORIES = {
-  '2025-02-frosty-fields': 'February 2025 - Frosty Fields',
+export const SPECIAL_EVENTS_SUBCATEGORIES = {
+  easter: 'Easter',
+  'firefly-festival': 'Firefly Festival',
 } as const;
 
-export const items: ItemDefinition[] = [
+export const BLACKSMITH_SUBCATEGORIES = {
+  tool_gear: 'Tool Gear',
+  armor_gear: 'Armor Gear',
+  accessory_gear: 'Accessory Gear',
+  consumable: 'Consumable',
+} as const;
+
+export const AMBIENT_SEASON_SUBCATEGORIES = {
+  winter: 'Winter (Dec–Feb)',
+  spring: 'Spring (Mar–May)',
+  summer: 'Summer (Jun–Aug)',
+  autumn: 'Autumn (Sep–Nov)',
+  'holiday-week': 'Holiday Week',
+} as const;
+
+export const SEASON_PASS_SUBCATEGORIES = {
+  '2025-02-frosty-fields': 'February 2025 - Frosty Fields',
+  '2025-03-spring-bloom': 'Mar 2025 - Spring Bloom',
+  '2025-04-blossom-festival': 'Apr 2025 - Blossom Festival',
+  '2026-05-verdant-valley': 'May 2026 - Verdant Valley',
+  '2026-06-honey-hollow': 'June 2026 - Honey Hollow',
+  '2026-07-sunny-shores': 'July 2026 - Sunny Shores',
+  '2026-08-harvest-fair': 'Aug 2026 - Harvest Fair',
+  '2026-09-golden-grove': 'Sep 2026 - Golden Grove',
+} as const;
+
+const BASE_ITEMS: ItemDefinition[] = [
   // === CROPS ===
   {
     id: 'wheat',
@@ -239,6 +277,30 @@ export const items: ItemDefinition[] = [
     category: 'crops',
     expectedPath: 'crops/saffron.webp',
     description: 'Few bright orange-red saffron threads, precious spice cartoon style',
+  },
+  {
+    id: 'moonpetal',
+    name: 'Moonpetal',
+    category: 'crops',
+    expectedPath: 'crops/moonpetal.webp',
+    description:
+      'Pale violet night-blooming flower with softly luminous petals, delicate cartoon blossom',
+  },
+  {
+    id: 'goldroot',
+    name: 'Goldroot',
+    category: 'crops',
+    expectedPath: 'crops/goldroot.webp',
+    description:
+      'Mineral-rich golden root with braided fibers and earthy sheen, sturdy cartoon crop',
+  },
+  {
+    id: 'golden_seed',
+    name: 'Golden Seed',
+    category: 'crops',
+    expectedPath: 'crops/golden_seed.webp',
+    description:
+      'Single luminous golden seed glowing with a soft magical shimmer, special starter crop planted by new players that rewards bonus coins and diamonds when fully grown, chunky cartoon style',
   },
 
   // === AREA ITEMS ===
@@ -889,6 +951,24 @@ export const items: ItemDefinition[] = [
     description:
       'Creamy Greek yogurt dip with cucumber and herbs, served in a small bowl with a drizzle of olive oil',
   },
+  {
+    id: 'berry_preserve',
+    name: 'Berry Preserve',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/berry_preserve.webp',
+    description:
+      'Glass jar filled with thick dark purple berry preserve, golden honey swirled through, sealed with a cloth lid and twine, cozy cartoon pantry item',
+  },
+  {
+    id: 'fish_tacos',
+    name: 'Fish Tacos',
+    category: 'crafts',
+    subcategory: 'kitchen',
+    expectedPath: 'crafts/fish_tacos.webp',
+    description:
+      'Two crispy golden fish tacos in soft tortillas with shredded cabbage, lime wedge, and creamy sauce drizzle, colorful cartoon street food',
+  },
 
   // === CRAFTS - Breakfast Cart ===
   {
@@ -1535,6 +1615,15 @@ export const items: ItemDefinition[] = [
     description:
       'Swirled frozen yogurt in a cup, topped with fresh strawberries. Light pink color with creamy texture',
   },
+  {
+    id: 'lavender_panna_cotta',
+    name: 'Lavender Panna Cotta',
+    category: 'crafts',
+    subcategory: 'creamery',
+    expectedPath: 'crafts/lavender_panna_cotta.webp',
+    description:
+      'Creamy white-lavender panna cotta on a small plate, topped with a sprig of purple lavender flowers. Smooth jiggly Italian dessert with a delicate purple hue',
+  },
 
   // === CRAFTS - Jam House ===
   {
@@ -1857,6 +1946,51 @@ export const items: ItemDefinition[] = [
     description:
       'Sharp iron-tipped chisel with a wooden handle, used for precision stone carving. Metal tool with stone dust particles.',
   },
+  {
+    id: 'resin_varnish',
+    name: 'Resin Varnish',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/resin_varnish.webp',
+    description:
+      'Amber glass bottle of glossy golden resin varnish with a cork stopper and a small brush resting beside it, warm cartoon crafting supply',
+  },
+  {
+    id: 'iron_reinforcements',
+    name: 'Iron Reinforcements',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/iron_reinforcements.webp',
+    description:
+      'Bundle of dark iron brackets, braces, and bolts tied together with resin-treated wooden strips, sturdy cartoon metalwork supplies',
+  },
+  {
+    id: 'berry_dye',
+    name: 'Berry Dye',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/berry_dye.webp',
+    description:
+      'Small clay pot of vibrant purple-red berry dye with a wooden stirring stick, crushed berry stains on the rim, colorful cartoon crafting pigment',
+  },
+  {
+    id: 'quartz_polish',
+    name: 'Quartz Polish',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/quartz_polish.webp',
+    description:
+      'Small open jar of pale silvery-white polishing paste ground from raw quartz, with a soft cloth folded beside it and a faint crystalline shimmer on the surface, cartoon crafting supply',
+  },
+  {
+    id: 'amber_resin_candle',
+    name: 'Amber Resin Candle',
+    category: 'crafts',
+    subcategory: 'workshop',
+    expectedPath: 'crafts/amber_resin_candle.webp',
+    description:
+      'Tall golden resin candle with chips of raw amber suspended inside the wax and a warm glowing flame on top, soft pine-honey aura, cozy cartoon decor',
+  },
 
   // === CRAFTS - Furnace ===
   {
@@ -1995,6 +2129,15 @@ export const items: ItemDefinition[] = [
     description:
       'Rare floral essence extracted from night blossoms. Elegant dark perfume bottle with purple/blue tones',
   },
+  {
+    id: 'fish_oil',
+    name: 'Fish Oil',
+    category: 'crafts',
+    subcategory: 'oil_press',
+    expectedPath: 'crafts/fish_oil.webp',
+    description:
+      'Clear golden fish oil in a small round glass bottle with cork stopper, rich amber liquid with a faint sheen, cartoon cooking ingredient',
+  },
 
   // === CRAFTS - Tea House ===
   {
@@ -2036,6 +2179,69 @@ export const items: ItemDefinition[] = [
     subcategory: 'tea_house',
     expectedPath: 'crafts/spiced_tea.webp',
     description: 'Cup of warm orange-brown spiced chai tea with cinnamon stick, cartoon drink',
+  },
+  {
+    id: 'bamboo_tea_whisk',
+    name: 'Bamboo Tea Whisk',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/bamboo_tea_whisk.webp',
+    description:
+      'A traditional tea whisk carefully carved from bamboo. Its fine tines create the perfect froth for ceremonial brews.',
+  },
+  {
+    id: 'bamboo_lantern',
+    name: 'Bamboo Lantern',
+    category: 'crafts',
+    subcategory: 'furnace',
+    expectedPath: 'crafts/bamboo_lantern.webp',
+    description:
+      'A decorative lantern with a bamboo frame and polished glass panels. Its warm glow and natural charm make it a sought-after furnishing.',
+  },
+  {
+    id: 'amber_toffee',
+    name: 'Amber Toffee',
+    category: 'crafts',
+    subcategory: 'confectioner',
+    expectedPath: 'crafts/amber_toffee.webp',
+    description:
+      'Rich, chewy toffee made with amber sap\'s distinctive sweetness. The golden pieces have a deep, caramelized flavour with a hint of forest resin.',
+  },
+  {
+    id: 'saffron_tea',
+    name: 'Saffron Tea',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/saffron_tea.webp',
+    description:
+      'A golden-hued brew steeped with rare saffron petals and fresh spring water. The delicate floral aroma makes it a prized cup among tea connoisseurs.',
+  },
+  {
+    id: 'saffron_cloth',
+    name: 'Saffron Cloth',
+    category: 'crafts',
+    subcategory: 'loom',
+    expectedPath: 'crafts/saffron_cloth.webp',
+    description:
+      'A luxurious fabric dyed with precious saffron blossoms, producing a rich golden hue. Historically one of the most coveted natural dyes in the world.',
+  },
+  {
+    id: 'saffron_salve',
+    name: 'Saffron Salve',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/saffron_salve.webp',
+    description:
+      'A soothing herbal salve blending rare saffron petals with fragrant lavender and pure spring water. Known for its restorative and calming properties.',
+  },
+  {
+    id: 'saffron_syrup',
+    name: 'Saffron Syrup',
+    category: 'crafts',
+    subcategory: 'distillery',
+    expectedPath: 'crafts/saffron_syrup.webp',
+    description:
+      'A rich, golden syrup slowly distilled from saffron blossoms and sweetened with wildflower honey. Its intense colour and complex flavour elevate any dish.',
   },
   {
     id: 'pineapple_juice',
@@ -2080,6 +2286,33 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/yogurt_smoothie.webp',
     description:
       'Thick purple berry smoothie in a tall glass, blended with yogurt and honey. Fresh berries on top',
+  },
+  {
+    id: 'spring_water_tonic',
+    name: 'Spring Water Tonic',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/spring_water_tonic.webp',
+    description:
+      'Tall clear glass bottle of sparkling spring water infused with pale tea and floating sprigs of purple lavender, refreshing cartoon herbal tonic',
+  },
+  {
+    id: 'vanilla_tea',
+    name: 'Vanilla Tea',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/vanilla_tea.webp',
+    description:
+      'A fragrant blend of hand-picked tea leaves steeped with a whole vanilla orchid bloom. The honey rounds out the floral aroma into a smooth, luxurious cup.',
+  },
+  {
+    id: 'moonpetal_tea',
+    name: 'Moonpetal Tea',
+    category: 'crafts',
+    subcategory: 'tea_house',
+    expectedPath: 'crafts/moonpetal_tea.webp',
+    description:
+      'Pale fragrant moonpetal tea in a delicate cup, lightly sweetened with honey, elegant cartoon drink',
   },
 
   // === CRAFTS - Confectioner ===
@@ -2180,6 +2413,24 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/glowing_candy.webp',
     description:
       'Luminescent novelty sweet that glows softly. Translucent candy with a green/blue glow',
+  },
+  {
+    id: 'vanilla_bonbon',
+    name: 'Vanilla Bonbon',
+    category: 'crafts',
+    subcategory: 'confectioner',
+    expectedPath: 'crafts/vanilla_bonbon.webp',
+    description:
+      'Hand-rolled chocolate shells filled with a velvety vanilla orchid cream. Each bonbon is dusted with fine sugar for a delicate crunch.',
+  },
+  {
+    id: 'goldroot_confection',
+    name: 'Goldroot Confection',
+    category: 'crafts',
+    subcategory: 'confectioner',
+    expectedPath: 'crafts/goldroot_confection.webp',
+    description:
+      'Gilded chocolate confection with a sugar-spun shell and earthy goldroot center, premium cartoon sweet',
   },
 
   // === CRAFTS - Seasonal ===
@@ -2399,6 +2650,51 @@ export const items: ItemDefinition[] = [
     description:
       'A creamy herbal balm made from tea leaves infused into goat butter with lavender. A small tin of pale green salve.',
   },
+  {
+    id: 'vanilla_balm',
+    name: 'Vanilla Balm',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/vanilla_balm.webp',
+    description:
+      'A soothing herbal balm made by slowly infusing rare vanilla orchid petals into warm honey and spring water. Prized for its calming fragrance.',
+  },
+  {
+    id: 'moonpetal_perfume',
+    name: 'Moonpetal Perfume',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/moonpetal_perfume.webp',
+    description:
+      'Elegant perfume bottle with distilled moonpetal and lavender essence, soft floral cartoon apothecary item',
+  },
+  {
+    id: 'goldroot_tonic',
+    name: 'Goldroot Tonic',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/goldroot_tonic.webp',
+    description:
+      'Mineral-rich restorative tonic in a sturdy vial, warm golden liquid with subtle glow, cartoon potion',
+  },
+  {
+    id: 'ruby_vitality_tonic',
+    name: 'Ruby Vitality Tonic',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/ruby_vitality_tonic.webp',
+    description:
+      'Slim apothecary flask of fiery red elixir with crushed raw ruby flecks suspended inside, warm honey glow at the base and a cork stopper, cartoon potion',
+  },
+  {
+    id: 'sapphire_cooling_salve',
+    name: 'Sapphire Cooling Salve',
+    category: 'crafts',
+    subcategory: 'apothecary',
+    expectedPath: 'crafts/sapphire_cooling_salve.webp',
+    description:
+      'Open glass jar of cool blue salve flecked with crushed sapphire and lavender sprigs, soft frosty sheen, soothing cartoon apothecary balm',
+  },
 
   // === CRAFTS - Distillery ===
   {
@@ -2445,6 +2741,100 @@ export const items: ItemDefinition[] = [
     expectedPath: 'crafts/starlight_spirits.webp',
     description:
       'Ethereal distilled beverage made from starlight sap. A bottle with shimmering, starry liquid inside',
+  },
+
+  // === CRAFTS - Glassworks ===
+  {
+    id: 'stained_glass',
+    name: 'Stained Glass Pane',
+    category: 'crafts',
+    subcategory: 'glassworks',
+    expectedPath: 'crafts/stained_glass.webp',
+    description:
+      'Vibrant stained glass pane with saffron and night-blossom pigments, luminous cartoon craft',
+  },
+  {
+    id: 'moonpetal_vial',
+    name: 'Moonpetal Vial',
+    category: 'crafts',
+    subcategory: 'glassworks',
+    expectedPath: 'crafts/moonpetal_vial.webp',
+    description:
+      'Delicate hand-blown vial containing softly glowing moonpetal essence, refined cartoon glasswork',
+  },
+  {
+    id: 'prism_sculpture',
+    name: 'Prism Sculpture',
+    category: 'crafts',
+    subcategory: 'glassworks',
+    expectedPath: 'crafts/prism_sculpture.webp',
+    description:
+      'Precision-cut crystal prism sculpture with rainbow refraction sparkle, premium cartoon decor',
+  },
+  {
+    id: 'moonglass_decanter',
+    name: 'Moonglass Decanter',
+    category: 'crafts',
+    subcategory: 'glassworks',
+    expectedPath: 'crafts/moonglass_decanter.webp',
+    description:
+      'Luminous moonglass decanter shimmering with bottled starlight, elegant cartoon vessel',
+  },
+  {
+    id: 'diamond_dust_glaze',
+    name: 'Diamond Dust Glaze',
+    category: 'crafts',
+    subcategory: 'glassworks',
+    expectedPath: 'crafts/diamond_dust_glaze.webp',
+    description:
+      'Small open glassworks pot of clear starlight-sap glaze sparkling with crushed diamond shards, glittering rainbow facets catching the light, premium cartoon glaze',
+  },
+
+  // === CRAFTS - Jewelry Atelier ===
+  {
+    id: 'goldroot_bangle',
+    name: 'Goldroot Bangle',
+    category: 'crafts',
+    subcategory: 'jewelry_atelier',
+    expectedPath: 'crafts/goldroot_bangle.webp',
+    description:
+      'Polished bangle braided from refined goldroot fibers with amber setting, luxurious cartoon jewelry',
+  },
+  {
+    id: 'moonstone_ring',
+    name: 'Moonstone Ring',
+    category: 'crafts',
+    subcategory: 'jewelry_atelier',
+    expectedPath: 'crafts/moonstone_ring.webp',
+    description:
+      'Silver ring set with softly glowing moonstone quartz, delicate high-tier cartoon jewelry',
+  },
+  {
+    id: 'saffron_pendant',
+    name: 'Saffron Pendant',
+    category: 'crafts',
+    subcategory: 'jewelry_atelier',
+    expectedPath: 'crafts/saffron_pendant.webp',
+    description:
+      'Regal amber pendant framed in spun gold with saffron thread inside, ornate cartoon jewel',
+  },
+  {
+    id: 'crown_of_embers',
+    name: 'Crown of Embers',
+    category: 'crafts',
+    subcategory: 'jewelry_atelier',
+    expectedPath: 'crafts/crown_of_embers.webp',
+    description:
+      'Masterwork gilded crown with prism facets and ruby ember core, legendary cartoon jewelry',
+  },
+  {
+    id: 'sapphire_tiara',
+    name: 'Sapphire Tiara',
+    category: 'crafts',
+    subcategory: 'jewelry_atelier',
+    expectedPath: 'crafts/sapphire_tiara.webp',
+    description:
+      'Delicate silver tiara with thin scrollwork crowned by a single faceted cut sapphire, faint moonpetal essence haloing the gem, elegant cartoon jewelry',
   },
 
   // === CRAFTS - Clockmaker ===
@@ -2636,9 +3026,82 @@ export const items: ItemDefinition[] = [
   {
     id: 'explorer_crew',
     name: 'Explorer Crew',
-    category: 'misc',
+    category: 'explorer',
     expectedPath: 'misc/explorer_crew.webp',
     description: 'Group of three cartoon explorer figures with hats, adventure team',
+  },
+  {
+    id: 'explorer_gear_tool',
+    name: 'Tool',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_gear_tool.webp',
+    description:
+      'Simple cartoon handheld tool: short wooden handle with a small metal hoe or mattock head, neutral generic shape for the explorer tool gear slot, no text.',
+  },
+  {
+    id: 'explorer_gear_armor',
+    name: 'Armor',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_gear_armor.webp',
+    description:
+      'Simple cartoon explorer chest piece or padded vest silhouette, buckled straps, muted leather and cloth tones, generic armor gear slot icon, front-facing.',
+  },
+  {
+    id: 'explorer_gear_charm',
+    name: 'Charm',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_gear_charm.webp',
+    description:
+      'Simple cartoon charm pendant on a short cord: small round or teardrop talisman with a tiny soft magical sparkle, generic accessory for the explorer charm slot.',
+  },
+  {
+    id: 'explorer_tracker',
+    name: 'Tracker',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_tracker.webp',
+    description: 'Cartoon explorer badge with a bright magnifying glass, symbol for tracking and scouting.',
+  },
+  {
+    id: 'explorer_sprinter',
+    name: 'Sprinter',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_sprinter.webp',
+    description: 'Cartoon running boot with motion lines, symbol for fast sprinting explorer speed.',
+  },
+  {
+    id: 'explorer_sturdy',
+    name: 'Sturdy',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_sturdy.webp',
+    description: 'Cartoon metal shield with sturdy bolts, symbol for a tough, well-defended explorer.',
+  },
+  {
+    id: 'explorer_forager',
+    name: 'Forager',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_forager.webp',
+    description: 'Cartoon cluster of forest mushrooms in a small bundle, symbol for foraging in the wild.',
+  },
+  {
+    id: 'explorer_miner',
+    name: 'Miner',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_miner.webp',
+    description: 'Cartoon pickaxe over a small rock, symbol for digging and mining underground.',
+  },
+  {
+    id: 'explorer_herbalist',
+    name: 'Herbalist',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_herbalist.webp',
+    description: 'Cartoon sprig of green herbs with soft glow, symbol for healing plants and remedies.',
+  },
+  {
+    id: 'explorer_scavenger',
+    name: 'Scavenger',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_scavenger.webp',
+    description: 'Cartoon adventure backpack stuffed with gear, symbol for scavenging extra supplies.',
   },
   {
     id: 'shop_24h',
@@ -2655,11 +3118,26 @@ export const items: ItemDefinition[] = [
     description: 'Large blue cargo ship with containers, cartoon freight vessel',
   },
   {
+    id: 'truck_delivery',
+    name: 'Truck Delivery',
+    category: 'misc',
+    expectedPath: 'misc/truck_delivery.webp',
+    description: 'Large red delivery truck loaded with stacked boxes, cartoon freight vehicle',
+  },
+  {
     id: 'box',
     name: 'Box',
     category: 'misc',
     expectedPath: 'misc/box.webp',
     description: 'Brown wooden crate box with slats, simple cartoon container',
+  },
+  {
+    id: 'collect_all',
+    name: 'Collect All',
+    category: 'misc',
+    expectedPath: 'misc/collect_all.webp',
+    description:
+      'Small woven basket icon for a collect all animal products button, simple and readable cartoon style',
   },
   {
     id: 'wanted_board',
@@ -2797,9 +3275,23 @@ export const items: ItemDefinition[] = [
   {
     id: 'explorer',
     name: 'Explorer',
-    category: 'misc',
+    category: 'explorer',
     expectedPath: 'misc/explorer.webp',
     description: 'Cartoon explorer character with hat and backpack, adventure figure',
+  },
+  {
+    id: 'explorer_veteran',
+    name: 'Veteran',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_veteran.webp',
+    description: 'Cartoon gold star badge with subtle scratches, symbol for a seasoned veteran explorer.',
+  },
+  {
+    id: 'explorer_lucky',
+    name: 'Lucky',
+    category: 'explorer',
+    expectedPath: 'explorer/explorer_lucky.webp',
+    description: 'Cartoon four-leaf clover charm with soft glow, symbol for a very lucky explorer.',
   },
   {
     id: 'shrine',
@@ -2865,6 +3357,14 @@ export const items: ItemDefinition[] = [
     description: 'Purple glowing mystery box with question mark, cartoon surprise container',
   },
   {
+    id: 'surprise_gift_crate',
+    name: 'Surprise Gift Crate',
+    category: 'misc',
+    expectedPath: 'misc/surprise_gift_crate.webp',
+    description:
+      'Colorful wrapped crate with a big question mark, surprise gift that can randomly appear on the farm, cartoon game style',
+  },
+  {
     id: 'inbox',
     name: 'Inbox',
     category: 'misc',
@@ -2877,6 +3377,14 @@ export const items: ItemDefinition[] = [
     category: 'misc',
     expectedPath: 'misc/market.webp',
     description: 'Colorful market stall with awning and goods, cartoon shop stand',
+  },
+  {
+    id: 'market_scout',
+    name: 'Market Scout',
+    category: 'misc',
+    expectedPath: 'misc/market_scout.webp',
+    description:
+      'Chunky cartoon handheld brass spyglass, compact scout telescope with a leather wrap and a round glass lens, slightly tilted three-quarter view, single object, instantly readable at small size. No tripod, no mount, no stand, no person, no stars, no observatory, no text.',
   },
   {
     id: 'farmer_portrait',
@@ -3177,6 +3685,31 @@ export const items: ItemDefinition[] = [
     description:
       'Glowing greenish-teal star with sparkles, coop experience points icon, slightly different shade from regular star, cartoon farm game style',
   },
+  {
+    id: 'farm_hands',
+    name: 'Farm Hands',
+    category: 'misc',
+    expectedPath: 'misc/farm_hands.webp',
+    description:
+      'Friendly cartoon farm helper character with work gloves and straw hat, tending to crops and crafts, warm and reliable helper vibe, cozy farm game style',
+  },
+  {
+    id: 'coupon',
+    name: 'Coupon',
+    category: 'misc',
+    expectedPath: 'misc/coupon.webp',
+    description:
+      'Green perforated coupon ticket with checkmark symbol, instant order fill voucher, clean and readable at small size, cartoon farm game style',
+  },
+  {
+    id: 'scarecrow',
+    name: 'Scarecrow',
+    category: 'misc',
+    expectedPath: 'misc/scarecrow.webp',
+    description:
+      'Friendly game mascot scarecrow inspired by Hay Day — chunky cartoon straw figure with a big warm smile, rosy cheeks, and bright curious eyes. Worn patched overalls, floppy straw hat, straw arms slightly outstretched in a welcoming pose. Soft isometric three-quarter view, toy-like rounded proportions, cozy wholesome farm charm. Instantly lovable app-mascot energy, readable at small sizes, transparent background.',
+  },
+
   // === POTIONS ===
   {
     id: 'stamina_potion',
@@ -3192,6 +3725,22 @@ export const items: ItemDefinition[] = [
     expectedPath: 'potions/mission_potion.webp',
     description:
       'Glowing purple potion bottle with checkmark symbol, cartoon instant completion power-up',
+  },
+  {
+    id: 'smelting_potion',
+    name: 'Smelting Potion',
+    category: 'potions',
+    expectedPath: 'potions/smelting_potion.webp',
+    description:
+      'Glowing orange-red potion bottle with small refinery furnace emblem, boosts refinery crafting speed, cozy cartoon style',
+  },
+  {
+    id: 'helper_potion',
+    name: 'Helper Potion',
+    category: 'potions',
+    expectedPath: 'potions/helper_potion.webp',
+    description:
+      'Glowing warm golden potion bottle with small helping hands emblem, activates farm hands to tend crops and crafts while away, cozy cartoon style',
   },
 
   // === UPGRADES ===
@@ -3217,6 +3766,14 @@ export const items: ItemDefinition[] = [
     description: 'Gear with clock and speed lines, cartoon production upgrade',
   },
   {
+    id: 'forge_efficiency',
+    name: 'Forge Efficiency',
+    category: 'upgrades',
+    expectedPath: 'upgrades/forge_efficiency.webp',
+    description:
+      'Cartoon blacksmith forge with anvil, hammer, and orange sparks plus speed lines, upgrade icon for faster blacksmith crafting',
+  },
+  {
     id: 'animal_productivity',
     name: 'Animal Productivity',
     category: 'upgrades',
@@ -3229,6 +3786,13 @@ export const items: ItemDefinition[] = [
     category: 'upgrades',
     expectedPath: 'upgrades/order_board_boost.webp',
     description: 'Clipboard with checkmarks and star, cartoon order upgrade',
+  },
+  {
+    id: 'visitor_charm',
+    name: 'Visitor Charm',
+    category: 'upgrades',
+    expectedPath: 'upgrades/visitor_charm.webp',
+    description: 'Glowing lucky charm pendant with tiny footprints and clock, cartoon visitor speed upgrade',
   },
 
   // === LEADERBOARD ===
@@ -3252,6 +3816,13 @@ export const items: ItemDefinition[] = [
     category: 'leaderboard',
     expectedPath: 'leaderboard/boat_points.webp',
     description: 'Small boat with star badge, cartoon shipping achievement symbol',
+  },
+  {
+    id: 'truck_points',
+    name: 'Truck Points',
+    category: 'leaderboard',
+    expectedPath: 'leaderboard/truck_points.webp',
+    description: 'Delivery truck with star badge, cartoon truck order fulfillment achievement symbol',
   },
   {
     id: 'help_points',
@@ -3440,6 +4011,22 @@ export const items: ItemDefinition[] = [
     expectedPath: 'buildings/distillery.webp',
     description:
       'Elegant copper still operation with large distillation columns, oak aging barrels, wine casks, amber liquids flowing through glass tubes',
+  },
+  {
+    id: 'glassworks',
+    name: 'Glassworks',
+    category: 'buildings',
+    expectedPath: 'buildings/glassworks.webp',
+    description:
+      'Specialized glassmaking workshop with furnace kilns, stained panes, and shaping benches, premium cartoon building',
+  },
+  {
+    id: 'jewelry_atelier',
+    name: 'Jewelry Atelier',
+    category: 'buildings',
+    expectedPath: 'buildings/jewelry_atelier.webp',
+    description:
+      'Elegant jewelcraft atelier with gem-setting tables, precious metal tools, and display cases, high-tier cartoon building',
   },
   {
     id: 'clockmaker',
@@ -3691,6 +4278,22 @@ export const items: ItemDefinition[] = [
     category: 'events-boosts',
     expectedPath: 'events-boosts/event_weekend_market.webp',
     description: 'Golden shopping cart overflowing with coins, cartoon event icon for market bonus',
+  },
+  {
+    id: 'event_lucky_catch',
+    name: 'Lucky Catch',
+    category: 'events-boosts',
+    expectedPath: 'events-boosts/event_lucky_catch.webp',
+    description:
+      'Fishing rod with double XP sparkles and lucky fish, cartoon event icon for active double fishing XP event',
+  },
+  {
+    id: 'event_highway_haul_day',
+    name: 'Highway Haul Day',
+    category: 'events-boosts',
+    expectedPath: 'events-boosts/event_highway_haul_day.webp',
+    description:
+      'Friendly cartoon delivery truck on a road with double coin and reward sparkles, event icon for double truck delivery rewards',
   },
 
   // Boost Items
@@ -3972,6 +4575,832 @@ export const items: ItemDefinition[] = [
       'Family of three snowmen decoration - parent snowmen and child. Each wearing colorful scarves, carrot noses, coal buttons, stick arms.',
   },
 
+  // === SEASON PASS - MARCH 2026 ===
+  {
+    id: 'sp_2026_03_header',
+    name: 'Header Banner',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/header.webp',
+    description:
+      'Modal header banner for Spring Bloom season. Spring farm scene with "Spring Bloom" text, cherry blossom petals falling gently, cozy farmhouse in background.',
+  },
+  {
+    id: 'sp_2026_03_farm_bg',
+    name: 'Farm Background',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/farm-bg.webp',
+    description:
+      'Premium farm background with lush green grass, spring trees with blossoming branches, subtle cherry blossom petals drifting down. Seasonal ambiance without being distracting. Grid-compatible layout for farm plots.',
+  },
+  {
+    id: 'sp_2026_03_farm_bg_decoration',
+    name: 'Farm BG Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/farm-bg-decoration.webp',
+    description:
+      'Horizontal decoration strip with spring flowers, vines, and butterflies. Semi-transparent overlay for the bottom of the farm view.',
+  },
+  {
+    id: 'sp_2026_03_farm_bg_slot',
+    name: 'Farm BG Empty Slot',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/farm-bg-slot.webp',
+    description:
+      'Empty farm plot with spring flowers around the border, fresh tilled earth, small sprouts. Matches the spring background theme.',
+  },
+  {
+    id: 'sp_2026_03_border',
+    name: 'Avatar Border',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/border.webp',
+    description:
+      'Circular avatar frame made of intertwined flower vines, small cherry blossoms, and green leaves. Flower Crown style — delicate and spring-like.',
+  },
+  {
+    id: 'sp_2026_03_badge',
+    name: 'Season Badge',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/badge.webp',
+    description:
+      'Small participant badge shaped like a cherry blossom medal without text. Simple elegant design with soft pink and green coloring and subtle shimmer, no text.',
+  },
+  {
+    id: 'sp_2026_03_trophy',
+    name: 'Trophy',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/trophy.webp',
+    description:
+      'Decorative garden trophy/pedestal with spring flowers growing around it, a golden cup with cherry blossom motif. Farm decoration style.',
+  },
+  {
+    id: 'sp_2026_03_cherry_blossom_tree',
+    name: 'Cherry Blossom Tree',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/cherry-blossom-tree.webp',
+    description:
+      'Beautiful cherry blossom tree in full bloom, pink petals, some petals falling. Farm decoration that sits on a plot.',
+  },
+  {
+    id: 'sp_2026_03_spring_flower_garden',
+    name: 'Flower Garden',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/spring-flower-garden.webp',
+    description:
+      'Lush garden bed with colorful spring flowers — tulips, daffodils, hyacinths. Decorative fence or border around it.',
+  },
+  {
+    id: 'sp_2026_03_butterfly_garden',
+    name: 'Butterfly Garden',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/butterfly-garden.webp',
+    description:
+      'Garden with flowers and multiple colorful butterflies hovering. Small decorative fence, butterfly-friendly plants.',
+  },
+  {
+    id: 'sp_2026_03_spring_fountain',
+    name: 'Spring Fountain',
+    category: 'season-pass',
+    subcategory: '2025-03-spring-bloom',
+    expectedPath: 'season-pass/2025-03-spring-bloom/spring-fountain.webp',
+    description:
+      'Ornamental garden fountain with water flowing, surrounded by spring flowers and vines. Stone base with moss.',
+  },
+
+  // === SEASON PASS - APRIL 2025 (BLOSSOM FESTIVAL) ===
+  {
+    id: 'blossom_festival_header',
+    name: 'Blossom Festival Header',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/header.webp',
+    description:
+      'Modal header banner for Blossom Festival season. Twilight festival scene with "Blossom Festival" text, glowing lantern strings, parade bunting, drifting petals, and a warm sunset-to-evening sky.',
+  },
+  {
+    id: 'blossom_festival_bg',
+    name: 'Blossom Festival Farm Background',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/farm-bg.webp',
+    description:
+      'Full farm map backdrop themed like a spring night festival. Lantern glow, parade banners, blossom-lined paths, and pop-up stalls around the playable farm grid without blocking plot readability.',
+  },
+  {
+    id: 'blossom_festival_bg_decoration',
+    name: 'Blossom Festival Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/farm-bg-decoration.webp',
+    description:
+      'Horizontal decorative strip with paper lanterns, tassels, bunting, and scattered petals that blends into the Blossom Festival background.',
+  },
+  {
+    id: 'blossom_festival_bg_slot',
+    name: 'Blossom Festival Empty Slot',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/farm-bg-slot.webp',
+    description:
+      'Empty farm slot with festive paving, lantern glow accents, and subtle petals while still clearly reading as a buildable tile.',
+  },
+  {
+    id: 'sakura_frame_border',
+    name: 'Sakura Frame Avatar Border',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/border.webp',
+    description:
+      'Circular festival frame with sakura blossoms, tassels, and tiny lantern accents. Transparent center, readable even at small profile sizes.',
+  },
+  {
+    id: 'blossom_festival_badge',
+    name: 'Blossom Festival Badge',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/badge.webp',
+    description:
+      'Compact blossom medal with a flower crest and subtle gold trim. Clean silhouette for badge collections and profile displays.',
+  },
+  {
+    id: 'blossom_festival_trophy',
+    name: 'Blossom Festival Trophy',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/trophy.webp',
+    description:
+      'Elegant festival trophy or shrine-like pedestal with lantern charms, blossom details, and a celebratory gold centerpiece.',
+  },
+  {
+    id: 'sakura_lantern_cart',
+    name: 'Sakura Lantern Cart',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/sakura-lantern-cart.webp',
+    description:
+      'Small wooden cart decorated with glowing paper lanterns, blossom branches, and festival ribbons. Should feel like a market prop on a single farm plot.',
+  },
+  {
+    id: 'festival_gate',
+    name: 'Festival Gate',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/festival-gate.webp',
+    description:
+      'Decorative festival entry gate with hanging flowers, banners, and lanterns. Reads as a celebratory spring landmark rather than a quiet garden piece.',
+  },
+  {
+    id: 'petal_wagon',
+    name: 'Petal Wagon',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/petal-wagon.webp',
+    description:
+      'A parade wagon overflowing with petals, festival crates, and bright cloth accents. Cozy, festive, and colorful without becoming visually noisy.',
+  },
+  {
+    id: 'hanami_stage',
+    name: 'Hanami Stage',
+    category: 'season-pass',
+    subcategory: '2025-04-blossom-festival',
+    expectedPath: 'season-pass/2025-04-blossom-festival/hanami-stage.webp',
+    description:
+      'Raised blossom-viewing stage with lantern poles, fabric banners, and a public celebration feel, more festival square than garden picnic.',
+  },
+
+  // === SEASON PASS - MAY 2026 (VERDANT VALLEY) ===
+  {
+    id: 'verdant_valley_header',
+    name: 'Verdant Valley Header',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/header.webp',
+    description:
+      'Modal header banner for Verdant Valley season. Lush valley scene with "Verdant Valley" text, overgrown greenery and ivy accents, distant rolling hills, and soft dawn light. Keep the left side readable for title text overlay.',
+  },
+  {
+    id: 'verdant_valley_bg',
+    name: 'Verdant Valley Farm Background',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/farm-bg.webp',
+    description:
+      'Full farm map backdrop themed as a wild spring valley. Dense foliage, mossy stones, and winding paths that keep crop plots readable.',
+  },
+  {
+    id: 'verdant_valley_bg_decoration',
+    name: 'Verdant Valley Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/farm-bg-decoration.webp',
+    description:
+      'Horizontal strip with ferns, ivy, stones, and tiny wildflowers that blends into the Verdant Valley background.',
+  },
+  {
+    id: 'verdant_valley_bg_slot',
+    name: 'Verdant Valley Empty Slot',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/farm-bg-slot.webp',
+    description:
+      'Empty farm slot with mossy earth and subtle vine accents while still clearly reading as a buildable tile.',
+  },
+  {
+    id: 'ivy_ring_border',
+    name: 'Ivy Ring Avatar Border',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/border.webp',
+    description:
+      'Circular ivy-and-vine ring with tiny blossoms. Transparent center and clean silhouette for profile readability.',
+  },
+  {
+    id: 'verdant_valley_badge',
+    name: 'Verdant Valley Badge',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/badge.webp',
+    description:
+      'Compact leaf crest medallion with a bright green core and subtle gold trim.',
+  },
+  {
+    id: 'verdant_valley_trophy',
+    name: 'Verdant Valley Trophy',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/trophy.webp',
+    description:
+      'Stone-and-vine harvest trophy with a glowing leaf emblem and celebratory trim.',
+  },
+  {
+    id: 'ivy_stone_arch',
+    name: 'Ivy Stone Arch',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/ivy-stone-arch.webp',
+    description:
+      'A weathered stone arch wrapped in ivy and fresh growth, readable on a single farm tile.',
+  },
+  {
+    id: 'fernstone_pathway',
+    name: 'Fernstone Pathway',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/fernstone-pathway.webp',
+    description:
+      'Decorative pathway segment made of mossy stones and dense ferns, designed as a grounded map prop.',
+  },
+  {
+    id: 'mossy_waterwheel',
+    name: 'Mossy Waterwheel',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/mossy-waterwheel.webp',
+    description:
+      'Rustic wooden waterwheel with creeping moss and gentle valley-cottage styling.',
+  },
+  {
+    id: 'wildflower_glade',
+    name: 'Wildflower Glade',
+    category: 'season-pass',
+    subcategory: '2026-05-verdant-valley',
+    expectedPath: 'season-pass/2026-05-verdant-valley/wildflower-glade.webp',
+    description:
+      'A dense patch of layered wildflowers, rocks, and shrubs that feels naturally overgrown but not noisy.',
+  },
+
+  // === SEASON PASS - JUNE 2026 (HONEY HOLLOW) ===
+  {
+    id: 'honey_hollow_header',
+    name: 'Honey Hollow Header',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/header.webp',
+    description:
+      'Modal header banner for Honey Hollow season. Golden-hour hollow scene with "Honey Hollow" text, sunflower fields in the foreground, hillside beehives, honey jars on a crate, fireflies at dusk, and warm peach-to-blue sky. Keep the left side readable for title text overlay.',
+  },
+  {
+    id: 'honey_hollow_bg',
+    name: 'Honey Hollow Farm Background',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/farm-bg.webp',
+    description:
+      'Rolling meadow farm at golden hour. Sunflower borders along paths, distant beehives, warm peach-to-blue sky. Crop plots must stay readable.',
+  },
+  {
+    id: 'honey_hollow_bg_decoration',
+    name: 'Honey Hollow Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/farm-bg-decoration.webp',
+    description:
+      'Horizontal strip with sunflowers, honeycomb trim, and scattered wildflowers that blends into the Honey Hollow background.',
+  },
+  {
+    id: 'honey_hollow_bg_slot',
+    name: 'Honey Hollow Empty Slot',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/farm-bg-slot.webp',
+    description:
+      'Empty farm slot with warm tilled earth and subtle sunflower or honey accents while still clearly reading as a buildable tile.',
+  },
+  {
+    id: 'honeycomb_crown_border',
+    name: 'Honeycomb Crown Avatar Border',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/border.webp',
+    description:
+      'Circular honeycomb hex ring with tiny bees and sunflower accents. Transparent center and clean silhouette for profile readability.',
+  },
+  {
+    id: 'honey_hollow_badge',
+    name: 'Honey Hollow Badge',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/badge.webp',
+    description:
+      'Compact honey dipper and sunflower crest with gold and amber tones.',
+  },
+  {
+    id: 'honey_hollow_trophy',
+    name: 'Honey Hollow Trophy',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/trophy.webp',
+    description:
+      'Golden harvest trophy on a honey barrel with a sunflower wreath. Farm decoration style, single plot.',
+  },
+  {
+    id: 'golden_beehive',
+    name: 'Golden Beehive',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/golden-beehive.webp',
+    description:
+      'Ornate painted beehive with bees circling. Cozy centerpiece readable on a single farm tile.',
+  },
+  {
+    id: 'sunflower_row',
+    name: 'Sunflower Row',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/sunflower-row.webp',
+    description:
+      'Dense row of tall sunflowers along a wooden fence. Grounded edge or pathway prop.',
+  },
+  {
+    id: 'honey_market_stand',
+    name: 'Honey Market Stand',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/honey-market-stand.webp',
+    description:
+      'Small wooden market stand with honey jars, comb display, and sunflowers.',
+  },
+  {
+    id: 'picnic_pavilion',
+    name: 'Picnic Pavilion',
+    category: 'season-pass',
+    subcategory: '2026-06-honey-hollow',
+    expectedPath: 'season-pass/2026-06-honey-hollow/picnic-pavilion.webp',
+    description:
+      'Open gazebo with checkered cloth, harvest baskets, and subtle fireflies at dusk.',
+  },
+
+  // === SEASON PASS - JULY 2026 (SUNNY SHORES) ===
+  {
+    id: 'sunny_shores_header',
+    name: 'Sunny Shores Header',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/header.webp',
+    description:
+      'Modal header banner for Sunny Shores season. Wide beach panorama with shoreline, palm shade, and bright summer sky evoking a sunny cove. Ocean blue, sandy gold, and foam tones. Keep the left side readable for title text overlay.',
+  },
+  {
+    id: 'sunny_shores_bg',
+    name: 'Sunny Shores Farm Background',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/farm-bg.webp',
+    description:
+      'Sandy beachside farm with rolling waves at the edge, palm shade, and bright summer sky. Crop plots must stay readable. Palette: ocean blue, deep teal, sandy gold, foam.',
+  },
+  {
+    id: 'sunny_shores_bg_decoration',
+    name: 'Sunny Shores Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/farm-bg-decoration.webp',
+    description:
+      'Horizontal beach trim strip with shells, driftwood, and sandy accents that blends into the Sunny Shores background.',
+  },
+  {
+    id: 'sunny_shores_bg_slot',
+    name: 'Sunny Shores Empty Slot',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/farm-bg-slot.webp',
+    description:
+      'Sand-toned empty farm slot overlay with subtle shell or wave accents while still clearly reading as a buildable tile.',
+  },
+  {
+    id: 'seabreeze_crown_border',
+    name: 'Seabreeze Crown Avatar Border',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/border.webp',
+    description:
+      'Circular ring of seashells, starfish, and gentle waves. Transparent center and clean silhouette for profile readability.',
+  },
+  {
+    id: 'sunny_shores_badge',
+    name: 'Sunny Shores Badge',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/badge.webp',
+    description:
+      'Compact sun-and-wave emblem with ocean blue, sandy gold, and foam tones.',
+  },
+  {
+    id: 'sunny_shores_trophy',
+    name: 'Sunny Shores Trophy',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/trophy.webp',
+    description:
+      'Golden trophy with a beach and sun motif. Farm decoration style, single plot.',
+  },
+  {
+    id: 'beach_umbrella',
+    name: 'Beach Umbrella',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/beach-umbrella.webp',
+    description:
+      'Striped beach parasol over a towel. Epic premium decoration, readable on a single farm tile.',
+  },
+  {
+    id: 'seashell_path',
+    name: 'Seashell Path',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/seashell-path.webp',
+    description:
+      'Winding trail of scattered seashells along sandy ground. Rare free-track pathway prop.',
+  },
+  {
+    id: 'tide_pool',
+    name: 'Tide Pool',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/tide-pool.webp',
+    description:
+      'Rocky tide pool with starfish and anemones in clear shallow water. Epic premium decoration.',
+  },
+  {
+    id: 'boardwalk_stand',
+    name: 'Boardwalk Stand',
+    category: 'season-pass',
+    subcategory: '2026-07-sunny-shores',
+    expectedPath: 'season-pass/2026-07-sunny-shores/boardwalk-stand.webp',
+    description:
+      'Wooden beach snack and drink stand on a boardwalk. Epic premium decoration, readable on a single farm tile.',
+  },
+
+  // === SEASON PASS - AUGUST 2026 (HARVEST FAIR) ===
+  {
+    id: 'harvest_fair_header',
+    name: 'Harvest Fair Header',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/header.webp',
+    description:
+      'Modal header banner for Harvest Fair season. Fairground skyline with colorful bunting, distant ferris wheel, warm golden-hour dusk sky. Carnival red, warm gold, teal accents, cream tones. Keep the left side readable for title text overlay. Festive small-town county fair mood.',
+  },
+  {
+    id: 'harvest_fair_bg',
+    name: 'Harvest Fair Farm Background',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/farm-bg.webp',
+    description:
+      'Farm dressed for the county fair — triangular bunting, prize ribbons, ferris wheel on the horizon, warm golden-hour light. Crop plots must stay readable. Palette: carnival red #D4473E, deep red #A8322B, warm gold #F2B33D, teal #2E9BA6, cream #FFF3E6.',
+  },
+  {
+    id: 'harvest_fair_bg_decoration',
+    name: 'Harvest Fair Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/farm-bg-decoration.webp',
+    description:
+      'Horizontal wooden fair-stall texture strip with bunting and ribbon accents that blends into the Harvest Fair farm background.',
+  },
+  {
+    id: 'harvest_fair_bg_slot',
+    name: 'Harvest Fair Empty Slot',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/farm-bg-slot.webp',
+    description:
+      'Fairground dirt and grass empty farm slot overlay — subtle trodden earth plot while still clearly reading as a buildable tile.',
+  },
+  {
+    id: 'fair_champion_border',
+    name: 'Fair Champion Avatar Border',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/border.webp',
+    description:
+      'Circular avatar border with blue prize ribbon crowned with fair string lights and gold stars. Transparent center, clean silhouette for profile readability. Carnival red and warm gold accents.',
+  },
+  {
+    id: 'harvest_fair_badge',
+    name: 'Harvest Fair Badge',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/badge.webp',
+    description:
+      'Compact blue-ribbon rosette emblem with subtle fair motif. Carnival red, warm gold, teal accents. Season completion badge.',
+  },
+  {
+    id: 'harvest_fair_trophy',
+    name: 'Harvest Fair Trophy',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/trophy.webp',
+    description:
+      'Grand blue-ribbon cup trophy on a wooden fair plinth. Farm decoration style, single plot, readable at small sizes.',
+  },
+  {
+    id: 'ferris_wheel',
+    name: 'Ferris Wheel',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/ferris-wheel.webp',
+    description:
+      'Cheerful county fair ferris wheel with warm glowing bulb lights. Epic premium decoration, isometric farm tile, readable on a single plot.',
+  },
+  {
+    id: 'bunting_fence',
+    name: 'Bunting Fence',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/bunting-fence.webp',
+    description:
+      'Wooden rail fence strung with colorful triangular carnival bunting flags. Rare free-track decoration, isometric farm tile.',
+  },
+  {
+    id: 'pie_booth',
+    name: 'Pie Booth',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/pie-booth.webp',
+    description:
+      'County fair baking table with golden pies and a blue first-prize ribbon. Epic premium decoration, isometric farm tile.',
+  },
+  {
+    id: 'prize_ribbon_stand',
+    name: 'Prize Ribbon Stand',
+    category: 'season-pass',
+    subcategory: '2026-08-harvest-fair',
+    expectedPath: 'season-pass/2026-08-harvest-fair/prize-ribbon-stand.webp',
+    description:
+      'Display board of blue and gold prize rosettes and small fair trophies. Epic premium decoration, isometric farm tile.',
+  },
+
+  // === SEASON PASS - SEPTEMBER 2026 (GOLDEN GROVE) ===
+  {
+    id: 'golden_grove_header',
+    name: 'Golden Grove Header',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/header.webp',
+    description:
+      'Modal header banner for Golden Grove season. Wide orchard panorama of golden apple trees, drifting autumn leaves, warm afternoon light. Ripe apples, amber canopy, earth-toned groves. Keep the left side readable for title text overlay. Cozy harvest-orchard mood.',
+  },
+  {
+    id: 'golden_grove_bg',
+    name: 'Golden Grove Farm Background',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/farm-bg.webp',
+    description:
+      'Sun-dappled orchard farm — golden canopy at the edges, cider barrels, scattered autumn leaves, warm afternoon light. Crop plots must stay readable. Palette: ripe apple red, amber gold, oak brown, cream, warm leaf yellow.',
+  },
+  {
+    id: 'golden_grove_bg_decoration',
+    name: 'Golden Grove Decoration Bar',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/farm-bg-decoration.webp',
+    description:
+      'Horizontal autumn trim strip with golden leaves, acorns, and ripe apples that blends into the Golden Grove farm background.',
+  },
+  {
+    id: 'golden_grove_bg_slot',
+    name: 'Golden Grove Empty Slot',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/farm-bg-slot.webp',
+    description:
+      'Leaf-strewn earth-toned empty farm slot overlay — orchard soil and scattered golden leaves while still clearly reading as a buildable tile.',
+  },
+  {
+    id: 'gilded_leaf_border',
+    name: 'Gilded Leaf Avatar Border',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/border.webp',
+    description:
+      'Circular avatar border wreath of golden leaves, acorns, and ripe apples. Transparent center, clean silhouette for profile readability. Amber gold and apple-red accents.',
+  },
+  {
+    id: 'golden_grove_badge',
+    name: 'Golden Grove Badge',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/badge.webp',
+    description:
+      'Compact golden leaf-and-apple emblem. Amber gold, ripe apple red, oak brown accents. Season completion badge.',
+  },
+  {
+    id: 'golden_grove_trophy',
+    name: 'Golden Grove Trophy',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/trophy.webp',
+    description:
+      'Golden trophy with a gilded apple motif. Farm decoration style, single plot, readable at small sizes.',
+  },
+  {
+    id: 'cider_press',
+    name: 'Cider Press',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/cider-press.webp',
+    description:
+      'Oak barrel cider press with fresh apples and a jug of cider. Epic premium decoration, isometric farm tile, readable on a single plot.',
+  },
+  {
+    id: 'leafy_lane',
+    name: 'Leafy Lane',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/leafy-lane.webp',
+    description:
+      'Winding path blanketed in golden autumn leaves. Rare free-track pathway prop, isometric farm tile.',
+  },
+  {
+    id: 'apple_cart',
+    name: 'Apple Cart',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/apple-cart.webp',
+    description:
+      'Wooden cart piled high with red-gold apples. Epic premium decoration, isometric farm tile, readable on a single plot.',
+  },
+  {
+    id: 'orchard_swing',
+    name: 'Orchard Swing',
+    category: 'season-pass',
+    subcategory: '2026-09-golden-grove',
+    expectedPath: 'season-pass/2026-09-golden-grove/orchard-swing.webp',
+    description:
+      'Cozy rope swing hanging from a golden-leaved bough. Epic premium decoration, isometric farm tile, readable on a single plot.',
+  },
+
+  // === AMBIENT SEASON ===
+  {
+    id: 'ambient_winter_knit_hat',
+    name: 'Winter Knit Hat',
+    category: 'ambient-season',
+    subcategory: 'winter',
+    expectedPath: 'assets/images/seasons/ambient/winter/knit-hat.webp',
+    description:
+      'Tiny knit beanie with a pompom drawn as worn on a head (wearer removed), generic ¾ angle. Soft wool, rounded crown, chunky pompom. Centered with ~10% padding. No ground shadow. Survives horizontal flip. 256×256, transparent background. Readable at ~15–28px.',
+  },
+  {
+    id: 'ambient_winter_snow_drift_1',
+    name: 'Snow Drift 1',
+    category: 'ambient-season',
+    subcategory: 'winter',
+    expectedPath: 'assets/images/seasons/ambient/winter/snow-drift-1.webp',
+    description:
+      'A small mound of soft fresh snow with a few pale blue shadows and tiny sparkles, drawn as a single self-contained heap. Compact mound roughly as tall as it is wide — fills ~90% of canvas width and at least 85% of canvas height. Base flush with the bottom edge, no gap, no ground line. Broad at the base, narrowing as it rises, uneven natural silhouette. Two or three large soft snowflakes hover above the heap with clear gaps between them. Five to eight large clearly separated snow shapes, not a fine texture. Roughly symmetrical left to right. 256×256 square, transparent background. No card, no strip, no band.',
+  },
+  {
+    id: 'ambient_winter_snow_drift_2',
+    name: 'Snow Drift 2',
+    category: 'ambient-season',
+    subcategory: 'winter',
+    expectedPath: 'assets/images/seasons/ambient/winter/snow-drift-2.webp',
+    description:
+      'Second snow mound variant — same compact heap, slightly different silhouette. Soft fresh snow with pale blue shadows and tiny sparkles. Fills ~90% width and at least 85% height, base flush with the bottom edge. Two or three large soft snowflakes mid-air above the heap. Five to eight large snow shapes, roughly symmetrical. 256×256 square, transparent background. No strip, no band, no card.',
+  },
+  {
+    id: 'ambient_spring_flower_crown',
+    name: 'Flower Crown',
+    category: 'ambient-season',
+    subcategory: 'spring',
+    expectedPath: 'assets/images/seasons/ambient/spring/flower-crown.webp',
+    description:
+      'Small daisy-and-pink-blossom flower crown drawn as worn on a head (wearer removed), generic ¾ angle. Sits on top of an animal head. Centered with ~10% padding. No ground shadow. Survives horizontal flip. 256×256, transparent background. Readable at ~15–28px.',
+  },
+  {
+    id: 'ambient_spring_garland_1',
+    name: 'Garland 1',
+    category: 'ambient-season',
+    subcategory: 'spring',
+    expectedPath: 'assets/images/seasons/ambient/spring/garland-1.webp',
+    description:
+      'A small cluster of flowers and green leaves — daisies, pink blossoms, curling vines — drawn as a single self-contained mound. Compact heap roughly as tall as it is wide — fills ~90% of canvas width and at least 85% of canvas height. Base flush with the bottom edge, no gap, no ground line. Two or three loose blossom petals drifting above the heap with clear gaps. Five to eight large clearly separated blooms and leaves, not a fine texture. Roughly symmetrical left to right. 256×256 square, transparent background. No card, no strip, no band.',
+  },
+  {
+    id: 'ambient_spring_garland_2',
+    name: 'Garland 2',
+    category: 'ambient-season',
+    subcategory: 'spring',
+    expectedPath: 'assets/images/seasons/ambient/spring/garland-2.webp',
+    description:
+      'Second flower-cluster variant — sparser blooms, different mix (more vines, fewer daisies). Same compact mound: ~90% width, at least 85% height, base flush with the bottom edge. Two or three loose blossom petals drifting above. Five to eight large shapes, roughly symmetrical. 256×256 square, transparent background. No strip, no band, no card.',
+  },
+  {
+    id: 'ambient_summer_sunglasses',
+    name: 'Sunglasses',
+    category: 'ambient-season',
+    subcategory: 'summer',
+    expectedPath: 'assets/images/seasons/ambient/summer/sunglasses.webp',
+    description:
+      'Chunky rounded black sunglasses drawn as worn on a face (wearer removed), generic ¾ angle — the Hay Day pig-in-sunglasses moment. Centered with ~10% padding. No ground shadow. Survives horizontal flip. 256×256, transparent background. Readable at ~15–28px.',
+  },
+  {
+    id: 'ambient_summer_hay_bale_1',
+    name: 'Hay Bale 1',
+    category: 'ambient-season',
+    subcategory: 'summer',
+    expectedPath: 'assets/images/seasons/ambient/summer/hay-bale-1.webp',
+    description:
+      'A round golden hay bale seen from the side, drawn as a single self-contained mound. Pale sun-bleached yellow straw — not amber, not burnt orange, not harvest-red (those belong to autumn). Compact heap roughly as tall as it is wide — fills ~90% of canvas width and at least 85% of canvas height. Base flush with the bottom edge, no gap, no ground line. Two or three loose straw stalks drifting above the bale with clear gaps. Chunky wrapped coils of straw, not a fine texture. Roughly symmetrical left to right. 256×256 square, transparent background. No card, no strip, no band.',
+  },
+  {
+    id: 'ambient_summer_hay_bale_2',
+    name: 'Hay Bale 2',
+    category: 'ambient-season',
+    subcategory: 'summer',
+    expectedPath: 'assets/images/seasons/ambient/summer/hay-bale-2.webp',
+    description:
+      'Two stacked square straw bales, centered, with two or three white daisies tucked into the binding twine. Pale sun-bleached yellow straw — not amber, not burnt orange, not harvest-red. Compact stack roughly as tall as it is wide — fills ~90% of canvas width and at least 85% of canvas height. Base flush with the bottom edge, no gap, no ground line. Two or three loose straw stalks or daisy petals drifting above with clear gaps. Chunky bale shapes, not a fine texture. Roughly symmetrical left to right. 256×256 square, transparent background. No card, no strip, no band.',
+  },
+  {
+    id: 'ambient_autumn_straw_hat',
+    name: 'Straw Hat',
+    category: 'ambient-season',
+    subcategory: 'autumn',
+    expectedPath: 'assets/images/seasons/ambient/autumn/straw-hat.webp',
+    description:
+      'Little straw sun hat drawn as worn on a head (wearer removed), generic ¾ angle. Wide floppy brim, rounded crown, warm golden straw with a russet or brown band. The brim is what makes it read as harvest rather than winter. Centered with ~10% padding. No ground shadow. Survives horizontal flip. 256×256, transparent background. Readable at ~15–28px.',
+  },
+  {
+    id: 'ambient_autumn_leaf_pile_1',
+    name: 'Leaf Pile 1',
+    category: 'ambient-season',
+    subcategory: 'autumn',
+    expectedPath: 'assets/images/seasons/ambient/autumn/leaf-pile-1.webp',
+    description:
+      'A small heap of fallen autumn leaves in amber, burnt orange and deep red, drawn as a single self-contained mound. Compact heap roughly as tall as it is wide — fills ~90% of canvas width and at least 85% of canvas height. Base flush with the bottom edge, no gap, no ground line. Two or three single maple leaves tumbling above the heap with clear gaps. Five to eight large clearly separated leaves, not twenty tiny ones. Roughly symmetrical left to right. 256×256 square, transparent background. No card, no strip, no band.',
+  },
+  {
+    id: 'ambient_autumn_leaf_pile_2',
+    name: 'Leaf Pile 2',
+    category: 'ambient-season',
+    subcategory: 'autumn',
+    expectedPath: 'assets/images/seasons/ambient/autumn/leaf-pile-2.webp',
+    description:
+      'Reference-shape leaf mound — fills ~98% width and ~86% height, flush to the bottom edge, with three maple leaves mid-tumble above it. Compact heap of five to eight large amber, burnt-orange and deep-red leaves, roughly as tall as it is wide. Roughly symmetrical. 256×256 square, transparent background. No strip, no band, no card.',
+  },
+  {
+    id: 'ambient_holiday_santa_hat',
+    name: 'Santa Hat',
+    category: 'ambient-season',
+    subcategory: 'holiday-week',
+    expectedPath: 'assets/images/seasons/ambient/holiday-week/santa-hat.webp',
+    description:
+      'Classic red santa hat with white trim and a white pompom, drawn as worn on a head (wearer removed), generic ¾ angle. Centered with ~10% padding. No ground shadow. Survives horizontal flip. 256×256, transparent background. Readable at ~15–28px.',
+  },
+
   // === AVATAR BORDERS ===
   {
     id: 'golden_harvest_border',
@@ -3996,6 +5425,14 @@ export const items: ItemDefinition[] = [
     expectedPath: 'avatar-border/rustic_barn.webp',
     description:
       'Weathered wood planks circular frame from the old barn, rustic brown tones with nail details and aged texture, cartoon avatar border for farm game',
+  },
+  {
+    id: 'staff_member_border',
+    name: 'Staff Member Border',
+    category: 'avatar-border',
+    expectedPath: 'avatar-border/staff_member.webp',
+    description:
+      'Premium circular avatar border for game staff members. Thick dark navy blue ring with polished gold outer trim and thin vibrant cyan inner glow. Ornate gold shield crest at top with five-pointed gold star and STAFF text in gold serif caps. Horizontal gold nameplate banner at bottom with STAFF MEMBER in gold caps. Stylized gold wing or laurel ornaments on left and right sides, each with a glowing cyan diamond gem. Regal authoritative aesthetic with metallic gold highlights and magical cyan energy glow. Transparent center for user profile photo.',
   },
 
   // === COOP ===
@@ -4402,6 +5839,1660 @@ export const items: ItemDefinition[] = [
     description:
       'A stunning night sky with colorful northern lights. The ultimate coop prestige item. Dark night sky with vibrant aurora borealis in purple, green, and pink gradients. Stars twinkling. Ethereal and beautiful. Should tile/work as a farm background.',
   },
+
+  // === SHOP - Diamond Packages ===
+  {
+    id: 'diamond_pack_small',
+    name: 'Small Diamond Pack',
+    category: 'shop',
+    expectedPath: 'shop/diamond_pack_small.webp',
+    description:
+      'A small pile of sparkling blue diamonds, about 5-6 brilliant cut gems loosely scattered, cartoon game shop icon',
+  },
+  {
+    id: 'diamond_pack_medium',
+    name: 'Medium Diamond Pack',
+    category: 'shop',
+    expectedPath: 'shop/diamond_pack_medium.webp',
+    description:
+      'A medium pile of sparkling blue diamonds, around 15-20 brilliant cut gems stacked together with bright sparkles, cartoon game shop icon',
+  },
+  {
+    id: 'diamond_pack_large',
+    name: 'Large Diamond Pack',
+    category: 'shop',
+    expectedPath: 'shop/diamond_pack_large.webp',
+    description:
+      'A large overflowing pile of sparkling blue diamonds, dozens of brilliant cut gems heaped together with radiant glow and sparkle effects, cartoon game shop icon',
+  },
+  {
+    id: 'diamond_pack_giant',
+    name: 'Giant Diamond Pack',
+    category: 'shop',
+    expectedPath: 'shop/diamond_pack_giant.webp',
+    description:
+      'A massive treasure hoard of sparkling blue diamonds, an enormous mountain of brilliant cut gems with intense radiant glow, light rays, and dazzling sparkle effects everywhere, cartoon game shop icon',
+  },
+  {
+    id: 'diamond_pack_big',
+    name: 'Big Diamond Pack',
+    category: 'shop',
+    expectedPath: 'shop/diamond_pack_big.webp',
+    description:
+      'A big overflowing chest of sparkling blue diamonds, brilliant cut gems spilling out of a wooden treasure chest with bright sparkle trails and glowing aura, cartoon game shop icon',
+  },
+  {
+    id: 'diamond_pack_ultimate',
+    name: 'Ultimate Diamond Pack',
+    category: 'shop',
+    expectedPath: 'shop/diamond_pack_ultimate.webp',
+    description:
+      'An ultimate legendary vault overflowing with sparkling blue diamonds, countless brilliant cut gems cascading from a golden chest with blinding radiant beams, swirling sparkle effects, and a glowing golden halo, cartoon game shop icon',
+  },
+
+  // === SPECIAL EVENTS - EASTER ===
+  {
+    id: 'easter_egg_1',
+    name: 'Easter Egg 1',
+    category: 'special-events',
+    subcategory: 'easter',
+    expectedPath: 'special-events/easter/easter_egg_1.webp',
+    description:
+      'A brightly painted Easter egg with pastel pink, sky blue, and mint green stripes, decorated with tiny white polka dots and golden swirl patterns. Nestled in soft spring grass with small flowers.',
+  },
+  {
+    id: 'easter_egg_2',
+    name: 'Easter Egg 2',
+    category: 'special-events',
+    subcategory: 'easter',
+    expectedPath: 'special-events/easter/easter_egg_2.webp',
+    description:
+      'A brightly painted Easter egg with soft coral, turquoise, and peach stripes, decorated with tiny white polka dots and golden swirl patterns. Nestled in soft spring grass with small flowers.',
+  },
+  {
+    id: 'easter_egg_3',
+    name: 'Easter Egg 3',
+    category: 'special-events',
+    subcategory: 'easter',
+    expectedPath: 'special-events/easter/easter_egg_3.webp',
+    description:
+      'A brightly painted Easter egg with warm sunset orange, lavender, and lemon yellow stripes, decorated with tiny white polka dots and golden swirl patterns. Nestled in soft spring grass with small flowers.',
+  },
+  {
+    id: 'easter_egg_golden',
+    name: 'Golden Easter Egg',
+    category: 'special-events',
+    subcategory: 'easter',
+    expectedPath: 'special-events/easter/easter_egg_golden.webp',
+    description:
+      'A shimmering golden Easter egg with a polished metallic surface, decorated with tiny white polka dots and elegant swirl engravings. Nestled in soft spring grass with small flowers, glowing faintly with a warm golden light.',
+  },
+  {
+    id: 'easter_basket',
+    name: 'Easter Basket',
+    category: 'special-events',
+    subcategory: 'easter',
+    expectedPath: 'special-events/easter/easter_basket.webp',
+    description:
+      'A woven wicker basket overflowing with colorful painted Easter eggs in pastel pink, sky blue, mint green, coral, lavender, and one shimmering golden egg peeking out on top. Tied with a ribbon bow, nestled in soft spring grass. Designed as a round floating action button icon.',
+  },
+
+  // === SPECIAL EVENTS - FIREFLY FESTIVAL ===
+  {
+    id: 'firefly_festival_bg',
+    name: 'Firefly Festival Background',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/bg.webp',
+    description:
+      'A twilight summer meadow looking out over farm fields, dotted with warm yellow-green fireflies drifting above the grass and a distant Great Lantern silhouette glowing on the horizon. Tall portrait event background — detailed foreground grass and fence line along the bottom, framing foliage at the top, and a calm uncluttered middle band so text can be overlaid on it.',
+  },
+  {
+    id: 'firefly_lantern_jar',
+    name: 'Firefly Lantern Jar',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/lantern_jar.webp',
+    description:
+      'A small glass mason jar lantern with a rope handle and metal lid, several yellow-green fireflies glowing inside and lighting the glass from within. Chunky rounded silhouette that stays readable at 44px. Transparent background.',
+  },
+  {
+    id: 'firefly_1',
+    name: 'Firefly 1',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/firefly_1.webp',
+    description:
+      'A single cute stylized firefly with a rounded body, small folded wings, and a glowing yellow-green abdomen, seen from a gentle three-quarter side view. Soft baked glow hugging the body, bold readable silhouette at 40px. Transparent background.',
+  },
+  {
+    id: 'firefly_2',
+    name: 'Firefly 2',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/firefly_2.webp',
+    description:
+      'A single cute stylized firefly in a slightly different pose from the first variant — wings spread mid-flutter, body angled upward, glowing lime-green abdomen with a cooler green tint. Soft baked glow hugging the body, bold readable silhouette at 40px. Transparent background.',
+  },
+  {
+    id: 'firefly_3',
+    name: 'Firefly 3',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/firefly_3.webp',
+    description:
+      'A single cute stylized firefly in a third pose — resting with wings tucked and body tilted to one side, glowing warm yellow-green abdomen. Soft baked glow hugging the body, bold readable silhouette at 40px. Transparent background.',
+  },
+  {
+    id: 'firefly_sunbeam',
+    name: 'Sunbeam Firefly',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/firefly_sunbeam.webp',
+    description:
+      'A rare Sunbeam Firefly — the same cute stylized firefly shape but in warm amber and gold, with a brilliant sun-bright abdomen casting short crisp sun-ray spokes and a few small gold sparkles. Clearly reads as special and more valuable than the common green fireflies at 40px. Transparent background.',
+  },
+  {
+    id: 'firefly_great_lantern',
+    name: 'Great Lantern',
+    category: 'special-events',
+    subcategory: 'firefly-festival',
+    expectedPath: 'special-events/firefly-festival/great_lantern.webp',
+    description:
+      'A large ornate festival lantern standing on a wooden base, with a warm gold metal frame and tall clear glass panels, a few fireflies glowing inside. Hero object for the community progress surface — the glass interior stays open and evenly lit so a warm fill overlay can be drawn over it. Transparent background.',
+  },
+];
+
+// === LAKE ===
+const lakeItems: ItemDefinition[] = [
+  // Fish Icons
+  {
+    id: 'minnow',
+    name: 'Minnow',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/minnow.webp',
+    description:
+      'Tiny pudgy silver fish with a round body and big dark eye, chunky cartoon freshwater minnow',
+  },
+  {
+    id: 'sunfish',
+    name: 'Sunfish',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/sunfish.webp',
+    description:
+      'Chubby round sunfish with bright yellow-orange scales and warm amber stripes, cheerful cartoon fish',
+  },
+  {
+    id: 'perch',
+    name: 'Perch',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/perch.webp',
+    description:
+      'Plump green perch fish with bold dark vertical stripes and small fins, chunky cartoon freshwater fish',
+  },
+  {
+    id: 'catfish',
+    name: 'Catfish',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/catfish.webp',
+    description:
+      'Chubby gray-brown catfish with long droopy whisker barbels and gentle eyes, cozy cartoon fish',
+  },
+  {
+    id: 'bluegill',
+    name: 'Bluegill',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/bluegill.webp',
+    description:
+      'Round puffy bright blue bluegill fish with soft scales and a shy little face, adorable cartoon fish',
+  },
+  {
+    id: 'carp',
+    name: 'Carp',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/carp.webp',
+    description:
+      'Plump bronze-gold carp fish with layered chunky scales and rounded fins, warm cartoon style',
+  },
+  {
+    id: 'trout',
+    name: 'Trout',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/trout.webp',
+    description:
+      'Spotted rainbow trout fish with colorful scales shifting from pink to blue-green, chunky cartoon fish',
+  },
+  {
+    id: 'bass',
+    name: 'Bass',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/bass.webp',
+    description:
+      'Chunky green largemouth bass fish mid-leap with open jaw and striped belly, energetic cartoon fish',
+  },
+  {
+    id: 'pike',
+    name: 'Pike',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/pike.webp',
+    description:
+      'Long sleek pike fish with a pointed snout, olive-green spotted body and sharp fins, cartoon predator fish',
+  },
+  {
+    id: 'salmon',
+    name: 'Salmon',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/salmon.webp',
+    description:
+      'Pink-orange salmon fish leaping out of water with a curved body and bright scales, cheerful cartoon fish',
+  },
+  {
+    id: 'golden_carp',
+    name: 'Golden Carp',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/golden_carp.webp',
+    description:
+      'Shimmering golden carp fish with ornate flowing fins and glittering metallic scales, magical cartoon fish',
+  },
+  {
+    id: 'flounder',
+    name: 'Flounder',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/flounder.webp',
+    description:
+      'Flat sandy-brown spotted flounder fish lying on its side with both eyes peeking up, cozy cartoon fish',
+  },
+  {
+    id: 'sea_bass',
+    name: 'Sea Bass',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/sea_bass.webp',
+    description:
+      'Sleek blue-silver sea bass fish with a large eye and smooth pointed fins, cool-toned cartoon fish',
+  },
+  {
+    id: 'red_snapper',
+    name: 'Red Snapper',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/red_snapper.webp',
+    description:
+      'Bright red snapper fish with big round eyes and spiny dorsal fin, chubby adorable cartoon fish',
+  },
+  {
+    id: 'moonfish',
+    name: 'Moonfish',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/moonfish.webp',
+    description:
+      'Pale blue circular moonfish with a soft glowing aura and silvery fins, dreamy magical cartoon fish',
+  },
+  {
+    id: 'tuna',
+    name: 'Tuna',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/tuna.webp',
+    description:
+      'Large powerful blue-gray tuna fish with a streamlined body and crescent tail fin, chunky cartoon fish',
+  },
+  {
+    id: 'swordfish',
+    name: 'Swordfish',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/swordfish.webp',
+    description:
+      'Sleek dark blue swordfish with a long pointed bill and tall dorsal fin, streamlined cartoon fish',
+  },
+  {
+    id: 'giant_squid',
+    name: 'Giant Squid',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/giant_squid.webp',
+    description:
+      'Purple-bodied giant squid with curling red tentacles and a knowing eye, chunky cartoon deep-sea creature',
+  },
+  {
+    id: 'whale_shark',
+    name: 'Whale Shark',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/whale_shark.webp',
+    description:
+      'Massive friendly whale shark with white spotted gray-blue skin and a wide gentle mouth, cozy cartoon fish',
+  },
+  {
+    id: 'kraken',
+    name: 'Kraken',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/kraken.webp',
+    description:
+      'Mythical teal and purple kraken with glowing orange eyes and swirling tentacles, dramatic cartoon sea monster',
+  },
+  {
+    id: 'lobster',
+    name: 'Lobster',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/lobster.webp',
+    description:
+      'Bright red lobster with large chunky claws, long antennae, and a segmented curled tail, cheerful cartoon crustacean',
+  },
+  {
+    id: 'golden_shiner',
+    name: 'Golden Shiner',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fish/golden_shiner.webp',
+    description:
+      'Small shimmering gold fish with bright reflective scales, a sleek body, and delicate translucent fins, glowing warm cartoon freshwater minnow',
+  },
+
+  // Lake Areas
+  {
+    id: 'small_pond',
+    name: 'Small Pond',
+    category: 'lake',
+    expectedPath: 'assets/images/lakes/small_pond.webp',
+    description:
+      'Cozy square tile pond with lily pads, cream water lilies, and tall cattails in warm morning light, cartoon diorama',
+  },
+  {
+    id: 'river',
+    name: 'River',
+    category: 'lake',
+    expectedPath: 'assets/images/lakes/river.webp',
+    description:
+      'Isometric tile with bright blue flowing water between mossy green banks and smooth brown rocks, cartoon landscape',
+  },
+  {
+    id: 'deep_lake',
+    name: 'Deep Lake',
+    category: 'lake',
+    expectedPath: 'assets/images/lakes/deep_lake.webp',
+    description:
+      'Dark blue square tile of still deep water with pine trees rising from gentle mist, mysterious cartoon diorama',
+  },
+  {
+    id: 'coast',
+    name: 'Coast',
+    category: 'lake',
+    expectedPath: 'assets/images/lakes/coast.webp',
+    description:
+      'Sandy golden beach tile with turquoise waves and white foam rolling softly ashore, warm cartoon style',
+  },
+  {
+    id: 'open_sea',
+    name: 'Open Sea',
+    category: 'lake',
+    expectedPath: 'assets/images/lakes/open_sea.webp',
+    description:
+      'Hexagonal ocean tile with dramatic rolling waves under golden-lit sunset clouds, painterly cartoon style',
+  },
+  {
+    id: 'valley',
+    name: 'Valley',
+    category: 'lake',
+    expectedPath: 'assets/images/lakes/valley.webp',
+    description:
+      'Scenic ravine between two tall green mountains with a winding blue river cutting through the bottom, lush trees lining the riverbanks, warm golden sunlight filtering through the valley, painterly cartoon landscape',
+  },
+
+  // Baits
+  {
+    id: 'no_bait',
+    name: 'No Bait',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/baits/no_bait.webp',
+    description:
+      'Simple bare fishing hook with a curved silver shank and sharp barbed point, no bait attached, plain cartoon fishhook icon',
+  },
+  {
+    id: 'basic_worm_bait',
+    name: 'Basic Worm Bait',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/baits/basic_worm_bait.webp',
+    description:
+      'Glass jar with blue lid packed full of curly brown worms and golden grain, cartoon bait container',
+  },
+  {
+    id: 'berry_bait',
+    name: 'Berry Bait',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/baits/berry_bait.webp',
+    description:
+      'Square purple container of mushy berry mixture with a chunky texture, cartoon bait tub',
+  },
+  {
+    id: 'premium_fish_bait',
+    name: 'Premium Fish Bait',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/baits/premium_fish_bait.webp',
+    description:
+      'Orange jar labeled BAIT with a painted blue fish and golden lid, premium cartoon container',
+  },
+  {
+    id: 'golden_lure',
+    name: 'Golden Lure',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/baits/golden_lure.webp',
+    description:
+      'Glittering golden spoon lure with a sharp treble hook, precious sparkling cartoon tackle',
+  },
+
+  // Traps
+  {
+    id: 'trap_empty',
+    name: 'Trap Empty',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/trap_empty.webp',
+    description:
+      'Handwoven wicker basket trap with a wide mouth opening, warm brown tones, cozy cartoon craft',
+  },
+  {
+    id: 'trap_active',
+    name: 'Trap Active',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/trap_active.webp',
+    description:
+      'Blue submerged trap tile with copper handle and glowing countdown timer display, cartoon style',
+  },
+  {
+    id: 'trap_ready',
+    name: 'Trap Ready',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/trap_ready.webp',
+    description:
+      'Wooden plank trap with blue fish tails poking through the metal spring bars, cheerful cartoon catch',
+  },
+  {
+    id: 'lobster_trap',
+    name: 'Lobster Trap',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/lobster_trap.webp',
+    description:
+      'Sturdy wooden lobster trap cage with rope netting and a small round entry hole, cozy cartoon fishing gear',
+  },
+
+  // UI Elements
+  {
+    id: 'fishing_rod',
+    name: 'Fishing Rod',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/fishing_rod.webp',
+    description:
+      'Simple wooden fishing rod with a cork handle, thin line, and small hook dangling, cozy cartoon style',
+  },
+  {
+    id: 'bobber',
+    name: 'Bobber',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/bobber.webp',
+    description:
+      'Classic round red and cream fishing bobber with a small red peg on top, cozy cartoon style',
+  },
+  {
+    id: 'hook_ring',
+    name: 'Hook Ring',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/hook_ring.webp',
+    description:
+      'Round blue clock-face timer with orange progress arc and white hands, chunky cartoon indicator',
+  },
+  {
+    id: 'splash',
+    name: 'Splash',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/splash.webp',
+    description:
+      'Bright blue water splash with droplets flying upward, lively cartoon water effect',
+  },
+  {
+    id: 'bait_shack',
+    name: 'Bait Shack',
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/bait_shack.webp',
+    description:
+      'Tiny golden-brown wooden cabin with a peaked plank roof and cozy dark doorway, cartoon hut',
+  },
+  {
+    id: 'fishers_kitchen',
+    name: "Fisher's Kitchen",
+    category: 'lake',
+    expectedPath: 'assets/images/fishing/fishers_kitchen.webp',
+    description:
+      'Adorable pastel stove with fish decorations, a simmering pot of stew, and warm homey tones, cartoon kitchen',
+  },
+
+  // Recipes
+  {
+    id: 'fishing_potion',
+    name: 'Fishing Potion',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fishing_potion.webp',
+    description:
+      'Round blue glass bottle with cork stopper and a little fish emblem floating inside, magical cartoon potion',
+  },
+  {
+    id: 'adventurer_soup',
+    name: 'Adventurer Soup',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/adventurer_soup.webp',
+    description:
+      'Wooden bowl of steaming broth with thick pink salmon chunks, hearty cozy cartoon meal',
+  },
+  {
+    id: 'coastal_platter',
+    name: 'Coastal Platter',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/coastal_platter.webp',
+    description:
+      'Spread of whole red lobster, salmon steak, and golden scallops, elegant cartoon seafood feast',
+  },
+  {
+    id: 'legendary_feast',
+    name: 'Legendary Feast',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/legendary_feast.webp',
+    description:
+      'Glistening golden roast bird on a gleaming platter, grand celebratory cartoon banquet',
+  },
+  {
+    id: 'pond_stew',
+    name: 'Pond Stew',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/pond_stew.webp',
+    description:
+      'Rustic clay bowl of hearty fish stew with visible chunks of white fish, onion slices, and purple berries in a golden broth, steam rising, cozy cartoon meal',
+  },
+  {
+    id: 'river_chowder',
+    name: 'River Chowder',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/river_chowder.webp',
+    description:
+      'Thick creamy white chowder in a deep ceramic bowl with pink salmon chunks and potato cubes, topped with a drizzle of cream, warm cartoon comfort food',
+  },
+  {
+    id: 'fishers_rice_bowl',
+    name: "Fisher's Rice Bowl",
+    category: 'lake',
+    expectedPath: 'assets/images/icons/fishers_rice_bowl.webp',
+    description:
+      'Rounded bowl of fluffy white rice topped with golden seared fish fillets and a creamy drizzle, garnished with green onion, elegant cartoon rice bowl',
+  },
+  {
+    id: 'freshwater_grill',
+    name: 'Freshwater Grill',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/freshwater_grill.webp',
+    description:
+      'Crispy golden pan-seared fish fillets on a rustic wooden board with a melting pat of butter and grill marks, warm cartoon plated meal',
+  },
+  {
+    id: 'whale_shark_steak',
+    name: 'Whale Shark Steak',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/whale_shark_steak.webp',
+    description:
+      'Massive thick-cut seared steak with golden saffron crust on a bed of fluffy white rice, rich buttery glaze drizzled on top, grand cartoon trophy dish',
+  },
+  {
+    id: 'lobster_bisque',
+    name: 'Lobster Bisque',
+    category: 'lake',
+    expectedPath: 'assets/images/icons/lobster_bisque.webp',
+    description:
+      'Rich, slow-simmered creamy bisque made from three whole lobsters with butter and onion. A deep orange-red soup served in a ceramic bowl with a swirl of cream on top.',
+  },
+
+  // Fishopedia
+  {
+    id: 'fishopedia_cover',
+    name: 'Book Cover',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/fishopedia_cover.webp',
+    description:
+      'Worn leather-bound book embossed with "Fish Collection" and a golden fish crest, cozy cartoon journal',
+  },
+  {
+    id: 'fish_silhouette',
+    name: 'Fish Silhouette',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/fish_silhouette.webp',
+    description:
+      'Dark shadowy fish shape with a faint eye, mysterious unknown catch placeholder, cartoon silhouette',
+  },
+  {
+    id: 'size_small',
+    name: 'Size Badge Small',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/size_small.webp',
+    description: 'Chunky blue "S" letter on a rounded orange tile, playful cartoon size badge',
+  },
+  {
+    id: 'size_medium',
+    name: 'Size Badge Medium',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/size_medium.webp',
+    description: 'Puffy orange "M" letter with warm golden outline, soft cartoon size badge',
+  },
+  {
+    id: 'size_large',
+    name: 'Size Badge Large',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/size_large.webp',
+    description: 'Bold golden "L" on a rounded brown-orange tile, sturdy cartoon size badge',
+  },
+  {
+    id: 'size_giant',
+    name: 'Size Badge Giant',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/size_giant.webp',
+    description:
+      'Golden shield-shaped "G" badge with a small star emblem, prestigious cartoon size badge',
+  },
+  {
+    id: 'shiny_badge',
+    name: 'Shiny Badge',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/shiny_badge.webp',
+    description:
+      'Cluster of sparkling four-pointed stars in gold, purple, and blue, magical shimmer cartoon effect',
+  },
+  {
+    id: 'milestone_badge',
+    name: 'Milestone Badge',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/milestone_badge.webp',
+    description:
+      'Round orange ribbon medal with a golden star center, cheerful cartoon achievement badge',
+  },
+  {
+    id: 'fishing_xp',
+    name: 'Fishing XP',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/fishing_xp.webp',
+    description:
+      'Round blue ribbon medal with a bright aqua star center, cheerful cartoon experience badge',
+  },
+  {
+    id: 'fish_scale',
+    name: 'Fish Scale',
+    category: 'lake',
+    expectedPath: 'assets/images/fishopedia/fish_scale.webp',
+    description:
+      'Small hanging brass weighing scale with a fish on one side and a weight on the other, cozy cartoon icon',
+  },
+];
+
+// === VALLEY ===
+const valleyItems: ItemDefinition[] = [
+  // Valley Environments
+  {
+    id: 'valley_bg_overview',
+    name: 'Valley Overview Background',
+    category: 'valley',
+    expectedPath: 'valley/backgrounds/valley_bg_overview.webp',
+    description:
+      'Misty valley landscape with layered hills, distant peaks, and soft morning light. Subtle atmospheric haze suitable as a wide horizontal backdrop behind valley building cards.',
+  },
+  {
+    id: 'valley_fog_overlay',
+    name: 'Valley Fog Overlay',
+    category: 'valley',
+    expectedPath: 'valley/overlays/valley_fog_overlay.webp',
+    description:
+      'Semi-transparent fog overlay with soft gradient edges, designed to sit over buildings for teaser and locked states without obscuring silhouettes completely.',
+  },
+
+  // Valley Buildings (Primary)
+  {
+    id: 'valley_building_mine',
+    name: 'The Mine',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_mine.webp',
+    description:
+      'Stone mine entrance set into a rocky hillside with timber supports, mine carts, rail tracks, and warm lantern glow inviting players into the valley.',
+  },
+  {
+    id: 'valley_building_refinery',
+    name: 'The Refinery',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_refinery.webp',
+    description:
+      'Industrial smelter building with chimneys, metal piping, tanks, and warm furnace light. Feels powerful but still in the game’s cozy stylized world.',
+  },
+  {
+    id: 'valley_building_blacksmith',
+    name: 'The Blacksmith',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_blacksmith.webp',
+    description:
+      'Sturdy workshop with anvil, forge glow, and hanging tools. Feels like a future expansion valley building while matching the other valley architecture.',
+  },
+  {
+    id: 'valley_building_spire',
+    name: 'The Spire',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_spire.webp',
+    description:
+      'Tall stone tower with banners and a bright peak beacon, rising above the misty valley as a dramatic focal point.',
+  },
+  {
+    id: 'valley_building_airport',
+    name: 'The Airport',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_airport.webp',
+    description:
+      'Small valley airport with a simple airstrip, a cozy hangar, a propeller plane silhouette, and stacked cargo crates hinting at trade and travel.',
+  },
+  {
+    id: 'valley_building_ruins',
+    name: 'The Ruins',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_ruins.webp',
+    description:
+      'Crumbled stone structure partially hidden by fog and creeping vines. Feels mysterious and ancient, ideal for teaser or future content.',
+  },
+
+  // Valley Buildings (Locked Silhouettes)
+  {
+    id: 'valley_building_mine_locked',
+    name: 'Locked Mine',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_mine_locked.webp',
+    description:
+      'Dark, simplified silhouette of the Mine with valley fog treatment around the base, clearly indicating a locked state while matching the main Mine shape.',
+  },
+  {
+    id: 'valley_building_refinery_locked',
+    name: 'Locked Refinery',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_refinery_locked.webp',
+    description:
+      'Dark silhouette of the Refinery building with fog treatment and softened edges, keeping recognisable chimney and pipe forms.',
+  },
+  {
+    id: 'valley_building_blacksmith_locked',
+    name: 'Locked Blacksmith',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_blacksmith_locked.webp',
+    description:
+      'Dark silhouette of the Blacksmith with anvil and forge shapes hinted in outline, wrapped in soft valley fog to indicate locked state.',
+  },
+  {
+    id: 'valley_building_spire_locked',
+    name: 'Locked Spire',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_spire_locked.webp',
+    description:
+      'Tall, dark silhouette of the Spire tower with banners reduced to bold shapes and fog at the base, clearly locked but still iconic.',
+  },
+  {
+    id: 'valley_building_airport_locked',
+    name: 'Locked Airport',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_airport_locked.webp',
+    description:
+      'Simplified dark outline of the Airport with hangar, plane, and crates hinted through silhouette shapes, softened by valley fog.',
+  },
+  {
+    id: 'valley_building_ruins_locked',
+    name: 'Locked Ruins',
+    category: 'valley',
+    expectedPath: 'valley/buildings/valley_building_ruins_locked.webp',
+    description:
+      'Shadowy silhouette of the Ruins with broken stone arches and creeping vines suggested in outline, drifting in valley fog for a locked teaser state.',
+  },
+
+  // Valley Locations
+  {
+    id: 'valley_fishing_pond',
+    name: 'Valley Fishing Pond',
+    category: 'valley',
+    expectedPath: 'valley/valley_fishing_pond.webp',
+    description:
+      'Cozy fantasy fishing pond that resembles the main lake for fishing. Calm water, reeds or rocks at the edge, same warm game art style as the fishing lake. Suitable for valley building card or map.',
+  },
+  {
+    id: 'valley_fishing_pond_silhouette',
+    name: 'Valley Fishing Pond (Silhouette)',
+    category: 'valley',
+    expectedPath: 'valley/valley_fishing_pond_silhouette.webp',
+    description:
+      'Dark silhouette of the valley fishing pond, same shape and layout as the main version but filled with solid dark tone and soft fog treatment for locked or teaser state.',
+  },
+
+  // Valley Characters
+  {
+    id: 'valley_merchant',
+    name: 'Valley Merchant',
+    category: 'valley',
+    expectedPath: 'valley/valley_merchant.webp',
+    description:
+      'A cozy Valley Trader character: friendly traveling merchant at a wooden stall with hanging lantern, small crates and potion bottles around. Warm game art style, readable at small sizes.',
+  },
+
+  // Mine Screen Assets
+  {
+    id: 'mine_bg_interior',
+    name: 'Mine Interior Background',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_bg_interior.webp',
+    description:
+      'Underground cavern background with layered rock walls, mine tracks, support beams, and warm lantern accents for the Valley Mine screen.',
+  },
+  {
+    id: 'mine_bg_card',
+    name: 'Mine Card Background',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_bg_card.webp',
+    description:
+      'Cozy fantasy mine card background for a mobile game UI. Rocky stone wall with embedded glowing gems, soft lighting, muted earthy colors, slightly magical atmosphere. Wooden scaffolding and planks suggesting an under-construction mine entrance. Painted illustration style, clean and readable, no characters, no text, designed to sit behind UI elements. Subtle depth, not too busy, cozy idle game aesthetic.',
+  },
+  {
+    id: 'mine_foreman',
+    name: 'Mine Foreman',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_foreman.webp',
+    description:
+      'A cozy fantasy game foreman character icon, small chibi-style dwarf miner with a big beard and friendly expression, wearing a simple mining helmet and work clothes, holding a tiny pickaxe. Soft pastel colors, clean outlines, slightly exaggerated head, warm cozy mobile game art style. Designed as a UI icon, centered, simple shading, no background, transparent background, high readability at small sizes.',
+  },
+  {
+    id: 'under_construction_sign',
+    name: 'Under Construction Sign',
+    category: 'valley',
+    expectedPath: 'valley/under_construction_sign.webp',
+    description:
+      'Wooden sign hanging on ropes, under construction. Cozy game art style, readable at small sizes, suitable for UI.',
+  },
+  {
+    id: 'mine_depth_surface_tunnels',
+    name: 'Mine Depth – Surface Tunnels',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_surface_tunnels.webp',
+    description:
+      'Depth selector icon showing shallow mine tunnels with wooden supports and gentle lighting, representing the surface level.',
+  },
+  {
+    id: 'mine_depth_copper_veins',
+    name: 'Mine Depth – Copper Veins',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_copper_veins.webp',
+    description:
+      'Depth selector icon with rocky walls and visible copper-colored ore veins embedded in the stone.',
+  },
+  {
+    id: 'mine_depth_iron_deposits',
+    name: 'Mine Depth – Iron Deposits',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_iron_deposits.webp',
+    description:
+      'Depth selector icon showing dense, darker iron deposits with small quartz flecks sparkling in the rock.',
+  },
+  {
+    id: 'mine_depth_silver_seams',
+    name: 'Mine Depth – Silver Seams',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_silver_seams.webp',
+    description:
+      'Depth selector icon featuring bright silver seams running through rock with glints along the edges.',
+  },
+  {
+    id: 'mine_depth_gold_caverns',
+    name: 'Mine Depth – Gold Caverns',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_gold_caverns.webp',
+    description:
+      'Depth selector icon of a cavern interior with warm gold-lined walls and sparkling highlights suggesting rich gold deposits.',
+  },
+  {
+    id: 'mine_depth_titanium_veins',
+    name: 'Mine Depth – Titanium Veins',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_titanium_veins.webp',
+    description:
+      'Depth selector icon showing cool blue titanium veins running through darker stone, with a slightly futuristic metallic feel.',
+  },
+  {
+    id: 'mine_depth_crystal_caverns',
+    name: 'Mine Depth – Crystal Caverns',
+    category: 'valley',
+    expectedPath: 'valley/mine/mine_depth_crystal_caverns.webp',
+    description:
+      'Depth selector icon depicting a crystal-filled cavern with clusters of glowing gems and rare light effects.',
+  },
+
+  // Refinery Screen Assets
+  {
+    id: 'refinery_bg_interior',
+    name: 'Refinery Interior Background',
+    category: 'valley',
+    expectedPath: 'valley/refinery/refinery_bg_interior.webp',
+    description:
+      'Smelting interior background with large furnaces, pipes, tanks, and heat shimmer, used as the main backdrop for the Refinery screen.',
+  },
+  {
+    id: 'refinery_furnace_icon',
+    name: 'Refinery Furnace Icon',
+    category: 'valley',
+    expectedPath: 'valley/refinery/refinery_furnace_icon.webp',
+    description:
+      'Stylized furnace door icon with warm orange glow and sturdy metal frame, used as a badge or header element in the Refinery UI.',
+  },
+
+  // Valley Item Icons – Raw Ores
+  {
+    id: 'copper_ore',
+    name: 'Copper Ore',
+    category: 'valley',
+    expectedPath: 'valley/items/copper_ore.webp',
+    description: 'Rough copper ore chunk with warm orange-brown metal showing through broken rock.',
+  },
+  {
+    id: 'silver_ore',
+    name: 'Silver Ore',
+    category: 'valley',
+    expectedPath: 'valley/items/silver_ore.webp',
+    description: 'Bright silver ore fragment with cool metallic sheen and faceted broken edges.',
+  },
+  {
+    id: 'gold_ore',
+    name: 'Gold Ore',
+    category: 'valley',
+    expectedPath: 'valley/items/gold_ore.webp',
+    description: 'Gold ore cluster with warm yellow-gold metal veins running through rough stone.',
+  },
+  {
+    id: 'titanium_ore',
+    name: 'Titanium Ore',
+    category: 'valley',
+    expectedPath: 'valley/items/titanium_ore.webp',
+    description: 'Cool blue titanium ore chunk with hard angular forms and subtle futuristic feel.',
+  },
+  {
+    id: 'platinum_ore',
+    name: 'Platinum Ore',
+    category: 'valley',
+    expectedPath: 'valley/items/platinum_ore.webp',
+    description: 'Pale platinum ore with subtle sparkle, suggesting high value and rarity.',
+  },
+
+  // Valley Item Icons – Raw Gems
+  {
+    id: 'raw_quartz',
+    name: 'Raw Quartz',
+    category: 'valley',
+    expectedPath: 'valley/items/raw_quartz.webp',
+    description: 'Raw quartz chunk with translucent edges and simple crystal forms.',
+  },
+  {
+    id: 'raw_amber',
+    name: 'Raw Amber',
+    category: 'valley',
+    expectedPath: 'valley/items/raw_amber.webp',
+    description: 'Amber nugget with warm golden glow and soft rounded facets.',
+  },
+  {
+    id: 'raw_ruby',
+    name: 'Raw Ruby',
+    category: 'valley',
+    expectedPath: 'valley/items/raw_ruby.webp',
+    description: 'Raw ruby crystal cluster in deep red tones, still rough and uncut.',
+  },
+  {
+    id: 'raw_sapphire',
+    name: 'Raw Sapphire',
+    category: 'valley',
+    expectedPath: 'valley/items/raw_sapphire.webp',
+    description: 'Raw sapphire crystal cluster in rich blue hues, with uneven shard shapes.',
+  },
+  {
+    id: 'diamond_shard',
+    name: 'Diamond Shard',
+    category: 'valley',
+    expectedPath: 'valley/items/diamond_shard.webp',
+    description: 'Small diamond shard with sharp facets and bright white sparkle.',
+  },
+
+  // Valley Item Icons – Ingots
+  {
+    id: 'copper_ingot',
+    name: 'Copper Ingot',
+    category: 'valley',
+    expectedPath: 'valley/items/copper_ingot.webp',
+    description: 'Cast copper ingot bar with warm orange metal and simple stamped details.',
+  },
+  {
+    id: 'iron_ingot',
+    name: 'Iron Ingot',
+    category: 'valley',
+    expectedPath: 'valley/items/iron_ingot.webp',
+    description: 'Solid dark gray iron ingot bar with slightly worn edges.',
+  },
+  {
+    id: 'silver_ingot',
+    name: 'Silver Ingot',
+    category: 'valley',
+    expectedPath: 'valley/items/silver_ingot.webp',
+    description: 'Polished silver ingot bar with cool reflective highlights.',
+  },
+  {
+    id: 'gold_ingot',
+    name: 'Gold Ingot',
+    category: 'valley',
+    expectedPath: 'valley/items/gold_ingot.webp',
+    description: 'Bright gold ingot bar stacked or angled to feel premium and valuable.',
+  },
+  {
+    id: 'titanium_ingot',
+    name: 'Titanium Ingot',
+    category: 'valley',
+    expectedPath: 'valley/items/titanium_ingot.webp',
+    description: 'Sleek titanium ingot bar in cool gray-blue metal with crisp edges.',
+  },
+  {
+    id: 'platinum_ingot',
+    name: 'Platinum Ingot',
+    category: 'valley',
+    expectedPath: 'valley/items/platinum_ingot.webp',
+    description: 'Premium platinum ingot bar with pale metallic finish and subtle glow.',
+  },
+
+  // Valley Item Icons – Cut Gems
+  {
+    id: 'cut_quartz',
+    name: 'Cut Quartz',
+    category: 'valley',
+    expectedPath: 'valley/items/cut_quartz.webp',
+    description: 'Faceted quartz gem with clear or pale tones and simplified facets.',
+  },
+  {
+    id: 'cut_amber',
+    name: 'Cut Amber',
+    category: 'valley',
+    expectedPath: 'valley/items/cut_amber.webp',
+    description: 'Polished amber gem with internal glow and rounded, stylized cuts.',
+  },
+  {
+    id: 'cut_ruby',
+    name: 'Cut Ruby',
+    category: 'valley',
+    expectedPath: 'valley/items/cut_ruby.webp',
+    description: 'Faceted ruby gem in rich red, classic gem silhouette with bold highlights.',
+  },
+  {
+    id: 'cut_sapphire',
+    name: 'Cut Sapphire',
+    category: 'valley',
+    expectedPath: 'valley/items/cut_sapphire.webp',
+    description: 'Faceted sapphire gem in deep blue with bright edges and highlights.',
+  },
+  {
+    id: 'perfect_diamond',
+    name: 'Perfect Diamond',
+    category: 'valley',
+    expectedPath: 'valley/items/perfect_diamond.webp',
+    description:
+      'Large perfect diamond gem with crisp facets and strong white sparkle, the pinnacle of valley gem progression.',
+  },
+
+  // Valley Item Icons – Tools
+  {
+    id: 'pickaxe',
+    name: 'Pickaxe',
+    category: 'valley',
+    expectedPath: 'valley/items/pickaxe.webp',
+    description: 'Mining pickaxe with wooden handle and metal head, cozy game icon style for valley mining.',
+  },
+
+  // Spire Assets
+  {
+    id: 'spire_hero',
+    name: 'Spire Hero Banner',
+    category: 'valley',
+    expectedPath: 'assets/images/valley/spire/spire_hero.webp',
+    description:
+      'Wide hero banner (~1500x720) for the Spire main screen, shown behind the season pill. Night-sky stone tower rising into a field of stars, warmly lit windows, and a purple-to-gold glow around the peak. Cozy stylized game art with room for UI overlay.',
+  },
+  {
+    id: 'spire_crest',
+    name: 'Spire Crest',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/crest.webp',
+    description:
+      'Crest currency icon (~64x64) used in rewards and the Ascension bank chip. Faceted purple gem or sigil with bold silhouette and strong highlights, designed to stay readable even at 16px.',
+  },
+  {
+    id: 'spire_ap',
+    name: 'Ascension Point',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/ascension-point.webp',
+    description:
+      'Ascension Point currency icon (~64x64). Star-like golden spark on a deep purple backdrop, bright and radiant, reading clearly at small chip sizes.',
+  },
+  {
+    id: 'spire_keystone_badge',
+    name: 'Keystone Badge',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/keystone.webp',
+    description:
+      'Keystone floor header badge (~96x96). Ornate gold seal or star medallion with embossed detail — gold is reserved for Keystones and tier accents, so it should feel prestigious and distinct from regular floor UI.',
+  },
+  {
+    id: 'spire_badge_t1',
+    name: 'Spire Milestone Badge – Tier 1',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/badge-1.webp',
+    description:
+      'Lifetime milestone profile badge (~64x64) for reaching floor 50. Tower emblem in a simple carved stone frame — the humblest of four escalating tiers, muted grey tones with subtle purple accent.',
+  },
+  {
+    id: 'spire_badge_t2',
+    name: 'Spire Milestone Badge – Tier 2',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/badge-2.webp',
+    description:
+      'Lifetime milestone profile badge (~64x64) for reaching floor 100. Same tower emblem as tier 1, now in a bronze frame with warm metallic sheen — clearly a step above the stone tier.',
+  },
+  {
+    id: 'spire_badge_t3',
+    name: 'Spire Milestone Badge – Tier 3',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/badge-3.webp',
+    description:
+      'Lifetime milestone profile badge (~64x64) for reaching floor 200. Same tower emblem in a polished silver frame with cool highlights and finer ornamentation than the bronze tier.',
+  },
+  {
+    id: 'spire_badge_t4',
+    name: 'Spire Milestone Badge – Tier 4',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/badge-4.webp',
+    description:
+      'Lifetime milestone profile badge (~64x64) for reaching floor 500. Same tower emblem in a radiant frame — glowing purple-and-gold energy, star sparkles, the most prestigious of the four tiers.',
+  },
+  {
+    id: 'spire_track_harvest',
+    name: 'Harvest Track Icon',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/track-harvest.webp',
+    description:
+      'Ascension track icon (~64x64) for the Harvest track. Young sprout with fresh leaves on a rounded green tile, cozy stylized game icon with bold silhouette.',
+  },
+  {
+    id: 'spire_track_expedition',
+    name: 'Expedition Track Icon',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/track-expedition.webp',
+    description:
+      'Ascension track icon (~64x64) for the Expedition track. Sturdy pickaxe on a rounded mine-green tile, matching the harvest track tile style.',
+  },
+  {
+    id: 'spire_track_commerce',
+    name: 'Commerce Track Icon',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/track-commerce.webp',
+    description:
+      'Ascension track icon (~64x64) for the Commerce track. Gold coin with a small ledger or scroll on a rounded amber tile, matching the other track tile style.',
+  },
+  {
+    id: 'spire_track_craft',
+    name: 'Craft Track Icon',
+    category: 'valley',
+    expectedPath: 'assets/images/icons/spire/track-craft.webp',
+    description:
+      'Ascension track icon (~64x64) for the Craft track. Hammer resting on an anvil on a rounded brown tile, matching the other track tile style.',
+  },
+  {
+    id: 'spire_decoration',
+    name: 'Spire Miniature Decoration',
+    category: 'valley',
+    expectedPath: 'assets/images/decorations/spire-miniature.webp',
+    description:
+      'Farm decoration (200x200, transparent background) awarded at the floor-100 lifetime milestone. Miniature glowing spire statue with lit windows and a soft purple-to-gold peak glow, cozy collectible statue style placeable on the farm.',
+  },
+];
+
+// === AIRPORT (cargo category icons) ===
+const airportItems: ItemDefinition[] = [
+  {
+    id: 'airport_cargo_crop',
+    name: 'Any Crop',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_crop.webp',
+    description:
+      'Icon for field and farm harvest — a small bundle or basket mixing grains and vegetables (e.g. wheat sheaf, carrot, tomato) without looking like a single named crop. Warm, earthy tones; reads as raw farm goods, not cooked food.',
+  },
+  {
+    id: 'airport_cargo_fruit',
+    name: 'Any Fruit',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_fruit.webp',
+    description:
+      'Icon for berries and orchard fruit — a cheerful pile or cluster (strawberry, grape bunch, small pineapple slice silhouette) emphasizing sweetness and freshness. Brighter, juicier palette than the crop icon; no baked goods or jars.',
+  },
+  {
+    id: 'airport_cargo_cooked_meal',
+    name: 'Any Cooked Meal',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_cooked_meal.webp',
+    description:
+      'Icon for hot prepared food — steaming bowl of soup/stew or a shallow plate of rice bowl / stir-fry; visible steam curl optional. Should feel savory and kitchen finished, not bread or dessert.',
+  },
+  {
+    id: 'airport_cargo_baked_good',
+    name: 'Any Baked Good',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_baked_good.webp',
+    description:
+      'Icon for oven bakery — loaf, pastry, or pie with a golden crust; small stars or steam to suggest warmth. Clearly distinct from soup (cooked meal) and from raw flour/sugar (processed).',
+  },
+  {
+    id: 'airport_cargo_textile',
+    name: 'Any Textile',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_textile.webp',
+    description:
+      'Icon for cloth and fiber crafts — folded fabric, spool of thread/yarn, or woven scarf; soft folds and textile texture. No gears or metal; luxury overlap can be hinted with a refined fold, still reads as material, not jewelry.',
+  },
+  {
+    id: 'airport_cargo_luxury',
+    name: 'Any Luxury Good',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_luxury.webp',
+    description:
+      'Icon for high-end goods — perfume bottle, jewel-like sparkle, or elegant small gift box; refined metallics or glass, a touch of glamour. Should feel expensive export, not tools or bulk crops.',
+  },
+  {
+    id: 'airport_cargo_tool',
+    name: 'Any Tool',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_tool.webp',
+    description:
+      'Icon for mechanical and precision gear — gears, compass, pick, or clockwork motif; metal and craftsmanship. Industrial-cozy steampunk-lite acceptable; clearly not food or fabric.',
+  },
+  {
+    id: 'airport_cargo_animal_product',
+    name: 'Any Animal Product',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_animal_product.webp',
+    description:
+      'Icon for farm animal outputs — egg, milk jug or bottle, honey jar, wedge of cheese, or wool puff; friendly barn palette. No living animals; reads as ingredients from animals, not cooked dishes.',
+  },
+  {
+    id: 'airport_cargo_processed_good',
+    name: 'Any Processed Good',
+    category: 'airport',
+    subcategory: 'cargo-categories',
+    expectedPath: 'assets/images/valley/airport/cargo-categories/airport_cargo_processed_good.webp',
+    description:
+      'Icon for pantry and processed ingredients — flour sack, sugar scoop, oil bottle, chocolate bar, wine bottle, or coffee beans in a burlap pinch; shelf-stable factory/pantry look. Not a hot meal and not raw whole vegetables.',
+  },
+];
+
+// === BLACKSMITH ===
+const blacksmithItems: ItemDefinition[] = [
+  // Tool Gear
+  {
+    id: 'blacksmith_copper_compass',
+    name: 'Copper Compass',
+    category: 'blacksmith',
+    subcategory: 'tool_gear',
+    expectedPath: 'blacksmith/copper_compass.webp',
+    description:
+      'A handcrafted copper compass with engraved rim and worn leather strap, top-down mobile game icon, transparent background.',
+  },
+  {
+    id: 'blacksmith_iron_climbing_pick',
+    name: 'Iron Climbing Pick',
+    category: 'blacksmith',
+    subcategory: 'tool_gear',
+    expectedPath: 'blacksmith/iron_climbing_pick.webp',
+    description:
+      'Compact iron climbing pick with wrapped handle and subtle nicks from use, icon style for cozy farming game UI.',
+  },
+  {
+    id: 'blacksmith_silver_surveyors_kit',
+    name: "Silver Surveyor's Kit",
+    category: 'blacksmith',
+    subcategory: 'tool_gear',
+    expectedPath: 'blacksmith/silver_surveyors_kit.webp',
+    description:
+      'Silver surveyor kit with folded map tools and polished metal clamps, clean readable icon silhouette.',
+  },
+  {
+    id: 'blacksmith_gold_cartographers_tool',
+    name: "Gold Cartographer's Tool",
+    category: 'blacksmith',
+    subcategory: 'tool_gear',
+    expectedPath: 'blacksmith/gold_cartographers_tool.webp',
+    description:
+      'Ornate golden cartographer tool set with compass arm and filigree details, premium fantasy-farm icon style.',
+  },
+  {
+    id: 'blacksmith_titanium_drill',
+    name: 'Titanium Drill',
+    category: 'blacksmith',
+    subcategory: 'tool_gear',
+    expectedPath: 'blacksmith/titanium_drill.webp',
+    description:
+      'Robust titanium hand drill with blue steel sheen and reinforced crank, high-tier gear icon.',
+  },
+  {
+    id: 'blacksmith_platinum_star_compass',
+    name: 'Platinum Star Compass',
+    category: 'blacksmith',
+    subcategory: 'tool_gear',
+    expectedPath: 'blacksmith/platinum_star_compass.webp',
+    description:
+      'Radiant platinum star compass with gem inlay and celestial motif, legendary tier icon with glow accents.',
+  },
+
+  // Armor Gear
+  {
+    id: 'blacksmith_copper_vest',
+    name: 'Copper Vest',
+    category: 'blacksmith',
+    subcategory: 'armor_gear',
+    expectedPath: 'blacksmith/copper_vest.webp',
+    description:
+      'Rugged copper-plated explorer vest with stitched straps, front-facing icon on transparent background.',
+  },
+  {
+    id: 'blacksmith_iron_chain_mail',
+    name: 'Iron Chain Mail',
+    category: 'blacksmith',
+    subcategory: 'armor_gear',
+    expectedPath: 'blacksmith/iron_chain_mail.webp',
+    description:
+      'Iron chain mail torso piece with padded lining, medium-tier armor icon.',
+  },
+  {
+    id: 'blacksmith_silver_guard_plate',
+    name: 'Silver Guard Plate',
+    category: 'blacksmith',
+    subcategory: 'armor_gear',
+    expectedPath: 'blacksmith/silver_guard_plate.webp',
+    description:
+      'Silver guard plate chest armor with clean angular shoulder guards, polished high-clarity icon.',
+  },
+  {
+    id: 'blacksmith_gold_royal_armor',
+    name: 'Gold Royal Armor',
+    category: 'blacksmith',
+    subcategory: 'armor_gear',
+    expectedPath: 'blacksmith/gold_royal_armor.webp',
+    description:
+      'Royal gold armor chestpiece with heraldic ornament, elite fantasy-farm style icon.',
+  },
+  {
+    id: 'blacksmith_titanium_fortress_plate',
+    name: 'Titanium Fortress Plate',
+    category: 'blacksmith',
+    subcategory: 'armor_gear',
+    expectedPath: 'blacksmith/titanium_fortress_plate.webp',
+    description:
+      'Heavy titanium fortress plate with reinforced rivets and matte industrial finish, top-tier armor icon.',
+  },
+  {
+    id: 'blacksmith_platinum_aegis',
+    name: 'Platinum Aegis',
+    category: 'blacksmith',
+    subcategory: 'armor_gear',
+    expectedPath: 'blacksmith/platinum_aegis.webp',
+    description:
+      'Platinum aegis chest armor with glowing core emblem and sleek legendary profile.',
+  },
+
+  // Accessory Gear
+  {
+    id: 'blacksmith_quartz_pendant',
+    name: 'Quartz Pendant',
+    category: 'blacksmith',
+    subcategory: 'accessory_gear',
+    expectedPath: 'blacksmith/quartz_pendant.webp',
+    description:
+      'Quartz pendant on braided cord, soft magical shimmer, accessory icon.',
+  },
+  {
+    id: 'blacksmith_iron_miners_lantern',
+    name: "Iron Miner's Lantern",
+    category: 'blacksmith',
+    subcategory: 'accessory_gear',
+    expectedPath: 'blacksmith/iron_miners_lantern.webp',
+    description:
+      'Iron miner lantern with warm flame and compact frame, readable at small icon size.',
+  },
+  {
+    id: 'blacksmith_amber_amulet',
+    name: 'Amber Amulet',
+    category: 'blacksmith',
+    subcategory: 'accessory_gear',
+    expectedPath: 'blacksmith/amber_amulet.webp',
+    description:
+      'Amber amulet with organic resin glow and carved clasp, mid-tier charm icon.',
+  },
+  {
+    id: 'blacksmith_ruby_ring',
+    name: 'Ruby Ring',
+    category: 'blacksmith',
+    subcategory: 'accessory_gear',
+    expectedPath: 'blacksmith/ruby_ring.webp',
+    description:
+      'Gold ring with bright ruby centerpiece, premium accessory icon.',
+  },
+  {
+    id: 'blacksmith_sapphire_crown',
+    name: 'Sapphire Crown',
+    category: 'blacksmith',
+    subcategory: 'accessory_gear',
+    expectedPath: 'blacksmith/sapphire_crown.webp',
+    description:
+      'Small sapphire crown accessory with crisp jewel highlights, legendary-adjacent icon style.',
+  },
+  {
+    id: 'blacksmith_diamond_star',
+    name: 'Diamond Star',
+    category: 'blacksmith',
+    subcategory: 'accessory_gear',
+    expectedPath: 'blacksmith/diamond_star.webp',
+    description:
+      'Diamond star charm with crystalline facets and radiant aura, highest-tier accessory icon.',
+  },
+
+  // Consumable
+  {
+    id: 'blacksmith_miners_lamp',
+    name: "Miner's Lamp",
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/miners_lamp.webp',
+    description:
+      'Portable miner lamp with oil reservoir and warm flame, consumable icon style.',
+  },
+  {
+    id: 'blacksmith_prospectors_brew',
+    name: "Prospector's Brew",
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/prospectors_brew.webp',
+    description:
+      'Glass bottle of prospector brew with mineral sparkle liquid, cork top, icon style.',
+  },
+  {
+    id: 'blacksmith_stamina_elixir',
+    name: 'Stamina Elixir',
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/stamina_elixir.webp',
+    description:
+      'Stamina elixir vial with bright green-blue energy swirl, readable silhouette.',
+  },
+  {
+    id: 'blacksmith_fortification_draught',
+    name: 'Fortification Draught',
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/fortification_draught.webp',
+    description:
+      'Thick fortified draught in sturdy flask with shield emblem, buff consumable icon.',
+  },
+  {
+    id: 'blacksmith_explorers_ration',
+    name: "Explorer's Ration",
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/explorers_ration.webp',
+    description:
+      'Packed explorer ration tin with wrapped food bundle and label seal, adventure utility icon.',
+  },
+  {
+    id: 'blacksmith_mining_rations',
+    name: 'Mining Rations',
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/mining_rations.webp',
+    description:
+      'Rugged mining ration box with straps and calorie pack details, heavy-duty consumable icon.',
+  },
+  {
+    id: 'blacksmith_pickaxe',
+    name: 'Pickaxe',
+    category: 'blacksmith',
+    subcategory: 'consumable',
+    expectedPath: 'blacksmith/pickaxe.webp',
+    description:
+      'Refined blacksmith-forged pickaxe with reinforced head and wrapped grip, mine-entry consumable icon.',
+  },
+];
+
+// === AVATAR ===
+const avatarItems: ItemDefinition[] = [
+  {
+    id: 'avatar_fisherman',
+    name: 'Fisherman',
+    category: 'avatar',
+    expectedPath: 'avatar/fisherman.webp',
+    description:
+      'cozy fisherman character with rain jacket, knitted wool beanie, small fishing hook necklace, calm friendly expression, slightly weathered but warm appearance, blue-green color palette',
+  },
+  {
+    id: 'avatar_mine_explorer',
+    name: 'Mine Explorer',
+    category: 'avatar',
+    expectedPath: 'avatar/mine_explorer.webp',
+    description:
+      'rugged mine explorer with miner helmet and glowing lantern attached, dark beard stubble, warm amber lighting from below, adventurous but friendly expression, earthy brown and copper tones, cozy fantasy mining vibe',
+  },
+  {
+    id: 'avatar_valley_trader',
+    name: 'Valley Trader',
+    category: 'avatar',
+    expectedPath: 'avatar/valley_trader.webp',
+    description:
+      'charming traveling merchant with hooded cloak, soft scarf, small coin pouch and feather accessory, confident friendly smile, warm earthy colors with gold accents, slightly mysterious but cozy fantasy merchant vibe',
+  },
+  {
+    id: 'avatar_blacksmith_apprentice',
+    name: 'Blacksmith Apprentice',
+    category: 'avatar',
+    expectedPath: 'avatar/blacksmith_apprentice.webp',
+    description:
+      'young blacksmith apprentice with rolled sleeves, leather apron, soot marks on cheeks, short messy hair, enthusiastic smile, glowing forge lighting, warm orange and iron-gray color palette',
+  },
+  {
+    id: 'avatar_chicken_keeper',
+    name: 'Chicken Keeper',
+    category: 'avatar',
+    expectedPath: 'avatar/chicken_keeper.webp',
+    description:
+      'cheerful farm caretaker holding fluffy white chicken close to chest, straw freckles, cozy autumn clothing, playful happy expression, warm golden farm colors, cute wholesome farming vibe',
+  },
+  {
+    id: 'avatar_forest_herbalist',
+    name: 'Forest Herbalist',
+    category: 'avatar',
+    expectedPath: 'avatar/forest_herbalist.webp',
+    description:
+      'gentle herbalist with round glasses, leafy cloak details, small pouch of herbs, calm intelligent expression, soft green and natural color palette, cozy forest healer aesthetic',
+  },
+  {
+    id: 'avatar_airport_pilot',
+    name: 'Airport Pilot',
+    category: 'avatar',
+    expectedPath: 'avatar/airport_pilot.webp',
+    description:
+      'cozy fantasy cargo pilot with leather flight cap, scarf blowing slightly, brass goggles resting on forehead, confident adventurous smile, warm sky-blue and brown color palette, friendly airship pilot vibe',
+  },
+  {
+    id: 'avatar_golden_rooster_keeper',
+    name: 'Golden Rooster Keeper',
+    category: 'avatar',
+    expectedPath: 'avatar/golden_rooster_keeper.webp',
+    description:
+      'prestigious farm keeper in an elegant tailored farm coat with subtle gold embroidery, a glowing golden rooster perched proudly on their shoulder, soft warm sunrise lighting casting a gentle golden glow on the face, calm regal yet wholesome expression, cozy farm fantasy aesthetic with deep cream, amber, and antique gold color palette, faint golden sparkle accents around the rooster, rare prestige avatar feel',
+  },
+  {
+    id: 'avatar_deep_mine_foreman',
+    name: 'Deep Mine Foreman',
+    category: 'avatar',
+    expectedPath: 'avatar/deep_mine_foreman.webp',
+    description:
+      'legendary deep mine foreman, slightly rugged older character with weathered face and silver-streaked beard, heavy explorer coat with reinforced collar and worn leather straps, holding a glowing crystal lantern that casts soft teal and violet gem reflections across the face, steady confident veteran expression, earthy charcoal and slate tones with luminous crystal highlights, rare high-status mining vibe',
+  },
+  {
+    id: 'avatar_sky_captain',
+    name: 'Sky Captain',
+    category: 'avatar',
+    expectedPath: 'avatar/sky_captain.webp',
+    description:
+      'cozy fantasy sky captain with a long leather flight coat with captain epaulets, brass goggles resting on forehead, small airship badge pinned to lapel, warm windswept hair, confident adventurous smile, glowing sunset cloud lighting with soft orange and pink rim light on the face, aspirational prestige pilot feel, color palette of warm leather brown, deep sunset orange, and dusky sky blue',
+  },
+  {
+    id: 'avatar_orchard_keeper',
+    name: 'Orchard Keeper',
+    category: 'avatar',
+    expectedPath: 'avatar/orchard_keeper.webp',
+    description:
+      'friendly orchard keeper woman with braided auburn hair, cozy wool sweater and gardening apron, soft freckles, warm smile, holding a tiny apple blossom branch, warm autumn color palette of russet, cream, and soft green, wholesome village farming vibe',
+  },
+  {
+    id: 'avatar_lakeside_cook',
+    name: 'Lakeside Cook',
+    category: 'avatar',
+    expectedPath: 'avatar/lakeside_cook.webp',
+    description:
+      'cheerful village cook woman with curly dark hair tied back in a scarf, rustic apron, rosy cheeks, holding a wooden spoon, warm tavern-inspired color palette of deep red, amber, and warm wood brown, nurturing and energetic personality',
+  },
+  {
+    id: 'avatar_moonlight_herbalist',
+    name: 'Moonlight Herbalist',
+    category: 'avatar',
+    expectedPath: 'avatar/moonlight_herbalist.webp',
+    description:
+      'mysterious but gentle herbalist woman with silver-white braided hair, deep green cloak with subtle glowing leaf embroidery, soft amber lantern light mixed with cool moonlight on her face, calm intelligent expression, tiny glowing herbs floating subtly around her, elegant cozy fantasy healer aesthetic, deep forest green and silver palette with warm amber accents, rare magical avatar feel',
+  },
+  {
+    id: 'avatar_valley_duchess',
+    name: 'Valley Duchess',
+    category: 'avatar',
+    expectedPath: 'avatar/valley_duchess.webp',
+    description:
+      'elegant traveling merchant woman with layered cozy cloak, gold leaf accessories, feathered hat, confident warm smile, rich earthy red and gold color palette, respected valley trader aesthetic, slightly adventurous but welcoming vibe, prestige merchant leader feel',
+  },
+];
+
+export const items: ItemDefinition[] = [
+  ...BASE_ITEMS,
+  ...lakeItems,
+  ...valleyItems,
+  ...airportItems,
+  ...blacksmithItems,
+  ...avatarItems,
 ];
 
 export function getItemsByCategory(category: string): ItemDefinition[] {

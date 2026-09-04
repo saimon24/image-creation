@@ -28,7 +28,7 @@ interface Style {
 export default function NPCsPage() {
   const [assets, setAssets] = useState<Asset[]>([]);
   const [styles, setStyles] = useState<Style[]>([]);
-  const [selectedStyle, setSelectedStyle] = useState("npc-style.json");
+  const [selectedStyle, setSelectedStyle] = useState("hayday-styles.json");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -64,7 +64,7 @@ export default function NPCsPage() {
         const data = await res.json();
         setStyles(data);
         const npcStyle = data.find(
-          (s: Style) => s.filename === "npc-style.json"
+          (s: Style) => s.filename === "hayday-styles.json"
         );
         if (npcStyle) {
           setSelectedStyle(npcStyle.filename);

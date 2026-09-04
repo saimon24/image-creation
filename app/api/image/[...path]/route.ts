@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { resolveImageFullPath } from "@/lib/filesystem";
 
 export async function GET(
   request: Request,
   { params }: { params: { path: string[] } }
 ) {
   const imagePath = params.path.join("/");
-  const fullPath = path.join(process.cwd(), "output", imagePath);
+  const fullPath = resolveImageFullPath(imagePath);
 
-  if (!fs.existsSync(fullPath)) {
+  if (!fullPath) {
     return new NextResponse("Image not found", { status: 404 });
   }
 

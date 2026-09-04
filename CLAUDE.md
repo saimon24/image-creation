@@ -13,12 +13,12 @@ npm start        # Serve production build
 
 CLI-based batch generation (alternative to web UI):
 ```bash
-bun run generate.js --input names.txt --config style.json
+node generate.js --input names.txt --config crafts-v4-styles.json
 ```
 
 ## Environment Setup
 
-Requires `OPENAI_API_KEY` in `.env` file for image generation.
+Requires `OPENAI_API_KEY` in `.env` (copy `.env.example`). `.env` is git-ignored.
 
 ## Architecture Overview
 
@@ -27,9 +27,9 @@ This is a Next.js 14 App Router application for generating game assets using Ope
 ### Data Flow
 
 1. **Static Data** (`data/items.ts`, `data/npcs.ts`) - 250+ item definitions and 17 NPCs with descriptions
-2. **Style Configs** (root `*.json` files) - AI prompt templates for different art styles
+2. **Style Configs** (root `*-styles.json` files) - AI prompt templates. Only three are kept: `crafts-v4-styles.json` (default for items), `buildings-v2-styles.json`, `hayday-styles.json` (default for NPCs)
 3. **Description Overrides** (`data/overrides.json`) - User-edited descriptions persisted separately from source
-4. **Generated Images** (`output/`) - WebP images organized by category
+4. **Generated Images** (`output/`) - the single source of images, committed to git. Every `expectedPath` is relative to `output/` (including the `assets/images/...` paths). Never read or write images anywhere else.
 
 ### Generation System
 
