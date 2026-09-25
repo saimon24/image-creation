@@ -15,6 +15,11 @@ interface CustomGenerateRequest {
   outputFilename?: string; // Optional custom output filename
   format?: "webp" | "png" | "jpg"; // Output image format
   resize?: string; // Output size (e.g., "256x256")
+  // Optional generation controls; omitted = previous behaviour (gpt-image-1, 1024x1024, default quality)
+  model?: string; // e.g. "gpt-image-2"
+  quality?: "low" | "medium" | "high" | "auto"; // drafts: "low"
+  size?: "1024x1024" | "1024x1536" | "1536x1024";
+  background?: "transparent" | "opaque";
 }
 
 async function resizeImage(
@@ -51,7 +56,11 @@ export async function POST(request: Request) {
       customStyle,
       outputFilename,
       format = "webp",
-      resize = "256x256"
+      resize = "256x256",
+      model = "gpt-image-1",
+      quality,
+      size = "1024x1024",
+      background,
     } = body;
 
     if (!name && !directPrompt) {
@@ -91,12 +100,14 @@ export async function POST(request: Request) {
     const apiFormat = format === "jpg" ? "jpeg" : format;
 
     const response = await openai.images.generate({
-      model: "gpt-image-1",
+      model,
       prompt: finalPrompt,
       n: 1,
-      size: "1024x1024",
+      size,
+      ...(quality ? { quality } : {}),
       output_format: apiFormat as "webp" | "png" | "jpeg",
-      background: format === "jpg" ? "opaque" : "transparent", // JPG doesn't support transparency
+      // JPG doesn't support transparency
+      background: background ?? (format === "jpg" ? "opaque" : "transparent"),
     });
 
     const imageData = response.data?.[0];
