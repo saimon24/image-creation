@@ -1,0 +1,2 @@
+import { sharp } from './keylib.mjs';
+for (const f of process.argv.slice(2)) { const {data:d,info:i}=await sharp(f).ensureAlpha().raw().toBuffer({resolveWithObject:true}); let x0=i.width,y0=i.height,x1=-1,y1=-1; for(let y=0;y<i.height;y++)for(let x=0;x<i.width;x++) if(d[(y*i.width+x)*4+3]>40){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;} console.log(f.split('/').pop(), i.width+'x'+i.height, 'bbox', x0,y0,x1,y1, 'w',x1-x0+1,'h',y1-y0+1); }

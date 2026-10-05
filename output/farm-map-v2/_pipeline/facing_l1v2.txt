@@ -1,0 +1,3 @@
+# v2 level-1 drafts: 512x512 like the originals, fitted to ~410 px height, bottom-anchored.
+# Facing: front-LEFT, the same way the six originals face (doors on the lower-left face),
+# so one flip rule in code covers old and new alike. Mirror with mirror.mjs if front-right is wanted.
