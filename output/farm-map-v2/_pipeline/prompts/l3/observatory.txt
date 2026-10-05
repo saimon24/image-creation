@@ -1,0 +1,5 @@
+Paint LEVEL 3 of the "Observatory" farm building shown in image 1 (its level 2). Level 3 adds: the tower grows one storey taller with a wooden balcony ring around the top under the dome, and warm lit windows.
+
+Keep EVERYTHING else exactly as in image 1: the same building, the same materials and colours, the same soft hand-painted matte style, the same camera angle, the same position in the frame and facing (main face and door to the front-LEFT). It may grow only slightly (about 8–15% bigger), staying centred and standing on the ground in the same place. The step from level 2 to level 3 is a MEDIUM step, like image 2 compared with its own level 2 (it gained a stone base, a chimney and warm lit windows): two or three added BIG readable elements, the building looks sturdier and more established.
+LOW DETAIL: shown at about 64 px. No small props, no scattered tools or pots, no ground clutter, no fine texture.
+Background: perfectly flat solid pure magenta #FF00FF everywhere, no ground plate, no cast shadow on the background, NO white or cream sticker outline, no text, no letters, no numbers, no clock faces, no labels.
