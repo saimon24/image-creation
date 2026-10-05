@@ -7,7 +7,7 @@ const S = process.env.ART_S || '/private/tmp/claude-501/-Users-ioannis/25e0206e-
 const env = fs.readFileSync('/Users/ioannis/dev/ImageCreation/.env','utf8');
 const key = env.match(/^OPENAI_API_KEY=(.*)$/m)[1].trim().replace(/^["']|["']$/g,'');
 const [name, size, quality, promptFile, ...refs] = process.argv.slice(2);
-if (quality !== 'low') { console.error('quality must be low'); process.exit(2); }
+if (quality !== 'low' && process.env.APPROVED_HIGH !== '1') { console.error('quality must be low (set APPROVED_HIGH=1 only for owner-approved finals)'); process.exit(2); }
 const prompt = fs.readFileSync(promptFile,'utf8');
 const model = process.env.MODEL || 'gpt-image-2';
 const t0 = Date.now();
