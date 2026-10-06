@@ -1,0 +1,7 @@
+A sprite sheet of FIVE separate small game objects for a cozy farm game's trophy room, laid out with wide empty gaps between them so they never touch, each seen straight from the front. Same soft hand-painted cozy mobile-game style as the reference (warm, readable, clean shapes, not photoreal), no sticker outline. Background: one flat, solid, pure magenta colour (#FF00FF) everywhere, no shadows on the background, no text or letters anywhere.
+
+Top row, left: an EMPTY small wine-red velvet display cushion, plump and square-ish, seen from the front and slightly above, with a tiny blank brass name plate fixed to its front edge.
+Top row, middle: a small blank polished brass plaque, wide and short (about 4 times wider than tall), with tiny screws in the corners.
+Top row, right: a small carved warm-wood shield-shaped wall mount (empty, for hanging a medal on), with a thin gold edge.
+Bottom row, left (wide): an EMPTY gilt picture frame, landscape (twice as wide as tall), holding a sheet of cream paper with a neat grid of 5 by 2 empty rectangular cells outlined in thin dotted lines (for postage stamps).
+Bottom row, right: a round game button with a carved wooden rim and a gold arrow pointing to the RIGHT in the middle.

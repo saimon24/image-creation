@@ -1,0 +1,5 @@
+A sprite sheet of THREE separate round enamel badge pins (like collectible award pins) in one row with wide empty gaps between them, each seen straight from the front, same size. Same soft hand-painted cozy mobile-game style as the reference (warm, readable, clean shapes, not photoreal), no sticker outline. Each pin is a round ornate metal rim (a decorative ring) with a small pin-head at the top, and its CENTRE is a large, flat, plain cream disc with nothing on it (a picture will be placed there later) - the rim is only the outer ~18% of the radius.
+Left: GOLD pin - warm gold rim with small laurel details.
+Middle: PLATINUM pin - silvery white-blue platinum rim with tiny star details.
+Right: DIAMOND pin - bright icy-blue crystal/diamond rim with small facets and sparkles.
+Background: one flat, solid, pure magenta colour (#FF00FF) everywhere, no shadows on the background, no text.

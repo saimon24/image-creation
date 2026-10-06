@@ -1,0 +1,9 @@
+Image 1 shows a building plot: a flat oval plot of ochre packed earth ringed by a low wall of rounded grey stones, with ONE opening in the wall at the front-left. Keep this plot EXACTLY as it is: same position in the frame, same size, same oval, same stones, same colours, same opening in the same place. Do not move, redraw or resize the plot.
+Turn it into a BUILDING SITE: inside the stone wall, standing on the earth in the middle of the plot, add a simple construction site made of only three big chunky readable elements:
+1. a simple square wooden scaffold frame (four timber posts with two cross-beams, open, no walls, no roof), standing in the centre-back of the plot and rising up above the plot into the empty space above it, about as tall as the plot is wide x 0.55;
+2. a neat stack of a few long wooden planks lying on the earth at the front-right inside the wall;
+3. three or four big pale stone blocks stacked at the left inside the wall.
+Keep the opening in the wall clear, like an entrance. Everything stays inside the stone ring; the front stones of the wall stay in front of the planks and blocks.
+LOW DETAIL: shown at about 64 px on a farm map. No small tools, no workers, no ropes, no buckets, no signs, no clutter, no extra ground outside the plot.
+ART STYLE: the same soft hand-painted game style as image 2 (the mossy workshop sprite) and the plot itself: chunky 3-D painted forms, isometric 3/4 view from slightly above, warm light from the top-right, matte, muted warm earthy palette (weathered wood browns, pale stone grey). Not photoreal, not an oil painting.
+BACKGROUND: everything outside the plot and the scaffold stays perfectly flat solid pure magenta #FF00FF, nothing behind the sprite, no cast shadow on the background, NO white or cream sticker outline, no text, no letters, no numbers.
