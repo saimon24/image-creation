@@ -1,6 +1,6 @@
 // usage: node cmp.mjs out.png id_suffix...  -> drafts side by side with the guide's plot outlines (red) on top
 import { createRequire } from 'node:module';
-import { PLOTS, PLOT_R, CORNERS } from './themes.mjs';
+import { PLOTS, PLOT_R, CORNERS } from './layout.mjs';
 const require = createRequire('/Users/ioannis/dev/ImageCreation/package.json');
 const sharp = require('sharp');
 const V = '/Users/ioannis/dev/ImageCreation/output/farm-map-v2/valleys';

@@ -2,7 +2,8 @@
 // into output/farm-map-v2/valleys/{guides,prompts}/<id>.{png,txt}
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
-import { PLOTS, PLOT_R, CORNERS, THEMES } from './themes.mjs';
+import { PLOTS, PLOT_R, CORNERS, THEMES } from './layout.mjs';
+import { DECOS } from './layout.mjs';
 const require = createRequire('/Users/ioannis/dev/ImageCreation/package.json');
 const sharp = require('sharp');
 
@@ -31,12 +32,14 @@ function svgFor(t) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${bg}<g transform="translate(${cx},${cy}) scale(${1 / sx},${1 / sy}) translate(${-cx},${-cy})">${rest.join('')}</g></svg>`;
 }
 
+const DECO_LIST = Object.values(DECOS).map(([x, y]) => `(${Math.round((531 + (x - 531) * 1.2) / 10.24)}%, ${Math.round((858 + (y - 858) * 1.2) / 15.36)}%)`).join(', ');
 const PREFIX = `Image 1 is a flat-colour LAYOUT GUIDE (portrait 2:3) for a hand-painted top-down farm valley map of a cozy mobile farming game, seen from high above at a steep 3/4 angle. Repaint it as a finished painting and follow its layout exactly:
-- Every cream ellipse (16 of them) is an EMPTY, FLAT, OPEN clearing where the game later places a building. Keep each one completely empty at exactly its position and size: no objects, trees, decorations, fences, water or paths on it — paths only touch its edge.
+- Every cream ellipse (exactly 16 of them) is an EMPTY, FLAT clearing where the game later places a building. Paint each one as a clearly visible flat patch of PALE CREAM SAND (the same pale cream in every theme, whatever the ground around it), exactly at its position and size: no objects, trees, decorations, fences, water or paths on it — paths only touch its edge. Paint NO other round patches or clearings anywhere: exactly 16.
 - Four CORNER AREAS stay completely plain, flat open ground — nothing at all in them: no trees, no landmarks, no tents, no stalls, no lanterns, no garlands, no decorations, no water unless drawn: left-middle (x 18-35%, y 31-41%), right-middle (x 77-93%, y 31-39%), bottom-left (x 10-27%, y 80-91%), bottom-right (x 78-92%, y 81-91%). The game places big buildings there.
 - Keep the exact framing of image 1: same scale, same positions, no zoom, no crop, no shift. A clearing that sits at a certain spot in image 1 sits at exactly that spot in the painting.
 - Blue = water, exactly where it is drawn. Brown lines = footpaths, exactly where they are drawn; where a path crosses water, paint a small bridge.
-- Large areas of plain ground stay calm and open around the clearings (the game places decorations there later).
+- These 15 small spots are where the game places decorations later; each must stay PLAIN OPEN GROUND (no trees, bushes, props, fences, water or paths on it or right above it), given as (x%, y%) of the picture: ${DECO_LIST}.
+- Large areas of plain ground stay calm and open around the clearings.
 Image 2 is ONLY a reference for the painting STYLE and the LIGHT — do not copy its layout, hill, river, trees or colours: bright, cheerful hand-painted mobile-game art with soft painted textures and chunky, readable shapes, low detail, NOT photoreal, NOT an oil painting; the same low warm SUNRISE light from the upper left, golden rim light, long soft shadows falling to the lower right.
 `;
 const SUFFIX = `
