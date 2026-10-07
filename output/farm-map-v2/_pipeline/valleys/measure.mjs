@@ -60,8 +60,8 @@ for (const [id, theme] of Object.entries(THEMES)) {
   let F = fit(inl);
   for (const p of Object.values(found)) {
     if (inl.includes(p)) continue;
-    const b = search(F.f(p.want), 24, 2, 0.3);
-    p.at = b[0] > 50 ? [b[1], b[2]] : F.f(p.want); p.score = b[0]; p.fixed = b[0] > 50 ? 'refound' : 'fit';
+    const b = search(F.f(p.want), 50, 2, 0.15);
+    p.at = b[0] > 40 ? [b[1], b[2]] : F.f(p.want); p.score = b[0]; p.fixed = b[0] > 40 ? 'refound' : 'fit';
   }
   F = fit(Object.values(found));
 
@@ -163,6 +163,7 @@ for (const [id, theme] of Object.entries(THEMES)) {
   const out = {
     id, scale: r4(F.s * GS), scene: Object.fromEntries(Object.entries(scene).map(([k, v]) => [k, Math.round(v * 2)])), // in the 2048x3072 painting
     plotRings, decorationPoints, blocked, walkways, edgeTone,
+    fit: { s: F.s, tx: F.tx, ty: F.ty }, // guide (1.2 frame) -> painting px in the 1024x1536 draft
     plotFit: Object.fromEntries(Object.entries(found).map(([k, p]) => [k, { score: Math.round(p.score), ...(p.fixed ? { fixed: p.fixed } : {}) }])),
   };
   fs.writeFileSync(`${V}/measure/${id}.json`, JSON.stringify(out, null, 1));
@@ -174,7 +175,19 @@ for (const [id, theme] of Object.entries(THEMES)) {
   for (const [k, p] of Object.entries(STD_PROJECTS)) { const size = p.scale * scene.width, [x, y] = fromScene([p.x, p.y]); sv.push(`<rect x="${x - size * 0.45}" y="${y - size * 0.9}" width="${size * 0.9}" height="${size}" fill="none" stroke="magenta" stroke-width="3"/>`); }
   for (const [k, [x, y]] of Object.entries(chosen)) sv.push(`<ellipse cx="${x}" cy="${y}" rx="${decoPx}" ry="${decoPy}" fill="none" stroke="#00e5ff" stroke-width="3"/><rect x="${x - decoPx * 0.9}" y="${y - body}" width="${decoPx * 1.8}" height="${body}" fill="none" stroke="#00e5ff" stroke-width="1" stroke-dasharray="4 3"/><text x="${x - 8}" y="${y + 6}" font-size="14" fill="#00e5ff">D${k}</text>`);
   await sharp(file).resize(W, H).composite([{ input: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${sv.join('')}</svg>`) }]).png().toFile(`${V}/measure/${id}.png`);
-  console.log(id, 'scale', out.scale, 'scene', JSON.stringify(out.scene), 'weak', Object.values(found).filter((p) => p.fixed).length);
+  // quality: how far the measured plots stray from one uniform fit, and how sure each find is;
+  // plus how many plot-sized cream patches the painting has (extra clearings confuse players)
+  const resid = Object.values(found).map((p) => Math.hypot(F.f(p.want)[0] - p.at[0], F.f(p.want)[1] - p.at[1]));
+  const minScore = Math.min(...Object.values(found).map((p) => p.score));
+  const plotCol = (() => { const cs = Object.values(found).map((p) => px(p.at[0], p.at[1])); return [0, 1, 2].map((c) => cs.map((q) => q[c]).sort((a, b) => a - b)[cs.length >> 1]); })();
+  let patches = 0; { const seen = new Uint8Array(W * H); const isP = (x, y) => { const c = px(x, y); return Math.hypot(c[0] - plotCol[0], c[1] - plotCol[1], c[2] - plotCol[2]) < 26; };
+    for (let y = Math.max(0, scene.top - 60) | 0; y < Math.min(H, scene.top + scene.height + 60); y += 3) for (let x = Math.max(0, scene.left - 40) | 0; x < Math.min(W, scene.left + scene.width + 40); x += 3) {
+      const i = y * W + x; if (seen[i] || !isP(x, y)) continue; let n = 0; const st = [[x, y]]; seen[i] = 1;
+      while (st.length) { const [ux, uy] = st.pop(); n++; for (const [dx, dy] of [[3, 0], [-3, 0], [0, 3], [0, -3]]) { const vx = ux + dx, vy = uy + dy; if (vx < 0 || vy < 0 || vx >= W || vy >= H) continue; const v = vy * W + vx; if (!seen[v] && isP(vx, vy)) { seen[v] = 1; st.push([vx, vy]); } } }
+      const area = n * 9; if (area > Math.PI * RX * RY * 0.45 && area < Math.PI * RX * RY * 1.8) patches++;
+    } }
+  const ok = Math.max(...resid) < 40 && minScore > 50 && patches <= 16;
+  console.log(id, 'scale', out.scale, 'scene', JSON.stringify(out.scene), 'weak', ok ? 0 : 9, `maxResid ${Math.round(Math.max(...resid))} minScore ${Math.round(minScore)} patches ${patches}`);
 }
 
 function insideShape(s, x, y) {
