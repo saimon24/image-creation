@@ -52,6 +52,24 @@ for p in m['plotRings'].values():
 bgd, fgd = np.zeros((1, 65), np.float64), np.zeros((1, 65), np.float64)
 cv2.grabCut(img, mask, None, bgd, fgd, 6, cv2.GC_INIT_WITH_MASK)
 water = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype(np.uint8)
+# bridges, planks and banks that GrabCut pulled in with the strokes: keep only water-coloured
+# pixels (near the median colour of the cut water), so they do not ripple
+cut = lab[water > 0]
+if len(cut):
+    med = np.median(cut, axis=0)
+    spread = np.percentile(np.linalg.norm(cut - med, axis=1), 70)
+    far = np.linalg.norm(lab - med, axis=2) > max(cfg.get('keep', 24), spread * 1.25)
+    water[far] = 0
+    water = cv2.morphologyEx(water, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+# hand-drawn water (lakes the colour filter would drop) and dry areas (bridges, wheels)
+for p in cfg.get('wet', []):
+    cv2.fillPoly(water, [np.array(p, np.int32)], 255)
+for p in cfg.get('dry', []):
+    cv2.fillPoly(water, [np.array(p, np.int32)], 0)
+# bridges: wherever a walkway crosses the water, the deck stays still
+for line in m['walkways']:
+    pts = np.array([[sc['left'] + x * sc['width'], sc['top'] + y * sc['height']] for x, y in line], np.int32)
+    cv2.polylines(water, [pts], False, 0, int(cfg.get('bridge', 26)))
 # keep only blobs that contain a seed / stroke / poly; close small holes
 water = cv2.morphologyEx(water, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))
 n, lbl = cv2.connectedComponents(water)

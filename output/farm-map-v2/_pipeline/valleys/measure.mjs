@@ -101,8 +101,12 @@ for (const [id, theme] of Object.entries(THEMES)) {
   const share = (a, b) => { const w = Math.min(a.right, b.right) - Math.max(a.left, b.left), h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top); return w <= 0 || h <= 0 ? 0 : (w * h) / ((a.right - a.left) * (a.bottom - a.top)); };
   const footOf = (p, sc) => { const rx = sc * 0.36, ry = (sc * 0.14) / TALL, pts = [[p.x, p.y]]; for (let i = 0; i < 16; i++) { const a = (i / 16) * Math.PI * 2; pts.push([p.x + Math.cos(a) * rx, p.y + Math.sin(a) * ry], [p.x + Math.cos(a) * rx * 0.55, p.y + Math.sin(a) * ry * 0.55]); } return pts; };
   const bodyOf = (p, sc) => { const h = sc / TALL, pts = []; for (let i = 0; i <= 4; i++) for (let j = 1; j <= 4; j++) pts.push([p.x - sc * 0.25 + (i / 4) * sc * 0.5, p.y - (j / 4) * h * 0.5]); return pts; };
+  const waterFile = `${V}/water/${id}.png`;
+  const water = fs.existsSync(waterFile) ? await sharp(waterFile).resize(W, H).extractChannel(0).raw().toBuffer() : null;
+  const wet = (u, v) => { if (!water) return false; const [x, y] = fromScene([u, v]); const xi = Math.round(x), yi = Math.round(y); if (xi < 0 || yi < 0 || xi >= W || yi >= H) return false; for (let dy = -6; dy <= 6; dy += 3) for (let dx = -6; dx <= 6; dx += 3) { const xx = xi + dx, yy = yi + dy; if (xx >= 0 && yy >= 0 && xx < W && yy < H && water[yy * W + xx] > 127) return true; } return false; };
   const legal = (k, p, chosen) => {
     const sc = SCALES[k], box = boxOf(p, sc), foot = footOf(p, sc), body = bodyOf(p, sc);
+    if (foot.some(([u, v]) => wet(u, v))) return false;
     if (box.left < -0.01 || box.right > 1.01 || box.top < -0.01 || p.y > 0.99) return false;
     for (const b of blocked) { if (foot.some(([x, y]) => insideShape(b, x, y))) return false; if (b.tall && body.some(([x, y]) => insideShape(b, x, y))) return false; }
     for (const [sk, r] of Object.entries(rings)) {
@@ -133,7 +137,7 @@ for (const [id, theme] of Object.entries(THEMES)) {
   for (const k of Object.keys(STD_DECO).sort((a, b) => SCALES[b] - SCALES[a])) {
     const [u0, v0] = STD_DECO[k];
     let best = null;
-    for (const R of [1, 2.5, 4]) {
+    for (const R of [1, 2.5, 4, 10]) {
       for (let dv = -0.07 * R; dv <= 0.0701 * R; dv += 0.007) for (let du = -0.09 * R; du <= 0.0901 * R; du += 0.009) {
         const p = { x: u0 + du, y: v0 + dv };
         if (!legal(k, p, chosenS)) continue;

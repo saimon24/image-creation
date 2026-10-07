@@ -14,7 +14,7 @@ const sharp = require('sharp');
 const V = '/Users/ioannis/dev/ImageCreation/output/farm-map-v2/valleys';
 const [suf, outDir, ...only] = process.argv.slice(2);
 const W = 1024, H = 1536, GS = 1.2, GCX = 531, GCY = 858;
-const CALM = { river: 255, lake: 90 };
+const CALM = { river: 255, lake: 55 };
 // Hand-picked points inside each painting's water (1024x1536 px); the first point of a
 // water body is where it flows from. POLYS add water the colour test can't follow (multi-coloured lakes).
 const SEEDS = {
@@ -30,7 +30,7 @@ const TOL = { pumpkin_moon_bg: 38, oktoberfest_festival_meadow_bg: 48 };
 const POLYS = {
   bg_aurora_skies: [[[180, 0], [1024, 0], [1024, 110], [960, 150], [800, 165], [640, 175], [520, 190], [400, 170], [280, 150], [190, 110]]],
 };
-const LAKE_CALM = { frosty_fields_bg: [12, 90], sunny_shores_bg: [120, 90], misty_morning_bg: [70, 90] };
+const LAKE_CALM = { frosty_fields_bg: [12, 90], sunny_shores_bg: [110, 90], misty_morning_bg: [35, 90] };
 fs.mkdirSync(outDir, { recursive: true });
 const meta = fs.existsSync(`${outDir}/rivers.json`) ? JSON.parse(fs.readFileSync(`${outDir}/rivers.json`, 'utf8')) : {};
 
