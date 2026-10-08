@@ -73,6 +73,15 @@ for (const [id, theme] of Object.entries(THEMES)) {
   const fromScene = ([u, v]) => [scene.left + u * scene.width, scene.top + v * scene.height];
   const r4 = (n) => Math.round(n * 10000) / 10000;
   const plotRings = Object.fromEntries(Object.entries(found).map(([k, p]) => { const [x, y] = toScene(p.at); return [k, { x: r4(x), y: r4(y) }]; }));
+  // The owner's hand placements (theme editor exports in valleys/owner/, date order) win over the measurement;
+  // the decoration spots that are still placed automatically keep clear of them.
+  const OWNER = fs.existsSync(`${V}/owner`) ? fs.readdirSync(`${V}/owner`).filter((f) => f.endsWith('.json')).sort().map((f) => JSON.parse(fs.readFileSync(`${V}/owner/${f}`, 'utf8')).themes[id]).filter(Boolean) : [];
+  const projects = JSON.parse(JSON.stringify(STD_PROJECTS)), ownerDecos = {};
+  for (const o of OWNER) {
+    for (const [k, p] of Object.entries(o.plotCentres ?? {})) plotRings[k] = { x: p.x, y: p.y };
+    for (const [k, p] of Object.entries(o.projects ?? {})) projects[k] = p;
+    for (const [k, p] of Object.entries(o.decorationPoints ?? {})) ownerDecos[k] = { x: p.x, y: p.y };
+  }
 
   // --- blocked shapes (theme layout, guide coords -> painting -> scene)
   const G2S = (p) => toScene(F.f(p));
@@ -115,7 +124,7 @@ for (const [id, theme] of Object.entries(THEMES)) {
       if (Math.abs(p.x - f.x) < BW * 0.42 && p.y < f.y && p.y > f.y - h * 0.8) return false;
       if (share(box, { left: f.x - BW / 2, right: f.x + BW / 2, top: f.y - h * 0.8, bottom: f.y }) > 0.3) return false;
     }
-    for (const pr of Object.values(STD_PROJECTS)) { const h = pr.scale / TALL; if (share(box, { left: pr.x - (pr.scale / 2) * 0.85, right: pr.x + (pr.scale / 2) * 0.85, top: pr.y - h * 0.8, bottom: pr.y }) > 0.15) return false; }
+    for (const pr of Object.values(projects)) { const h = pr.scale / TALL; if (share(box, { left: pr.x - (pr.scale / 2) * 0.85, right: pr.x + (pr.scale / 2) * 0.85, top: pr.y - h * 0.8, bottom: pr.y }) > 0.15) return false; }
     for (const [ok, op] of Object.entries(chosen)) {
       const osc = SCALES[ok], dx = (p.x - op.x) / ((sc + osc) * 0.36), dy = ((p.y - op.y) * TALL) / ((sc + osc) * 0.14);
       const ob = boxOf(op, osc); if (dx * dx + dy * dy < 1.44 || Math.max(share(box, ob), share(ob, box)) > 0.15) return false;
@@ -132,9 +141,9 @@ for (const [id, theme] of Object.entries(THEMES)) {
     const m = lum.reduce((a, b) => a + b, 0) / lum.length;
     return sum / n + Math.sqrt(lum.reduce((a, b) => a + (b - m) ** 2, 0) / lum.length) * 1.5;
   };
-  const chosenS = {};
+  const chosenS = { ...ownerDecos };
   // place the big showpieces first, then the rest
-  for (const k of Object.keys(STD_DECO).sort((a, b) => SCALES[b] - SCALES[a])) {
+  for (const k of Object.keys(STD_DECO).filter((k) => !ownerDecos[k]).sort((a, b) => SCALES[b] - SCALES[a])) {
     const [u0, v0] = STD_DECO[k];
     let best = null;
     for (const R of [1, 2.5, 4, 10]) {
