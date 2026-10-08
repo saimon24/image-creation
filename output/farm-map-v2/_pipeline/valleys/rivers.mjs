@@ -30,7 +30,7 @@ const TOL = { pumpkin_moon_bg: 38, oktoberfest_festival_meadow_bg: 48 };
 const POLYS = {
   bg_aurora_skies: [[[180, 0], [1024, 0], [1024, 110], [960, 150], [800, 165], [640, 175], [520, 190], [400, 170], [280, 150], [190, 110]]],
 };
-const LAKE_CALM = { frosty_fields_bg: [12, 90], sunny_shores_bg: [110, 90], misty_morning_bg: [35, 90] };
+const LAKE_CALM = { frosty_fields_bg: [12, 90], sunny_shores_bg: [110, 90], misty_morning_bg: [18, 90] };
 fs.mkdirSync(outDir, { recursive: true });
 const meta = fs.existsSync(`${outDir}/rivers.json`) ? JSON.parse(fs.readFileSync(`${outDir}/rivers.json`, 'utf8')) : {};
 

@@ -61,6 +61,15 @@ if len(cut):
     far = np.linalg.norm(lab - med, axis=2) > max(cfg.get('keep', 24), spread * 1.25)
     water[far] = 0
     water = cv2.morphologyEx(water, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+# close the holes the colour filter punched into lakes (reflections, lily pads): any enclosed
+# dry pocket smaller than a small pond becomes water again
+inv = cv2.bitwise_not(water)
+n, lbl, stats, _ = cv2.connectedComponentsWithStats(inv)
+for k in range(1, n):
+    x, y, w, h, area = stats[k]
+    touches_edge = x == 0 or y == 0 or x + w >= W or y + h >= H
+    if not touches_edge and area < cfg.get('holeMax', 2500):
+        water[lbl == k] = 255
 # hand-drawn water (lakes the colour filter would drop) and dry areas (bridges, wheels)
 for p in cfg.get('wet', []):
     cv2.fillPoly(water, [np.array(p, np.int32)], 255)
