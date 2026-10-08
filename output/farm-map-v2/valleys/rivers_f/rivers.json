@@ -1,0 +1,152 @@
+{
+ "frosty_fields_bg": {
+  "crop": {
+   "left": 1794,
+   "top": 546,
+   "width": 254,
+   "height": 2526
+  },
+  "sMax": 2597,
+  "nScale": 1
+ },
+ "golden_meadow_bg": {
+  "crop": {
+   "left": 0,
+   "top": 146,
+   "width": 2048,
+   "height": 1130
+  },
+  "sMax": 2820,
+  "nScale": 1
+ },
+ "misty_morning_bg": {
+  "crop": {
+   "left": 942,
+   "top": 0,
+   "width": 1106,
+   "height": 2088
+  },
+  "sMax": 2145,
+  "nScale": 1
+ },
+ "bg_aurora_skies": {
+  "crop": {
+   "left": 258,
+   "top": 0,
+   "width": 1790,
+   "height": 1336
+  },
+  "sMax": 1312,
+  "nScale": 1
+ },
+ "spring_bloom_bg": {
+  "crop": {
+   "left": 222,
+   "top": 438,
+   "width": 1792,
+   "height": 2552
+  },
+  "sMax": 1384,
+  "nScale": 1
+ },
+ "blossom_festival_bg": {
+  "crop": {
+   "left": 1610,
+   "top": 412,
+   "width": 438,
+   "height": 1444
+  },
+  "sMax": 1525,
+  "nScale": 1
+ },
+ "verdant_valley_bg": {
+  "crop": {
+   "left": 0,
+   "top": 250,
+   "width": 2048,
+   "height": 2822
+  },
+  "sMax": 6037,
+  "nScale": 1
+ },
+ "honey_hollow_bg": {
+  "crop": {
+   "left": 904,
+   "top": 0,
+   "width": 1140,
+   "height": 1226
+  },
+  "sMax": 1325,
+  "nScale": 1
+ },
+ "sunny_shores_bg": {
+  "crop": {
+   "left": 1522,
+   "top": 332,
+   "width": 526,
+   "height": 2548
+  },
+  "sMax": 1156,
+  "nScale": 1
+ },
+ "harvest_fair_bg": {
+  "crop": {
+   "left": 1066,
+   "top": 0,
+   "width": 982,
+   "height": 1596
+  },
+  "sMax": 1119,
+  "nScale": 1
+ },
+ "golden_grove_bg": {
+  "crop": {
+   "left": 0,
+   "top": 266,
+   "width": 2048,
+   "height": 994
+  },
+  "sMax": 1400,
+  "nScale": 1
+ },
+ "pumpkin_moon_bg": {
+  "crop": {
+   "left": 0,
+   "top": 0,
+   "width": 2048,
+   "height": 3072
+  },
+  "sMax": 2154,
+  "nScale": 1
+ },
+ "oktoberfest_festival_meadow_bg": {
+  "crop": {
+   "left": 1160,
+   "top": 0,
+   "width": 888,
+   "height": 1286
+  },
+  "sMax": 837,
+  "nScale": 1
+ },
+ "halloween_haunted_hollow_bg": {
+  "crop": {
+   "left": 0,
+   "top": 880,
+   "width": 2048,
+   "height": 2192
+  },
+  "sMax": 2136,
+  "nScale": 1
+ },
+ "halloween_candy_lane_bg": {
+  "crop": {
+   "left": 1000,
+   "top": 0,
+   "width": 1048,
+   "height": 1372
+  },
+  "sMax": 1197,
+  "nScale": 1
+ }
+}
