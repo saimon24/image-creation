@@ -20,7 +20,8 @@ if (b !== 'none') {
   for (let y = 0; y < F; y++) for (let x = 0; x < F; x++) if (src.data[(y * F + x) * 4 + 3] > 20) { t = Math.min(t, y); l = Math.min(l, x); r = Math.max(r, x); }
   const fx = Number(cxS) * F, fy = Number(footS) * F;
   // largest scale ≤ 1 that keeps the top and both sides inside the frame
-  let s = 1;
+  // BSCALE shrinks a building that is as wide as the ring (it would hide the stones and look off-centre).
+  let s = Number(process.env.BSCALE || 1);
   if (fy - t > 0) s = Math.min(s, (cy - MARGIN) / (fy - t));
   if (fx - l > 0) s = Math.min(s, (cx - MARGIN) / (fx - l));
   if (r - fx > 0) s = Math.min(s, (F - MARGIN - cx) / (r - fx));
