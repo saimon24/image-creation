@@ -11,9 +11,28 @@ async function ring(p) {
   const { data } = await sharp(p).resize(F, F).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   let bottom = 0;
   for (let y = F - 1; y >= 0 && !bottom; y--) for (let x = 0; x < F; x++) if (data[(y * F + x) * 4 + 3] > 128) { bottom = y; break; }
+  // 1) The ring's ends: the outermost grey stone pixels in the band of the oval's front half
+  //    (anything on the plot stays inside the ring). Exact when the stones read as grey.
   let l = F, r = 0;
-  for (const row of [bottom - 10, bottom - 12, bottom - 14]) for (let x = 0; x < F; x++) if (data[(row * F + x) * 4 + 3] > 128) { l = Math.min(l, x); r = Math.max(r, x); }
-  return { bottom, cx: (l + r) / 2, w: r - l };
+  for (let row = bottom; row >= Math.max(0, bottom - 140); row--) for (let x = 0; x < F; x++) {
+    const i = (row * F + x) * 4;
+    if (data[i + 3] < 160) continue;
+    const R = data[i], G = data[i + 1], B = data[i + 2], mx = Math.max(R, G, B), mn = Math.min(R, G, B);
+    const sat = mx ? (mx - mn) / mx : 0, lum = (R + G + B) / 3;
+    if (sat < 0.2 && lum > 70 && lum < 215) { l = Math.min(l, x); r = Math.max(r, x); }
+  }
+  const grey = { bottom, cx: (l + r) / 2, w: r - l };
+  // 2) The widest row of the ring's front half (50–125 rows above its front edge): the ring's
+  //    sides, which nothing on the plot reaches past. Used when the stones don't read as grey.
+  let wide = { bottom, cx: F / 2, w: 0 };
+  for (let d = 50; d <= 125; d++) {
+    const row = bottom - d;
+    if (row < 0) break;
+    let wl = F, wr = 0;
+    for (let x = 0; x < F; x++) if (data[(row * F + x) * 4 + 3] > 128) { wl = Math.min(wl, x); wr = Math.max(wr, x); }
+    if (wr - wl > wide.w) wide = { bottom, cx: (wl + wr) / 2, w: wr - wl };
+  }
+  return grey.w > 0.88 * wide.w && grey.w < 1.05 * wide.w ? grey : wide;
 }
 const a = await ring(refP), b = await ring(inP);
 const s = a.w / b.w;

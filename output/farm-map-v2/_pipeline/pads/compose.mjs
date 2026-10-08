@@ -18,8 +18,8 @@ const layers = [{ input: r, left: Math.round(cx - rw / 2), top: Math.round(cy - 
 if (b !== 'none') {
   const raw = await sharp(b).resize(F, F).png().toBuffer();
   // shift by (dx, dy) inside the frame, cropping what falls outside
-  const padded = await sharp(raw).extend({ top: 64, bottom: 64, left: 64, right: 64, background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
-  const ext = await sharp(padded).extract({ left: 64 - dx, top: 64 - dy, width: F, height: F }).png().toBuffer();
+  const padded = await sharp(raw).extend({ top: 200, bottom: 200, left: 200, right: 200, background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+  const ext = await sharp(padded).extract({ left: 200 - dx, top: 200 - dy, width: F, height: F }).png().toBuffer();
   layers.push({ input: ext, left: 0, top: 0 });
 }
 let img = sharp({ create: { width: F, height: F, channels: 4, background: bg === 'none' ? { r: 0, g: 0, b: 0, alpha: 0 } : '#ff00ff' } }).composite(layers);
