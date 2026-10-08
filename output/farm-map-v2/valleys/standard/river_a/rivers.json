@@ -1,0 +1,12 @@
+{
+ "standard": {
+  "crop": {
+   "left": 934,
+   "top": 0,
+   "width": 1114,
+   "height": 1294
+  },
+  "sMax": 1248,
+  "nScale": 1
+ }
+}
