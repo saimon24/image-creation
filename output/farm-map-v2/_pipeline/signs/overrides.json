@@ -1,0 +1,23 @@
+{
+ "blacksmith": {
+  "boardTol": 30,
+  "boardColFrac": 0.45,
+  "plaqueTol": 60
+ },
+ "orchard_crate": {
+  "boardClose": 9
+ },
+ "storybook": {
+  "boardClose": 10
+ },
+ "seashell": {
+  "boardColFrac": 0.5
+ },
+ "birch": {
+  "boardColFrac": 0.5
+ },
+ "pumpkin_patch": {
+  "_why": "thin, faint planks: a single plank is too low for the name, so it keeps the middle of the whole face",
+  "planks": false
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "default": {
+  "banner": [ 0.5, 0.395 ],
+  "board": 0.64
+ },
+ "meadow": {
+  "banner": [ 0.495, 0.47 ],
+  "board": 0.69
+ },
+ "stone": {
+  "banner": [ 0.497, 0.47 ],
+  "board": 0.69
+ },
+ "harvest": {
+  "banner": [ 0.495, 0.353 ],
+  "board": 0.58
+ },
+ "lantern": {
+  "banner": [ 0.5, 0.34 ],
+  "board": 0.6
+ },
+ "royal": {
+  "banner": [ 0.503, 0.36 ],
+  "board": 0.63
+ },
+ "birch": {
+  "banner": [ 0.5, 0.337 ],
+  "board": 0.6
+ },
+ "cottage_blue": {
+  "banner": [ 0.49, 0.33 ],
+  "board": 0.56
+ },
+ "sunflower": {
+  "banner": [ 0.5, 0.3 ],
+  "board": 0.6
+ },
+ "mushroom_grove": {
+  "banner": [ 0.5, 0.37 ],
+  "board": 0.62
+ },
+ "blacksmith": {
+  "banner": [ 0.495, 0.28 ],
+  "board": 0.6
+ },
+ "starlit": {
+  "banner": [ 0.49, 0.34 ],
+  "board": 0.6
+ },
+ "barn_door": {
+  "banner": [ 0.5, 0.32 ],
+  "board": 0.6
+ },
+ "beekeeper": {
+  "banner": [ 0.493, 0.346 ],
+  "board": 0.6
+ },
+ "orchard_crate": {
+  "banner": [ 0.5, 0.316 ],
+  "board": 0.6
+ },
+ "riverstone": {
+  "banner": [ 0.498, 0.325 ],
+  "board": 0.56
+ },
+ "storybook": {
+  "banner": [ 0.5, 0.3 ],
+  "board": 0.62
+ },
+ "postmark": {
+  "banner": [ 0.5, 0.3 ],
+  "board": 0.6
+ },
+ "post_rider": {
+  "banner": [ 0.5, 0.346 ],
+  "board": 0.62
+ },
+ "trophy_shelf": {
+  "banner": [ 0.5, 0.37 ],
+  "board": 0.63
+ },
+ "champion_laurel": {
+  "banner": [ 0.495, 0.34 ],
+  "board": 0.62
+ },
+ "pumpkin_patch": {
+  "banner": [ 0.5, 0.28 ],
+  "board": 0.6
+ },
+ "frosty_pine": {
+  "banner": [ 0.493, 0.37 ],
+  "board": 0.62
+ },
+ "blossom_lantern": {
+  "banner": [ 0.498, 0.285 ],
+  "board": 0.6
+ },
+ "seashell": {
+  "banner": [ 0.515, 0.33 ],
+  "board": 0.6
+ },
+ "pretzel_fest": {
+  "banner": [ 0.503, 0.33 ],
+  "board": 0.6
+ }
+}
